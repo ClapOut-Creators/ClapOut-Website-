@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import type { MotionValue } from 'framer-motion';
-import FadeIn from './FadeIn';
-import LiveProjectButton from './LiveProjectButton';
+import FadeIn from './shared/FadeIn';
+import LiveProjectButton from './shared/LiveProjectButton';
 
 interface Campaign {
   number: string;

@@ -15,3 +15,7 @@ dist/
 .vscode/
 .idea/
 .DS_Store
+
+CLAUDE.md
+.claude/*
+.agents/*

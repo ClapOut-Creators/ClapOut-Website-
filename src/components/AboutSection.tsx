@@ -1,6 +1,6 @@
-import FadeIn from './FadeIn';
-import AnimatedText from './AnimatedText';
-import ContactButton from './ContactButton';
+import FadeIn from './shared/FadeIn';
+import AnimatedText from './shared/AnimatedText';
+import ContactButton from './shared/ContactButton';
 
 const CORNER_IMAGES = [
   {

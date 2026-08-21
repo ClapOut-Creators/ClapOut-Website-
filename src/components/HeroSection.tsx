@@ -1,14 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import HeroPhones from './HeroPhones';
 
-const NAV_LINKS = [
-  { label: 'About', href: '#about' },
-  { label: 'How it works', href: '#how' },
-  { label: 'Campaigns', href: '#campaigns' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Join', href: '#join' },
-];
-
 const LEFT_WORDS = ['create', 'clip', 'post', 'share'];
 const RIGHT_WORDS = ['reach', 'verify', 'earn', 'repeat'];
 
@@ -56,28 +48,6 @@ export default function HeroSection() {
       className="relative w-full overflow-hidden"
       style={{ height: '120vh', backgroundColor: '#EC612C' }}
     >
-      <nav className="absolute inset-x-0 top-0 z-30 flex items-center justify-between px-[3vw] py-4 md:px-[6vw] md:py-5">
-        <a href="#top" className="transition-opacity duration-200 hover:opacity-80">
-          <img
-            src="/clapout-logo.png"
-            alt="Clapout logo"
-            className="h-14 w-auto select-none sm:h-16 md:h-20"
-            draggable={false}
-          />
-        </a>
-        <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-xs font-medium uppercase tracking-wider text-white transition-opacity duration-200 hover:opacity-70 sm:text-sm md:text-base"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </nav>
-
       {/* Sticky typography overlay */}
       <div className="sticky top-0 z-[5] h-screen w-full">
         <div className="absolute inset-0 flex items-start justify-center pt-[11vh] md:pt-[12vh]">

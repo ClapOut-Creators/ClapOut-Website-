@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import FadeIn from './FadeIn';
+import FadeIn from './shared/FadeIn';
 
 const FAQS = [
   {

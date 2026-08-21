@@ -1,6 +1,6 @@
-import FadeIn from './FadeIn';
-import ContactButton from './ContactButton';
-import LiveProjectButton from './LiveProjectButton';
+import FadeIn from './shared/FadeIn';
+import ContactButton from './shared/ContactButton';
+import LiveProjectButton from './shared/LiveProjectButton';
 
 export default function FinalCtaSection() {
   return (

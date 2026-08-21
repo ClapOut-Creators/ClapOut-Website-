@@ -1,5 +1,5 @@
 import { Quote, Star } from 'lucide-react';
-import FadeIn from './FadeIn';
+import FadeIn from './shared/FadeIn';
 
 const FEEDBACK = [
   {
