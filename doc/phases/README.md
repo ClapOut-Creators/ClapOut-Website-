@@ -9,7 +9,7 @@ section — don't split them across separate phases.
 | - | --- | --- |
 | 0 | ✅ [`00-foundation.md`](./00-foundation.md) | Directory restructure, design tokens, shared types/data/UI primitives |
 | 1 | ✅ [`01-navbar.md`](./01-navbar.md) | Navbar |
-| 2 | [`02-hero.md`](./02-hero.md) | Hero (badge, headline, CTAs, phone carousel, trusted-by strip) |
+| 2 | ✅ [`02-hero.md`](./02-hero.md) | Hero (badge, headline, CTAs, phone carousel, trusted-by strip) |
 | 3 | [`03-how-it-works.md`](./03-how-it-works.md) | Three steps to your first payout (Join / Set up / Post / Cash out) |
 | 4 | [`04-social-proof.md`](./04-social-proof.md) | Creators/brands photo grid |
 | 5 | [`05-faq.md`](./05-faq.md) | FAQ accordion |

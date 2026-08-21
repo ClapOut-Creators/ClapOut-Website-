@@ -1,8 +1,6 @@
 import { useHashRoute } from '../hooks/useHashRoute';
 import Navbar from '../components/layout/Navbar';
-import HeroSection from '../components/HeroSection';
-import TextMarquee from '../components/TextMarquee';
-import MarqueeSection from '../components/MarqueeSection';
+import HeroSection from '../components/sections/HeroSection';
 import AboutSection from '../components/AboutSection';
 import HowItWorksSection from '../components/HowItWorksSection';
 import CampaignsSection from '../components/CampaignsSection';
@@ -22,8 +20,6 @@ export default function App() {
     <main id="top" className="bg-[#0C0C0C]" style={{ overflowX: 'clip' }}>
       <Navbar />
       <HeroSection />
-      <TextMarquee />
-      <MarqueeSection />
       <AboutSection />
       <HowItWorksSection />
       <CampaignsSection />

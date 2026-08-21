@@ -67,14 +67,14 @@ new `src/components/sections/HeroSection.tsx` +
 
 ## Acceptance criteria
 
-- [ ] Hero background is white, matches PDF page 1/2 exactly in section
+- [x] Hero background is white, matches PDF page 1/2 exactly in section
       order (badge → H1 w/ highlight → subtext → CTAs → phones → scrubber
       → trusted-by strip).
-- [ ] `PhoneMockup` is a real reusable component (props-driven), not
+- [x] `PhoneMockup` is a real reusable component (props-driven), not
       one-off JSX, since Phase 3 needs 4 more instances of it.
-- [ ] `LogoMarquee` renders the trusted-by logos from `data/brands.ts`.
-- [ ] Mobile (375px) and desktop (1728px+ down to ~1024px) both verified
+- [x] `LogoMarquee` renders the trusted-by logos from `data/brands.ts`.
+- [x] Mobile (375px) and desktop (1728px+ down to ~1024px) both verified
       against the PDF screenshots.
-- [ ] Old `HeroSection.tsx`, `HeroPhones.tsx`, `TextMarquee.tsx`,
+- [x] Old `HeroSection.tsx`, `HeroPhones.tsx`, `TextMarquee.tsx`,
       `MarqueeSection.tsx` deleted once this is verified working.
-- [ ] `npm run build` passes clean.
+- [x] `npm run build` passes clean.

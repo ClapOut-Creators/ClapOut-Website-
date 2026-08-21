@@ -33,20 +33,21 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2">
-            <Button variant="orange" className="px-4 py-2 text-xs md:px-8 md:py-2.5 md:text-sm">
+          <div className="hidden shrink-0 md:block">
+            <Button variant="orange" className="px-8 py-2.5 text-sm">
               Get Started
             </Button>
-            <button
-              type="button"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={mobileOpen}
-              onClick={() => setMobileOpen((prev) => !prev)}
-              className="flex h-9 w-9 items-center justify-center rounded-full text-brand-dark md:hidden"
-            >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
           </div>
+
+          <button
+            type="button"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((prev) => !prev)}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white md:hidden"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
 
         {mobileOpen && (
@@ -64,6 +65,9 @@ export default function Navbar() {
                 </a>
               ))}
             </nav>
+            <Button variant="orange" className="mt-4 w-full py-2.5 text-sm">
+              Get Started
+            </Button>
           </div>
         )}
       </div>

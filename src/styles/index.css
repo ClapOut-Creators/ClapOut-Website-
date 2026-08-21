@@ -27,35 +27,6 @@ html {
   letter-spacing: 0.02em;
 }
 
-@keyframes marquee-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-track {
-  display: flex;
-  white-space: nowrap;
-  animation: marquee-scroll 18s linear infinite;
-}
-
-@keyframes phone-float {
-  0%,
-  100% {
-    margin-top: 0;
-  }
-  50% {
-    margin-top: -12px;
-  }
-}
-
-.phone-float {
-  animation: phone-float 6s ease-in-out infinite;
-}
-
 @keyframes scrub-sweep {
   0% {
     left: 2%;
@@ -70,9 +41,6 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .phone-float {
-    animation: none;
-  }
   .scrub-playhead {
     animation: none;
     left: 40%;
