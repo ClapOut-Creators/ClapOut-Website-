@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { ChevronDown, Menu, X } from 'lucide-react';
-import Button from '../ui/Button';
-import { navLinks } from '../../data/nav';
+import { useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import Button from "../ui/Button";
+import { navLinks } from "../../data/nav";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -14,10 +14,9 @@ export default function Navbar() {
             <img
               src="/clapout-logo.png"
               alt="Clapout logo"
-              className="h-9 w-9 select-none md:h-10 md:w-10"
+              className="h-9 w-9 select-none md:h-12 md:w-12"
               draggable={false}
             />
-            <span className="font-poppins text-base font-medium text-brand-dark md:text-lg">Clapout</span>
           </a>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -41,7 +40,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((prev) => !prev)}
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white md:hidden"

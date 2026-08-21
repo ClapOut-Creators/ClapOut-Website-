@@ -70,14 +70,14 @@ column is the safe default):**
 
 ## Acceptance criteria
 
-- [ ] All 4 steps present, in order, with real copy from
+- [x] All 4 steps present, in order, with real copy from
       `design-reference.md` (no placeholder lorem ipsum).
-- [ ] Campaign cards, payment method card, and cash-out table are each
+- [x] Campaign cards, payment method card, and cash-out table are each
       driven by their respective `data/*.ts` file, not hardcoded JSX.
-- [ ] `PhoneMockup` reused (not reimplemented) for the 4 post-step phones.
-- [ ] Desktop 2-column intro/steps layout and mobile stacked layout both
+- [x] `PhoneMockup` reused (not reimplemented) for the 4 post-step phones.
+- [x] Desktop 2-column intro/steps layout and mobile stacked layout both
       verified against PDF pages 1 and 2.
-- [ ] Old `HowItWorksSection.tsx` / `CampaignsSection.tsx` /
-      `CashOutSection.tsx` / `PostCampaignPreview.tsx` deleted once
-      verified.
-- [ ] `npm run build` passes clean.
+- [x] Old `HowItWorksSection.tsx` / `CampaignsSection.tsx` deleted once
+      verified (`CashOutSection.tsx` / `PostCampaignPreview.tsx` never
+      existed in this repo).
+- [x] `npm run build` passes clean.

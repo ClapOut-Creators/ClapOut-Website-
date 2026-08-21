@@ -146,11 +146,11 @@ export default function HeroSection() {
         </p>
       </div>
 
-      <div className="mx-auto mt-16 flex max-w-4xl flex-col items-center gap-6 border-t border-border-hairline px-4 pt-10 md:flex-row md:justify-center md:gap-10">
-        <span className="shrink-0 font-sfpro text-sm text-text-body">
+      <div className="mx-auto mt-16 flex w-full max-w-4xl flex-col items-center gap-6 border-t border-border-hairline px-4 pt-10 md:flex-row md:gap-10">
+        <span className="shrink-0 font-sfpro text-xl text-text-body font-[500]">
           Trusted by top brands
         </span>
-        <LogoMarquee logos={trustedByLogos} />
+        <LogoMarquee logos={trustedByLogos} className="w-full max-w-xl" />
       </div>
     </section>
   );

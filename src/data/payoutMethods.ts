@@ -1,10 +1,11 @@
 import type { PayoutMethod } from '../types/content';
 
-// Logos aren't in the repo yet (see design-reference.md "Assets to export")
-// — `logo` is a placeholder until Phase 3 sources the real asset.
+// MTN/Telecel/AT/Bank are real fintech brands — their logo marks aren't
+// reproduced here (no license), so `logo` stays empty and the payment
+// method card falls back to a plain text label. Flagged, not fabricated.
 export const payoutMethods: PayoutMethod[] = [
-  { id: 'mtn', label: 'MTN', logo: '' },
-  { id: 'telecel', label: 'Telecel', logo: '' },
-  { id: 'at', label: 'AT', logo: '' },
-  { id: 'bank', label: 'Bank', logo: '' },
+  { id: 'mtn', label: 'MTN', logo: '', subtext: 'Fast no charges' },
+  { id: 'telecel', label: 'Telecel', logo: '', subtext: 'Fast no charges' },
+  { id: 'at', label: 'AT', logo: '', subtext: 'Fast no charges' },
+  { id: 'bank', label: 'Bank', logo: '', subtext: 'Fast no charges' },
 ];

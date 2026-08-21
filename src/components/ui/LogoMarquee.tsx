@@ -5,21 +5,24 @@ interface LogoMarqueeProps {
   className?: string;
 }
 
-// Consolidates the old ClientsSection/MarqueeSection/TextMarquee trio.
-// None of these brand marks are in the repo yet (see data/brands.ts) — each
-// renders as a plain wordmark placeholder until the real asset is sourced.
 export default function LogoMarquee({ logos, className = '' }: LogoMarqueeProps) {
+  const track = [...logos, ...logos];
+
   return (
-    <div className={`flex flex-wrap items-center justify-center gap-x-10 gap-y-4 ${className}`}>
-      {logos.map((brand) =>
-        brand.logo ? (
-          <img key={brand.name} src={brand.logo} alt={brand.name} className="h-6 w-auto opacity-80" />
-        ) : (
-          <span key={brand.name} className="font-poppins text-lg font-medium text-brand-dark/60">
-            {brand.name}
-          </span>
-        )
-      )}
+    <div className={`relative overflow-hidden ${className}`}>
+      <div className="logo-marquee-track flex w-max items-center gap-14">
+        {track.map((brand, i) => (
+          <img
+            key={`${brand.name}-${i}`}
+            src={brand.logo}
+            alt={brand.name}
+            className="h-7 w-auto shrink-0 object-contain sm:h-8"
+            draggable={false}
+          />
+        ))}
+      </div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent sm:w-24" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent sm:w-24" />
     </div>
   );
 }

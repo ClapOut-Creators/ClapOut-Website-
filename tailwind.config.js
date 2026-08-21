@@ -8,7 +8,7 @@ export default {
           orange: "#EC612C",
           yellow: "#FFC93C",
           dark: "#111111",
-          greyDark: "#90EE90",
+          greyDark: "#4C4C4C",
           footer: "#0C0C0C",
         },
         text: {
