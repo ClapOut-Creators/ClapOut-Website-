@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Local tooling / session data
+.claude/
+.remember/
+
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
