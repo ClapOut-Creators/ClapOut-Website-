@@ -58,7 +58,7 @@ export default function TestimonialsSection() {
         </p>
       </div>
 
-      <div className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 md:mx-auto md:mt-16 md:max-w-6xl md:grid md:grid-cols-4 md:items-start md:overflow-visible md:px-4 md:pb-0">
+      <div className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 [-webkit-overflow-scrolling:touch] [touch-action:pan-x] md:mx-auto md:mt-16 md:max-w-6xl md:grid md:grid-cols-4 md:items-start md:overflow-visible md:px-4 md:pb-0">
         {testimonials.map((testimonial, i) => (
           <div key={i} className={`shrink-0 snap-start ${i % 2 === 1 ? 'md:mt-12' : ''}`}>
             <TestimonialCard testimonial={testimonial} dark={i % 2 === 1} />
