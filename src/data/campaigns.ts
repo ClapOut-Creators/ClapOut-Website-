@@ -1,17 +1,15 @@
 import type { Campaign } from '../types/content';
 
 // Values read directly off doc/Clapout.pdf page 1's campaign card grid
-// (design-reference.md doesn't include per-card numbers). Coca-Cola and
-// Nike are real trademarks — this repo has no license to reproduce their
-// logos, so both render as plain text-on-color swatches rather than the
-// bottle/swoosh marks shown in the PDF. Flagged for sign-off before any
-// real trademarked asset is used. TripAdverts' logo swatch is blank in the
-// source design itself (not a gap on our end).
+// (design-reference.md doesn't include per-card numbers). Real logo assets
+// for Coca-Cola/Nike/Tekme now live in public/clients/ (user-supplied).
+// TripAdverts' logo swatch stays blank — that's how it appears in the
+// source design itself, not a gap on our end.
 export const campaigns: Campaign[] = [
   {
     brand: 'Coca-Cola',
+    logo: '/clients/coca-cola.png',
     logoBg: '#E31C23',
-    logoTextColor: '#FFFFFF',
     status: 'Active',
     daysLeft: '50 Days left',
     platforms: ['x', 'tiktok', 'facebook', 'instagram', 'youtube'],
@@ -21,8 +19,8 @@ export const campaigns: Campaign[] = [
   },
   {
     brand: 'NIKE',
+    logo: '/clients/nike.png',
     logoBg: '#000000',
-    logoTextColor: '#FFFFFF',
     status: 'Active',
     daysLeft: '50 Days left',
     platforms: ['x', 'tiktok', 'instagram'],
@@ -32,8 +30,9 @@ export const campaigns: Campaign[] = [
   },
   {
     brand: 'Tekme Creatives',
+    logo: '/clients/tekme.svg',
+    logoFit: 'contain',
     logoBg: '#1DA1F2',
-    logoTextColor: '#FFFFFF',
     status: 'Active',
     daysLeft: '50 Days left',
     platforms: ['x', 'tiktok', 'facebook', 'instagram', 'youtube'],
@@ -44,7 +43,6 @@ export const campaigns: Campaign[] = [
   {
     brand: 'TripAdverts.',
     logoBg: '#FFFFFF',
-    logoTextColor: '#111111',
     status: 'Active',
     daysLeft: '50 Days left',
     platforms: ['x', 'facebook', 'instagram'],

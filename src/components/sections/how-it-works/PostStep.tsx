@@ -1,6 +1,5 @@
 import { Video } from 'lucide-react';
 import StepHeader from './StepHeader';
-import PhoneMockup from '../../ui/PhoneMockup';
 import { PLATFORM_ICONS, PLATFORM_LABELS } from './platformIcons';
 import { steps } from '../../../data/steps';
 import type { Platform } from '../../../types/content';
@@ -15,31 +14,24 @@ export default function PostStep() {
       <StepHeader icon={Video} number={step.number} eyebrow={step.eyebrow} heading={step.heading} body={step.body} />
       <div className="mt-8 md:pl-16">
         <div className="flex flex-wrap gap-3">
-          {PLATFORMS.map((platform) => {
-            const Icon = PLATFORM_ICONS[platform];
-            return (
-              <span
-                key={platform}
-                className="inline-flex items-center gap-2 rounded-full border border-border-button px-4 py-2 text-sm text-brand-dark"
-              >
-                <Icon size={16} /> {PLATFORM_LABELS[platform]}
-              </span>
-            );
-          })}
+          {PLATFORMS.map((platform) => (
+            <span
+              key={platform}
+              className="inline-flex items-center gap-2 rounded-full border border-border-button px-4 py-2 text-sm text-brand-dark"
+            >
+              <img src={PLATFORM_ICONS[platform]} alt="" className="h-4 w-4 rounded object-contain" />
+              {PLATFORM_LABELS[platform]}
+            </span>
+          ))}
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {Array.from({ length: 4 }, (_, i) => (
-            <PhoneMockup
+            <img
               key={i}
-              className="w-full"
-              accountName="ClapOut Clips"
-              handle="@clapout.clips"
-              caption="E-WALE's drop hit 1M views in 48 hours 🤯"
-              likes="388.6K"
-              comments="4806"
-              shares="11.2K"
-              timestamp="00:02/01:00"
+              src="/campain-content-phone.png"
+              alt="Post campaign content on ClapOut Clips"
+              className="w-full rounded-[2.2rem] shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
             />
           ))}
         </div>

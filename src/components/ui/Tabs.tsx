@@ -22,7 +22,7 @@ export default function Tabs({ tabs, onChange, className = '' }: TabsProps) {
           type="button"
           onClick={() => select(index)}
           className={`rounded-pill px-6 py-2 font-poppins text-sm ${
-            active === index ? 'bg-brand-dark text-white' : 'text-brand-dark'
+            active === index ? 'bg-brand-orange text-white' : 'text-brand-dark'
           }`}
         >
           {label}

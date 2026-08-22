@@ -21,7 +21,14 @@ export default function SetupStep() {
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-poppins font-medium text-black/80">{method.label}</span>
+                  <span className="flex items-center gap-2 font-poppins font-medium text-black/80">
+                    {method.logo && (
+                      <span className="flex h-6 w-8 shrink-0 items-center justify-center overflow-hidden rounded-md">
+                        <img src={method.logo} alt="" className="h-full w-full object-cover" />
+                      </span>
+                    )}
+                    {method.label}
+                  </span>
                   {i === 0 && (
                     <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-orange text-white">
                       <Check size={12} />

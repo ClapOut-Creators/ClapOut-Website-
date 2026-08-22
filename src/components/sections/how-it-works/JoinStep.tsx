@@ -1,7 +1,7 @@
 import { Rocket, Clock, Wallet } from 'lucide-react';
 import StepHeader from './StepHeader';
 import Card from '../../ui/Card';
-import { PLATFORM_ICONS } from './platformIcons';
+import { PLATFORM_ICONS, PLATFORM_LABELS } from './platformIcons';
 import { campaigns } from '../../../data/campaigns';
 import { steps } from '../../../data/steps';
 
@@ -22,10 +22,20 @@ export default function JoinStep() {
           <Card key={campaign.brand} className="bg-black/[0.03] p-5">
             <div className="flex items-start justify-between">
               <div
-                className="flex h-16 w-28 items-center justify-center rounded-xl border border-border-hairline px-2 text-center text-sm font-bold"
-                style={{ backgroundColor: campaign.logoBg, color: campaign.logoTextColor }}
+                className="flex h-16 w-28 items-center justify-center overflow-hidden rounded-xl border border-border-hairline"
+                style={{ backgroundColor: campaign.logoBg }}
               >
-                {campaign.brand}
+                {campaign.logo && (
+                  <img
+                    src={campaign.logo}
+                    alt={campaign.brand}
+                    className={
+                      campaign.logoFit === 'contain'
+                        ? 'h-full w-full object-contain p-3'
+                        : 'h-full w-full object-cover'
+                    }
+                  />
+                )}
               </div>
               <div className="text-right">
                 <span className="inline-flex rounded-full bg-[#90EE90]/40 px-3 py-1 text-xs font-medium text-[#1a7a1a]">
@@ -42,17 +52,14 @@ export default function JoinStep() {
             <div className="mt-2 flex items-center gap-2 text-xs text-text-body">
               Platform
               <span className="flex items-center gap-1">
-                {campaign.platforms.map((platform) => {
-                  const Icon = PLATFORM_ICONS[platform];
-                  return (
-                    <span
-                      key={platform}
-                      className="flex h-5 w-5 items-center justify-center rounded bg-black text-white"
-                    >
-                      <Icon size={11} />
-                    </span>
-                  );
-                })}
+                {campaign.platforms.map((platform) => (
+                  <img
+                    key={platform}
+                    src={PLATFORM_ICONS[platform]}
+                    alt={PLATFORM_LABELS[platform]}
+                    className="h-5 w-5 rounded object-contain"
+                  />
+                ))}
               </span>
             </div>
 

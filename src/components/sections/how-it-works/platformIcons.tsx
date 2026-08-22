@@ -1,12 +1,12 @@
-import { Facebook, Instagram, Youtube, Twitter, Music2 } from 'lucide-react';
 import type { Platform } from '../../../types/content';
 
-export const PLATFORM_ICONS: Record<Platform, typeof Facebook> = {
-  x: Twitter,
-  tiktok: Music2,
-  facebook: Facebook,
-  instagram: Instagram,
-  youtube: Youtube,
+// Real platform icon assets (user-supplied) in public/socials/.
+export const PLATFORM_ICONS: Record<Platform, string> = {
+  tiktok: '/socials/tiktok%201.png',
+  facebook: '/socials/social%201.png',
+  instagram: '/socials/instagram%201.png',
+  youtube: '/socials/youtube%201.png',
+  x: '/socials/twitter%201.png',
 };
 
 export const PLATFORM_LABELS: Record<Platform, string> = {

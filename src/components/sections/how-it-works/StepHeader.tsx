@@ -1,4 +1,4 @@
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from "lucide-react";
 
 interface StepHeaderProps {
   icon: LucideIcon;
@@ -8,7 +8,13 @@ interface StepHeaderProps {
   body: string;
 }
 
-export default function StepHeader({ icon: Icon, number, eyebrow, heading, body }: StepHeaderProps) {
+export default function StepHeader({
+  icon: Icon,
+  number,
+  eyebrow,
+  heading,
+  body,
+}: StepHeaderProps) {
   return (
     <div className="md:flex md:gap-6">
       <div className="relative z-10 mb-4 hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border-hairline bg-white text-brand-dark md:flex">
@@ -19,8 +25,10 @@ export default function StepHeader({ icon: Icon, number, eyebrow, heading, body 
           <span className="md:hidden">0.{number}&nbsp;</span>
           {eyebrow}
         </span>
-        <h3 className="mt-4 font-poppins text-2xl font-semibold text-black/80 md:text-3xl">{heading}</h3>
-        <p className="mt-3 max-w-xl font-sfpro text-text-body">{body}</p>
+        <h3 className="mt-4 font-poppins text-2xl font-semibold text-black/80 md:text-3xl">
+          {heading}
+        </h3>
+        <p className="mt-3 max-w-xl font-sfpro text-brand-greyDark">{body}</p>
       </div>
     </div>
   );

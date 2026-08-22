@@ -1,16 +1,19 @@
 export interface NavLink {
   label: string;
   href: string;
+  subLinks?: NavLink[];
 }
 
-export type Platform = 'x' | 'tiktok' | 'facebook' | 'instagram' | 'youtube';
+export type Platform = "x" | "tiktok" | "facebook" | "instagram" | "youtube";
 
 export interface Campaign {
   brand: string;
+  /** Real logo image path. When absent, the swatch falls back to logoBg/logoTextColor text. */
+  logo?: string;
+  /** How the logo image fills its swatch — 'cover' for full-bleed banner logos, 'contain' for wordmarks that need padding. Defaults to 'cover'. */
+  logoFit?: 'cover' | 'contain';
   /** Background color for the logo swatch when no real logo asset is used. */
   logoBg: string;
-  /** Text color for the logo swatch. */
-  logoTextColor: string;
   status: string;
   daysLeft: string;
   platforms: Platform[];

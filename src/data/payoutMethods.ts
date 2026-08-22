@@ -1,11 +1,11 @@
 import type { PayoutMethod } from '../types/content';
 
-// MTN/Telecel/AT/Bank are real fintech brands — their logo marks aren't
-// reproduced here (no license), so `logo` stays empty and the payment
-// method card falls back to a plain text label. Flagged, not fabricated.
+// Real logo assets for MTN/Telecel/AT now live in public/telecom/
+// (user-supplied). Bank has no logo mark in the source design either —
+// it renders as plain text there too.
 export const payoutMethods: PayoutMethod[] = [
-  { id: 'mtn', label: 'MTN', logo: '', subtext: 'Fast no charges' },
-  { id: 'telecel', label: 'Telecel', logo: '', subtext: 'Fast no charges' },
-  { id: 'at', label: 'AT', logo: '', subtext: 'Fast no charges' },
+  { id: 'mtn', label: 'MTN', logo: '/telecom/mtn.png', subtext: 'Fast no charges' },
+  { id: 'telecel', label: 'Telecel', logo: '/telecom/image%209.png', subtext: 'Fast no charges' },
+  { id: 'at', label: 'AT', logo: '/telecom/image%2010.png', subtext: 'Fast no charges' },
   { id: 'bank', label: 'Bank', logo: '', subtext: 'Fast no charges' },
 ];

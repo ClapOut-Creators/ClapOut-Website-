@@ -1,17 +1,19 @@
-import { Youtube, Music2 } from "lucide-react";
+import { Music2 } from "lucide-react";
 import Button from "../ui/Button";
 import PhoneMockup from "../ui/PhoneMockup";
 import LogoMarquee from "../ui/LogoMarquee";
+import { PLATFORM_ICONS } from "./how-it-works/platformIcons";
 import { trustedByLogos } from "../../data/brands";
+import type { Platform } from "../../types/content";
 
-const PLATFORM_DOTS = [
-  Youtube,
-  Music2,
-  Youtube,
-  Music2,
-  Youtube,
-  Music2,
-  Youtube,
+const PLATFORM_DOTS: Platform[] = [
+  "youtube",
+  "tiktok",
+  "youtube",
+  "tiktok",
+  "youtube",
+  "tiktok",
+  "youtube",
 ];
 
 export default function HeroSection() {
@@ -100,16 +102,16 @@ export default function HeroSection() {
       </div>
 
       <div className="mt-6 flex items-center justify-center gap-2 md:mt-8 md:gap-2.5">
-        {PLATFORM_DOTS.map((Icon, i) => (
+        {PLATFORM_DOTS.map((platform, i) => (
           <span
             key={i}
             className="flex h-7 w-7 items-center justify-center rounded-full bg-black/10 md:h-8 md:w-8"
           >
-            <Icon className="h-3 w-3 text-brand-dark/60 md:h-3.5 md:w-3.5" />
+            <img src={PLATFORM_ICONS[platform]} alt="" className="h-3.5 w-3.5 object-contain md:h-4 md:w-4" />
           </span>
         ))}
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-orange md:h-9 md:w-9">
-          <Music2 className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
+          <img src={PLATFORM_ICONS.tiktok} alt="" className="h-4 w-4 object-contain md:h-[1.125rem] md:w-[1.125rem]" />
         </span>
       </div>
 

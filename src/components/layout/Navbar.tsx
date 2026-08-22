@@ -27,7 +27,12 @@ export default function Navbar() {
                 className="flex items-center gap-1 font-poppins text-sm text-brand-dark/80 transition-colors hover:text-brand-dark"
               >
                 {link.label}
-                <ChevronDown size={14} />
+                {link.subLinks && (
+                  <ChevronDown
+                    size={16}
+                    className="transition-transform duration-200"
+                  />
+                )}
               </a>
             ))}
           </nav>
