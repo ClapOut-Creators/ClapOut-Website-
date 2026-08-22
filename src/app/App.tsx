@@ -2,6 +2,7 @@ import { useHashRoute } from "../hooks/useHashRoute";
 import Navbar from "../components/layout/Navbar";
 import HeroSection from "../components/sections/HeroSection";
 import HowItWorksSection from "../components/sections/HowItWorksSection";
+import SocialProofSection from "../components/sections/SocialProofSection";
 import FaqSection from "../components/FaqSection";
 import FeedbackSection from "../components/FeedbackSection";
 import FinalCtaSection from "../components/FinalCtaSection";
@@ -19,6 +20,7 @@ export default function App() {
       <Navbar />
       <HeroSection />
       <HowItWorksSection />
+      <SocialProofSection />
       <FaqSection />
       <FeedbackSection />
       <FinalCtaSection />

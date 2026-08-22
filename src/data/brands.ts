@@ -8,5 +8,11 @@ export const trustedByLogos: BrandLogo[] = [
   { name: 'Covoitly', logo: '/clients/covoitly.png' },
 ];
 
-// Social-proof grid (§ 4) — ~15 headshot photos, none in the repo yet.
-export const socialProofPhotos: SocialProofPhoto[] = [];
+// Social-proof grid (§ 4): real creator/brand headshots, user-supplied in
+// public/creators/ (image 11–26.png — 16 photos). One of them (image 16)
+// is the real "GHANA" hoodie photo from the PDF, so no synthetic tag
+// overlay is needed anymore — it's baked into the photo itself.
+export const socialProofPhotos: SocialProofPhoto[] = Array.from({ length: 16 }, (_, i) => {
+  const n = i + 11;
+  return { src: `/creators/image%20${n}.png`, alt: `Clapout creator or brand photo ${n}` };
+});

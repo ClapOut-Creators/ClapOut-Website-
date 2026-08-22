@@ -11,7 +11,7 @@ section — don't split them across separate phases.
 | 1 | ✅ [`01-navbar.md`](./01-navbar.md) | Navbar |
 | 2 | ✅ [`02-hero.md`](./02-hero.md) | Hero (badge, headline, CTAs, phone carousel, trusted-by strip) |
 | 3 | ✅ [`03-how-it-works.md`](./03-how-it-works.md) | Three steps to your first payout (Join / Set up / Post / Cash out) |
-| 4 | [`04-social-proof.md`](./04-social-proof.md) | Creators/brands photo grid |
+| 4 | ✅ [`04-social-proof.md`](./04-social-proof.md) | Creators/brands photo grid |
 | 5 | [`05-faq.md`](./05-faq.md) | FAQ accordion |
 | 6 | [`06-testimonials.md`](./06-testimonials.md) | Testimonials ("Trusted by the best brands") |
 | 7 | [`07-closing-cta.md`](./07-closing-cta.md) | Closing CTA ("Two sides. One Place.") |

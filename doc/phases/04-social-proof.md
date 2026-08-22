@@ -30,10 +30,10 @@ campaigns." block / page 2 equivalent.
 
 ## Acceptance criteria
 
-- [ ] Grid renders from a typed data array, correct row/column count at
+- [x] Grid renders from a typed data array, correct row/column count at
       desktop and mobile widths per the PDF.
-- [ ] "GHANA" tag renders on the correct single photo, not all of them.
-- [ ] Real or clearly-marked-placeholder images in place (no broken image
+- [x] "GHANA" tag renders on the correct single photo, not all of them.
+- [x] Real or clearly-marked-placeholder images in place (no broken image
       icons) — if using placeholders, note it plainly in this section's
       code comment and in the phase completion notes to the user.
-- [ ] `npm run build` passes clean.
+- [x] `npm run build` passes clean.

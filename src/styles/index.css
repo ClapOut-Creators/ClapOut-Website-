@@ -66,6 +66,20 @@ html {
   }
 }
 
+.photo-marquee-track {
+  animation: logo-marquee-scroll 40s linear infinite;
+}
+
+.photo-marquee-track.reverse {
+  animation-direction: reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-marquee-track {
+    animation: none;
+  }
+}
+
 .hero-heading {
   background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
   -webkit-background-clip: text;
