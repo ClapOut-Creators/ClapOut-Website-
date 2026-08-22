@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  background: #ffffff;
+}
+
+body {
+  font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes scrub-sweep {
+  0% {
+    left: 2%;
+  }
+  100% {
+    left: 96%;
+  }
+}
+
+.scrub-playhead {
+  animation: scrub-sweep 5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrub-playhead {
+    animation: none;
+    left: 40%;
+  }
+}
+
+@keyframes logo-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-marquee-track {
+  animation: logo-marquee-scroll 16s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track {
+    animation: none;
+  }
+}
+
+.photo-marquee-track {
+  animation: logo-marquee-scroll 40s linear infinite;
+}
+
+.photo-marquee-track.reverse {
+  animation-direction: reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-marquee-track {
+    animation: none;
+  }
+}
