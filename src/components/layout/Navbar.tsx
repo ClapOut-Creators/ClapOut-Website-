@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Button from "../ui/Button";
 import { navLinks } from "../../data/nav";
+import { CREATORS_WHATSAPP_URL } from "../../data/links";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -38,7 +39,13 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden shrink-0 md:block">
-            <Button variant="orange" className="px-8 py-2.5 text-sm">
+            <Button
+              href={CREATORS_WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="orange"
+              className="px-8 py-2.5 text-sm"
+            >
               Get Started
             </Button>
           </div>
@@ -69,7 +76,14 @@ export default function Navbar() {
                 </a>
               ))}
             </nav>
-            <Button variant="orange" className="mt-4 w-full py-2.5 text-sm">
+            <Button
+              href={CREATORS_WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="orange"
+              className="mt-4 w-full py-2.5 text-sm"
+              onClick={() => setMobileOpen(false)}
+            >
               Get Started
             </Button>
           </div>
