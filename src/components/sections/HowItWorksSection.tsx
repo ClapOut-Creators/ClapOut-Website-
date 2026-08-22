@@ -9,11 +9,11 @@ import CashOutStep from "./how-it-works/CashOutStep";
 import BriefStep from "./how-it-works/BriefStep";
 import ManageStep from "./how-it-works/ManageStep";
 import TrackStep from "./how-it-works/TrackStep";
-
-const CREATORS_WHATSAPP_URL =
-  "https://chat.whatsapp.com/L9d71dKBrFy7QonMQJ73da";
-const BRANDS_PHONE = "0591419158";
-const BRANDS_PHONE_DISPLAY = "059 141 9158";
+import {
+  CREATORS_WHATSAPP_URL,
+  BRANDS_PHONE,
+  BRANDS_PHONE_DISPLAY,
+} from "../../data/links";
 
 export default function HowItWorksSection() {
   const [activeTab, setActiveTab] = useState(0);

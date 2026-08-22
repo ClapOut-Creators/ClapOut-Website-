@@ -4,6 +4,7 @@ import PhoneMockup from "../ui/PhoneMockup";
 import LogoMarquee from "../ui/LogoMarquee";
 import { PLATFORM_ICONS } from "./how-it-works/platformIcons";
 import { trustedByLogos } from "../../data/brands";
+import { CREATORS_WHATSAPP_URL, BRANDS_PHONE } from "../../data/links";
 import type { Platform } from "../../types/content";
 
 const PLATFORM_DOTS: Platform[] = [
@@ -58,10 +59,20 @@ export default function HeroSection() {
         </p>
 
         <div className="mx-auto mt-8 flex max-w-xs flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
-          <Button variant="dark" className="w-full px-[42px] py-3 sm:w-auto">
+          <Button
+            href={CREATORS_WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="dark"
+            className="w-full px-[42px] py-3 sm:w-auto"
+          >
             Start Clipping
           </Button>
-          <Button variant="orange" className="w-full px-[34px] py-3 sm:w-auto">
+          <Button
+            href={`tel:${BRANDS_PHONE}`}
+            variant="orange"
+            className="w-full px-[34px] py-3 sm:w-auto"
+          >
             Start Campaign
           </Button>
         </div>
