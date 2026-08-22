@@ -12,7 +12,7 @@ export default function SetupStep() {
       <div className="mt-8 md:pl-16">
         <div className="rounded-2xl bg-black/[0.03] p-5">
           <p className="text-sm text-text-body">Payment method</p>
-          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {payoutMethods.map((method, i) => (
               <div
                 key={method.id}

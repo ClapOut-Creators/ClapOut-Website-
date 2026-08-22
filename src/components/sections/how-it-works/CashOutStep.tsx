@@ -3,9 +3,12 @@ import StepHeader from "./StepHeader";
 import { payouts } from "../../../data/payouts";
 import { steps } from "../../../data/steps";
 
+// Text colors are darkened from the raw brand hues (#90EE90 green /
+// #FFC857 amber) so they pass WCAG AA (4.5:1) against their own tinted
+// pill backgrounds — the lighter values read as near-invisible.
 const STATUS_STYLES: Record<string, string> = {
-  Paid: "border border-[#90EE90] bg-[#90EE90]/20 text-[#3B8F0E]",
-  Pending: "border border-[#FFC857] bg-[#FFC857]/20 text-[#FFC93C]",
+  Paid: "border border-[#90EE90] bg-[#90EE90]/20 text-[#1F7A1F]",
+  Pending: "border border-[#FFC857] bg-[#FFC857]/20 text-[#8A5A00]",
 };
 
 export default function CashOutStep() {

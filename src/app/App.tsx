@@ -16,7 +16,7 @@ export default function App() {
   if (hash === "#/privacy") return <LegalPage kind="privacy" />;
 
   return (
-    <main id="top" className="bg-[#0C0C0C]" style={{ overflowX: "clip" }}>
+    <main id="top" className="bg-white" style={{ overflowX: "clip" }}>
       <Navbar />
       <HeroSection />
       <HowItWorksSection />

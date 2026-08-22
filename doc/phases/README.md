@@ -17,7 +17,7 @@ section — don't split them across separate phases.
 | 7 | ✅ [`07-closing-cta.md`](./07-closing-cta.md) | Closing CTA ("Two sides. One Place.") |
 | 8 | ✅ [`08-footer.md`](./08-footer.md) | Footer |
 | 9 | ✅ [`09-legal-pages.md`](./09-legal-pages.md) | Terms/Privacy restyle |
-| 10 | [`10-qa-polish.md`](./10-qa-polish.md) | Cross-cutting QA, accessibility, responsive sweep, asset audit |
+| 10 | ✅ [`10-qa-polish.md`](./10-qa-polish.md) | Cross-cutting QA, accessibility, responsive sweep, asset audit |
 
 ## Status tracking
 

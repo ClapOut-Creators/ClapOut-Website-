@@ -8,10 +8,10 @@ export default function ClosingCtaSection() {
           className="font-poppins font-medium"
           style={{ fontSize: 'clamp(2rem, 1.2rem + 3vw, 3.5rem)', lineHeight: 1.15 }}
         >
-          <span className="text-black/40">Two sides. </span>
+          <span className="text-[#767676]">Two sides. </span>
           <span className="font-bold text-black/80">One Place.</span>
           <br />
-          <span className="text-black/40">Pick yours</span>
+          <span className="text-[#767676]">Pick yours</span>
         </h2>
 
         <p className="mx-auto mt-4 max-w-lg font-sfpro text-text-body">
