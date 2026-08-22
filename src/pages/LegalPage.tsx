@@ -1,4 +1,5 @@
 import { ArrowLeft } from 'lucide-react';
+import Button from '../components/ui/Button';
 
 interface LegalSection {
   heading: string;
@@ -112,48 +113,42 @@ export default function LegalPage({ kind }: { kind: 'terms' | 'privacy' }) {
   const title = kind === 'terms' ? 'Terms of Service' : 'Privacy Policy';
 
   return (
-    <main className="min-h-screen bg-[#0C0C0C] px-5 pb-20 pt-8 sm:px-8 md:px-10">
+    <main className="min-h-screen bg-white px-5 pb-20 pt-8 sm:px-8 md:px-10">
       <div className="mx-auto max-w-3xl">
         <div className="mb-10 flex items-center justify-between">
           <a href="#/" className="transition-opacity hover:opacity-80">
             <img
               src="/clapout-logo.png"
               alt="Clapout logo"
-              className="h-16 w-auto select-none"
+              className="h-14 w-auto select-none"
               draggable={false}
             />
           </a>
-          <a
-            href="#/"
-            className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-[#D7E2EA] transition-opacity hover:opacity-70"
+          <Button
+            variant="outline"
+            className="px-5 py-2 text-sm"
+            onClick={() => {
+              window.location.hash = '#/';
+            }}
           >
-            <ArrowLeft size={16} />
-            Back to site
-          </a>
+            <span className="inline-flex items-center gap-2">
+              <ArrowLeft size={16} />
+              Back to site
+            </span>
+          </Button>
         </div>
 
-        <h1
-          className="hero-heading font-black uppercase leading-none tracking-tight"
-          style={{ fontSize: 'clamp(2.2rem, 7vw, 4.5rem)' }}
-        >
-          {title}
-        </h1>
-        <p className="mt-3 text-sm font-light uppercase tracking-widest text-[#D7E2EA] opacity-60">
+        <h1 className="font-poppins text-4xl font-semibold text-black/80 md:text-5xl">{title}</h1>
+        <p className="mt-3 font-sfpro text-sm uppercase tracking-widest text-text-body">
           Last updated: August 21, 2026
         </p>
 
         <div className="mt-12 flex flex-col gap-10">
           {sections.map((section) => (
             <section key={section.heading}>
-              <h2 className="mb-3 font-medium uppercase tracking-wide text-[#D7E2EA] text-lg sm:text-xl">
-                {section.heading}
-              </h2>
+              <h2 className="mb-3 font-poppins text-lg font-medium text-black/80 sm:text-xl">{section.heading}</h2>
               {section.body.map((paragraph, i) => (
-                <p
-                  key={i}
-                  className="mb-3 font-light leading-relaxed text-[#D7E2EA] opacity-70"
-                  style={{ fontSize: 'clamp(0.9rem, 1.4vw, 1.05rem)' }}
-                >
+                <p key={i} className="mb-3 font-sfpro leading-relaxed text-text-body">
                   {paragraph}
                 </p>
               ))}

@@ -39,9 +39,9 @@
 
 ## Acceptance criteria
 
-- [ ] 4 testimonial cards, correct names/brands, alternating light/dark
+- [x] 4 testimonial cards, correct names/brands, alternating light/dark
       styling as in the PDF.
-- [ ] Quote text transcribed accurately from source (not placeholder).
-- [ ] `data/testimonials.ts` drives the cards.
-- [ ] Old `FeedbackSection.tsx` deleted once verified.
-- [ ] `npm run build` passes clean.
+- [x] Quote text transcribed accurately from source (not placeholder).
+- [x] `data/testimonials.ts` drives the cards.
+- [x] Old `FeedbackSection.tsx` deleted once verified.
+- [x] `npm run build` passes clean.

@@ -23,9 +23,11 @@ than matching a specific mock, since none exists.
 
 ## Acceptance criteria
 
-- [ ] `/#/terms` and `/#/privacy` visually match the new design system
+- [x] `/#/terms` and `/#/privacy` visually match the new design system
       (fonts, colors, spacing) rather than the old dark theme.
-- [ ] Legal page content unchanged (no accidental copy edits).
-- [ ] A working way back to the main page exists and is visible above the
-      fold.
-- [ ] `npm run build` passes clean.
+- [x] Legal page content unchanged (no accidental copy edits) — confirmed
+      via `git diff` that no `heading:`/`body:` lines changed.
+- [x] A working way back to the main page exists and is visible above the
+      fold (it already existed pre-Phase 9; restyled with the shared
+      `Button` component per the task, not added from scratch).
+- [x] `npm run build` passes clean.

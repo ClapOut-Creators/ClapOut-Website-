@@ -2,9 +2,9 @@ import type { Campaign } from '../types/content';
 
 // Values read directly off doc/Clapout.pdf page 1's campaign card grid
 // (design-reference.md doesn't include per-card numbers). Real logo assets
-// for Coca-Cola/Nike/Tekme now live in public/clients/ (user-supplied).
-// TripAdverts' logo swatch stays blank — that's how it appears in the
-// source design itself, not a gap on our end.
+// for Coca-Cola/Nike/Tekme/TripAdverts now live in public/clients/
+// (user-supplied) — TripAdverts' swatch was blank in the source design,
+// but a real (TripAdvisor) mark was supplied later, so it's used here.
 export const campaigns: Campaign[] = [
   {
     brand: 'Coca-Cola',
@@ -42,6 +42,7 @@ export const campaigns: Campaign[] = [
   },
   {
     brand: 'TripAdverts.',
+    logo: '/clients/tripadvisor.jpeg',
     logoBg: '#FFFFFF',
     status: 'Active',
     daysLeft: '50 Days left',

@@ -32,11 +32,11 @@ from Phase 0.
 
 ## Acceptance criteria
 
-- [ ] All 6 questions present, correct order.
-- [ ] Real answer copy in place (confirmed with the user or sourced from
+- [x] All 6 questions present, correct order.
+- [x] Real answer copy in place (confirmed with the user or sourced from
       Figma directly) — not lorem ipsum or invented text.
-- [ ] Accordion expand/collapse works via the shared `Accordion` UI
+- [x] Accordion expand/collapse works via the shared `Accordion` UI
       primitive, keyboard-accessible (Enter/Space to toggle, correct
       `aria-expanded`).
-- [ ] Old `FaqSection.tsx` deleted once this is verified.
-- [ ] `npm run build` passes clean.
+- [x] Old `FaqSection.tsx` deleted once this is verified.
+- [x] `npm run build` passes clean.

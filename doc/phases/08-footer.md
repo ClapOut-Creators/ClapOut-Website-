@@ -35,10 +35,31 @@ footer block (both pages).
 
 ## Acceptance criteria
 
-- [ ] All link columns and contact info present and correctly grouped.
-- [ ] Terms/Privacy links still route via the existing hash mechanism, no
+- [x] All link columns and contact info present and correctly grouped.
+- [x] Terms/Privacy links still route via the existing hash mechanism, no
       404s or broken navigation.
-- [ ] Copyright year computed, not hardcoded.
-- [ ] Ghost "CLAPOUT" wordmark doesn't cause horizontal scroll on mobile.
-- [ ] Old `Footer.tsx` deleted once verified.
-- [ ] `npm run build` passes clean.
+- [x] Copyright year computed, not hardcoded.
+- [x] Ghost "CLAPOUT" wordmark doesn't cause horizontal scroll on mobile.
+- [x] Old `Footer.tsx` deleted once verified (moved + rewritten in place
+      at `src/components/layout/Footer.tsx`).
+- [x] `npm run build` passes clean.
+
+**Note:** the old Footer.tsx content/copy was already correct (matches the
+PDF almost exactly), so this phase mainly restyled it: swapped the
+`font-bamboly` ghost wordmark for solid Poppins bold (PDF shows a solid
+low-opacity fill, not a font-stroke outline), dropped the `#D7E2EA`
+icy-blue text tint for plain white/opacity tokens, and moved headings/body
+onto the Poppins/SF Pro font system. Also removed Kanit and Bamboly font
+loads (Google Fonts link, `tailwind.config.js`, `index.css` body default)
+since Footer was their last consumer, per this repo's `CLAUDE.md`
+("Kanit is legacy from the old design — remove it once Footer (Phase 8)
+lands"). `LegalPage.tsx` (Phase 9, not yet rebuilt) relied on the same
+Kanit body default implicitly, so its text font shifts to the SF Pro
+fallback stack until Phase 9 restyles it properly — a minor, expected
+side effect, not a regression to fix now.
+
+**Known gap, not in this phase's scope:** the Explore column's links
+(`#about`, `#how`, `#campaigns`, `#faq`, `#feedback`) don't scroll
+anywhere — the rebuilt sections don't carry those `id`s. This predates
+the rebuild and isn't part of Phase 8's acceptance criteria; flagging
+rather than silently patching every other section's file.

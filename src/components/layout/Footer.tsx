@@ -27,6 +27,8 @@ const COLUMNS = [
 ];
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="overflow-hidden bg-[#0C0C0C]">
       <div className="mx-auto max-w-6xl px-5 pt-16 sm:px-8 md:px-10 md:pt-24">
@@ -38,7 +40,7 @@ export default function Footer() {
               className="h-16 w-auto select-none sm:h-[72px]"
               draggable={false}
             />
-            <p className="mt-5 max-w-sm text-[15px] font-light leading-relaxed text-[#D7E2EA]/70">
+            <p className="mt-5 max-w-sm font-sfpro text-[15px] leading-relaxed text-white/70">
               A creator distribution platform connecting brands with
               micro&#8209;influencers who make content travel — and get paid
               for verified performance.
@@ -46,13 +48,8 @@ export default function Footer() {
           </div>
 
           {COLUMNS.map((column, i) => (
-            <div
-              key={column.title}
-              className={
-                i === 0 ? 'md:col-span-3 md:col-start-6' : 'md:col-span-2'
-              }
-            >
-              <h3 className="mb-6 text-[11px] font-medium uppercase tracking-[0.3em] text-[#D7E2EA]/40">
+            <div key={column.title} className={i === 0 ? 'md:col-span-3 md:col-start-6' : 'md:col-span-2'}>
+              <h3 className="mb-6 font-poppins text-[11px] font-medium uppercase tracking-[0.3em] text-white/40">
                 {column.title}
               </h3>
               <ul className="flex flex-col gap-3.5">
@@ -61,14 +58,12 @@ export default function Footer() {
                     {link.href ? (
                       <a
                         href={link.href}
-                        className="text-[15px] font-light text-[#D7E2EA]/70 transition-colors duration-200 hover:text-white"
+                        className="font-sfpro text-[15px] text-white/70 transition-colors duration-200 hover:text-white"
                       >
                         {link.label}
                       </a>
                     ) : (
-                      <span className="text-[15px] font-light text-[#D7E2EA]/70">
-                        {link.label}
-                      </span>
+                      <span className="font-sfpro text-[15px] text-white/70">{link.label}</span>
                     )}
                   </li>
                 ))}
@@ -78,26 +73,20 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-2 border-t border-white/10 py-6 sm:flex-row md:mt-20">
-          <p className="text-xs font-light tracking-widest text-[#D7E2EA]/40">
-            © 2026 Clapout. All rights reserved.
+          <p className="font-sfpro text-xs tracking-widest text-white/40">
+            © {year} Clapout. All rights reserved.
           </p>
-          <p className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/40">
-            Create. Post. Get Paid.
-          </p>
+          <p className="font-sfpro text-xs uppercase tracking-widest text-white/40">Create. Post. Get Paid.</p>
         </div>
       </div>
 
       {/* Giant wordmark bleeding off the bottom edge */}
-      <div
-        aria-hidden
-        className="pointer-events-none flex justify-center overflow-hidden"
-      >
+      <div aria-hidden className="pointer-events-none flex justify-center overflow-hidden">
         <span
-          className="font-bamboly select-none whitespace-nowrap uppercase leading-none"
+          className="select-none whitespace-nowrap font-poppins font-bold uppercase leading-none text-white/[0.06]"
           style={{
             fontSize: 'clamp(6rem, 26vw, 26rem)',
-            color: 'rgba(215, 226, 234, 0.06)',
-            marginBottom: '-0.24em',
+            marginBottom: '-0.12em',
           }}
         >
           Clapout

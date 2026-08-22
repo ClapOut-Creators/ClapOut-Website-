@@ -3,10 +3,10 @@ import Navbar from "../components/layout/Navbar";
 import HeroSection from "../components/sections/HeroSection";
 import HowItWorksSection from "../components/sections/HowItWorksSection";
 import SocialProofSection from "../components/sections/SocialProofSection";
-import FaqSection from "../components/FaqSection";
-import FeedbackSection from "../components/FeedbackSection";
-import FinalCtaSection from "../components/FinalCtaSection";
-import Footer from "../components/Footer";
+import FaqSection from "../components/sections/FaqSection";
+import TestimonialsSection from "../components/sections/TestimonialsSection";
+import ClosingCtaSection from "../components/sections/ClosingCtaSection";
+import Footer from "../components/layout/Footer";
 import LegalPage from "../pages/LegalPage";
 
 export default function App() {
@@ -22,8 +22,8 @@ export default function App() {
       <HowItWorksSection />
       <SocialProofSection />
       <FaqSection />
-      <FeedbackSection />
-      <FinalCtaSection />
+      <TestimonialsSection />
+      <ClosingCtaSection />
       <Footer />
     </main>
   );

@@ -15,16 +15,11 @@ body,
 }
 
 body {
-  font-family: 'Kanit', sans-serif;
+  font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-.font-bamboly {
-  font-family: 'Bamboly Demo', sans-serif;
-  letter-spacing: 0.02em;
 }
 
 @keyframes scrub-sweep {

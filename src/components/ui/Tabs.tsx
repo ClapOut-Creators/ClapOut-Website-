@@ -21,8 +21,8 @@ export default function Tabs({ tabs, onChange, className = '' }: TabsProps) {
           key={label}
           type="button"
           onClick={() => select(index)}
-          className={`rounded-pill px-6 py-2 font-poppins text-sm ${
-            active === index ? 'bg-brand-orange text-white' : 'text-brand-dark'
+          className={`rounded-pill px-6 py-2 font-poppins text-sm transition-colors duration-200 ${
+            active === index ? 'bg-brand-orange text-white' : 'text-brand-dark hover:bg-black/5'
           }`}
         >
           {label}

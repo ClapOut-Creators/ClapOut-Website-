@@ -20,7 +20,6 @@ export default {
         },
       },
       fontFamily: {
-        kanit: ["Kanit", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
         sfpro: ["-apple-system", "SF Pro Text", "Helvetica Neue", "sans-serif"],
       },

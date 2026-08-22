@@ -25,8 +25,20 @@
 
 ## Acceptance criteria
 
-- [ ] Mixed-weight headline renders correctly (only "One Place." bold).
-- [ ] Both CTA buttons are outline-style variants of the shared `Button`
-      component.
-- [ ] Old `FinalCtaSection.tsx` deleted once verified.
-- [ ] `npm run build` passes clean.
+- [x] Mixed-weight headline renders correctly (only "One Place." bold).
+- [x] Both CTA buttons use the shared `Button` component — see note below
+      on the outline-vs-solid deviation.
+- [x] Old `FinalCtaSection.tsx` deleted once verified.
+- [x] `npm run build` passes clean.
+
+**Deviation from this doc's spec:** the "outline/dark" and "light/outline"
+button treatment above was copied from design-reference.md's text, but the
+actual PDF render (`doc/Clapout.pdf` page 1, "Two sides. One Place." block)
+clearly shows **solid fills**, not outlines: "Start Clipping" is solid
+`#EC612C` (exact pixel match to the existing `orange` Button variant) and
+"Start Campaign" is solid `#9D9D9D` gray (new `gray` variant added to
+`Button`). Built to match the literal PDF, per this rebuild's established
+precedent of trusting the PDF over design-reference.md's paraphrased text
+wherever they conflict. The headline text color (gray for "Two sides."/
+"Pick yours", dark for "One Place.") was also not mentioned in the source
+docs but is visible in the PDF and included here.
