@@ -1,6 +1,12 @@
+import type { LucideIcon } from "lucide-react";
+
 export interface NavLink {
   label: string;
   href: string;
+  /** Short supporting copy shown under the label in a sub-link dropdown row. */
+  description?: string;
+  /** Icon component for a sub-link dropdown row — a Lucide icon so it inherits theme-aware text color instead of a raster image. */
+  icon?: LucideIcon;
   subLinks?: NavLink[];
 }
 

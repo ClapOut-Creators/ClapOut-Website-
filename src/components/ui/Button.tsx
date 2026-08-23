@@ -3,10 +3,10 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'reac
 type ButtonVariant = 'dark' | 'orange' | 'outline' | 'gray';
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  dark: 'bg-brand-dark text-white border border-border-button hover:bg-[#2b2b2b] active:bg-black',
-  orange: 'bg-brand-orange text-white border border-border-button hover:bg-[#d4551f] active:bg-[#bf4c1c]',
-  outline: 'bg-transparent text-brand-dark border border-border-button hover:bg-black/5 active:bg-black/10',
-  gray: 'bg-[#9D9D9D] text-white border border-border-button hover:bg-[#898989] active:bg-[#767676]',
+  dark: 'bg-brand-dark text-white border border-border-button hover:bg-[#2b2b2b] active:bg-black dark:bg-[#242424] dark:border-white/20 dark:hover:bg-[#333333]',
+  orange: 'bg-brand-orange text-white border border-border-button hover:bg-[#d4551f] active:bg-[#bf4c1c] dark:border-white/20',
+  outline: 'bg-transparent text-brand-dark border border-border-button hover:bg-black/5 active:bg-black/10 dark:text-white dark:border-dark-border dark:hover:bg-white/10 dark:active:bg-white/15',
+  gray: 'bg-[#9D9D9D] text-white border border-border-button hover:bg-[#898989] active:bg-[#767676] dark:border-white/20',
 };
 
 interface ButtonOwnProps {
@@ -21,7 +21,7 @@ type ButtonAsAnchor = ButtonOwnProps & AnchorHTMLAttributes<HTMLAnchorElement> &
 type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 
 export default function Button({ variant = 'dark', className = '', children, href, ...props }: ButtonProps) {
-  const classes = `rounded-pill px-8 py-3 font-poppins font-medium transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] ${VARIANT_CLASSES[variant]} ${className}`;
+  const classes = `inline-flex items-center justify-center rounded-pill px-8 py-3 font-poppins font-medium transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] ${VARIANT_CLASSES[variant]} ${className}`;
 
   if (href) {
     return (

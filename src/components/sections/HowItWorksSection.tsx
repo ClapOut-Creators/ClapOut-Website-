@@ -20,11 +20,11 @@ export default function HowItWorksSection() {
   const isBrands = activeTab === 1;
 
   return (
-    <section className="bg-white py-20 md:py-28">
+    <section id="how-it-works" className="scroll-mt-28 bg-white py-20 transition-colors md:py-28 dark:bg-dark-bg">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)] md:gap-16">
           <div className="md:sticky md:top-32 md:self-start">
-            <p className="font-sfpro text-sm uppercase tracking-wide text-text-body">
+            <p className="font-sfpro text-sm uppercase tracking-wide text-text-body dark:text-dark-body">
               How it works
             </p>
             <Tabs
@@ -35,10 +35,10 @@ export default function HowItWorksSection() {
 
             {isBrands ? (
               <>
-                <h2 className="mt-6 font-poppins text-4xl font-semibold text-black/80 md:text-5xl">
+                <h2 className="mt-6 font-poppins text-4xl font-semibold text-black/80 md:text-5xl dark:text-white">
                   Tell us the goal. We run the campaign.
                 </h2>
-                <p className="mt-4 max-w-md font-sfpro text-text-body">
+                <p className="mt-4 max-w-md font-sfpro text-text-body dark:text-dark-body">
                   Fully managed. You bring the content and the budget, we
                   configure and run the campaign with our clipper network, and
                   you watch the views. Our rates sit above the industry
@@ -62,10 +62,10 @@ export default function HowItWorksSection() {
               </>
             ) : (
               <>
-                <h2 className="mt-6 font-poppins text-4xl font-semibold text-black/80 md:text-5xl">
+                <h2 className="mt-6 font-poppins text-4xl font-semibold text-black/80 md:text-5xl dark:text-white">
                   Three steps to your first payout.
                 </h2>
-                <p className="mt-4 max-w-md font-sfpro text-text-body">
+                <p className="mt-4 max-w-md font-sfpro text-text-body dark:text-dark-body">
                   No following, no application, no catch. Pick a campaign, post
                   your clips, and watch the views turn into earnings.
                 </p>
@@ -84,7 +84,7 @@ export default function HowItWorksSection() {
 
           <div className="relative flex flex-col gap-16 md:gap-20">
             <div
-              className="absolute bottom-6 left-5 top-6 hidden w-px bg-border-hairline md:block"
+              className="absolute bottom-6 left-5 top-6 hidden w-px bg-border-hairline md:block dark:bg-white/10"
               aria-hidden="true"
             />
             {isBrands ? (

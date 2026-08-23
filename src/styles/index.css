@@ -14,8 +14,15 @@ body,
   background: #ffffff;
 }
 
+html.dark,
+html.dark body,
+html.dark #root {
+  background: #0c0c0c;
+}
+
 body {
   font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  transition: background-color 0.2s ease;
 }
 
 html {

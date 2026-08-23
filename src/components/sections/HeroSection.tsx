@@ -19,9 +19,9 @@ const PLATFORM_DOTS: Platform[] = [
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-white pb-16 pt-32 md:pb-24 md:pt-40">
+    <section className="relative w-full overflow-hidden bg-white pb-16 pt-32 transition-colors md:pb-24 md:pt-40 dark:bg-dark-bg">
       <div className="mx-auto max-w-6xl px-4 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full bg-black/5 px-5 py-2 text-xs font-semibold uppercase tracking-wider text-brand-greyDark">
+        <span className="inline-flex items-center gap-2 rounded-full bg-black/5 px-5 py-2 text-xs font-semibold uppercase tracking-wider text-brand-greyDark dark:bg-white/5 dark:text-white/70">
           <span className="w-[36.27px] h-[36.27px] rounded-[10.77px] bg-gradient-to-t from-[#67A967] to-[#90EE90] flex items-center justify-center">
             <span aria-hidden="true">
               <img src="/clap.png" className="w-full" alt="" />
@@ -31,7 +31,7 @@ export default function HeroSection() {
         </span>
 
         <h1
-          className="mt-6 font-poppins font-medium text-black/80"
+          className="mt-6 font-poppins font-medium text-black/80 dark:text-white"
           style={{
             fontSize: "clamp(1.75rem, 1rem + 4vw, 5.07rem)",
             lineHeight: 1.1,
@@ -40,14 +40,14 @@ export default function HeroSection() {
           <span className="block">Create, Clip, Post and</span>
           <span className="mt-2 flex flex-wrap items-center justify-center gap-3">
             Earn with
-            <span className="rounded-[28px] bg-brand-yellow px-4 py-1 md:px-[30px] md:py-2">
+            <span className="rounded-[28px] bg-brand-yellow px-4 py-1 text-brand-dark md:px-[30px] md:py-2">
               Clipping
             </span>
           </span>
         </h1>
 
         <p
-          className="mx-auto mt-6 max-w-2xl font-sfpro text-text-body"
+          className="mx-auto mt-6 max-w-2xl font-sfpro text-text-body dark:text-dark-body"
           style={{
             fontSize: "clamp(1rem, 0.9rem + 0.4vw, 1.375rem)",
             lineHeight: 1.36,
@@ -116,7 +116,7 @@ export default function HeroSection() {
         {PLATFORM_DOTS.map((platform, i) => (
           <span
             key={i}
-            className="flex h-7 w-7 items-center justify-center rounded-full bg-black/10 md:h-8 md:w-8"
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-black/10 md:h-8 md:w-8 dark:bg-white/10"
           >
             <img src={PLATFORM_ICONS[platform]} alt="" className="h-3.5 w-3.5 object-contain md:h-4 md:w-4" />
           </span>
@@ -127,7 +127,7 @@ export default function HeroSection() {
       </div>
 
       <div className="mx-auto mt-5 w-[min(86vw,26rem)] md:mt-6 md:w-[min(60vw,34rem)]">
-        <div className="mb-1 flex justify-between px-0.5 font-sfpro text-[0.65rem] font-semibold tabular-nums text-text-body">
+        <div className="mb-1 flex justify-between px-0.5 font-sfpro text-[0.65rem] font-semibold tabular-nums text-text-body dark:text-dark-body">
           <span>0:00</span>
           <span>0:30</span>
           <span>1:00</span>
@@ -154,13 +154,13 @@ export default function HeroSection() {
             </span>
           </div>
         </div>
-        <p className="mt-1.5 text-center font-sfpro text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-text-body">
+        <p className="mt-1.5 text-center font-sfpro text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-text-body dark:text-dark-body">
           Clip · 0:23
         </p>
       </div>
 
-      <div className="mx-auto mt-16 flex w-full max-w-4xl flex-col items-center gap-6 border-t border-border-hairline px-4 pt-10 md:flex-row md:gap-10">
-        <span className="shrink-0 font-sfpro text-xl text-text-body font-[500]">
+      <div className="mx-auto mt-16 flex w-full max-w-4xl flex-col items-center gap-6 border-t border-border-hairline px-4 pt-10 md:flex-row md:gap-10 dark:border-white/10">
+        <span className="shrink-0 font-sfpro text-xl text-text-body font-[500] dark:text-dark-body">
           Trusted by top brands
         </span>
         <LogoMarquee logos={trustedByLogos} className="w-full max-w-xl" />

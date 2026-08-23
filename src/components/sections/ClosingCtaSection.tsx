@@ -3,19 +3,19 @@ import { CREATORS_WHATSAPP_URL, BRANDS_PHONE } from '../../data/links';
 
 export default function ClosingCtaSection() {
   return (
-    <section className="bg-white py-16 md:py-20">
+    <section className="bg-white py-16 transition-colors md:py-20 dark:bg-dark-bg">
       <div className="mx-auto max-w-3xl px-4 text-center">
         <h2
           className="font-poppins font-medium"
           style={{ fontSize: 'clamp(2rem, 1.2rem + 3vw, 3.5rem)', lineHeight: 1.15 }}
         >
-          <span className="text-[#767676]">Two sides. </span>
-          <span className="font-bold text-black/80">One Place.</span>
+          <span className="text-[#767676] dark:text-dark-body">Two sides. </span>
+          <span className="font-bold text-black/80 dark:text-white">One Place.</span>
           <br />
-          <span className="text-[#767676]">Pick yours</span>
+          <span className="text-[#767676] dark:text-dark-body">Pick yours</span>
         </h2>
 
-        <p className="mx-auto mt-4 max-w-lg font-sfpro text-text-body">
+        <p className="mx-auto mt-4 max-w-lg font-sfpro text-text-body dark:text-dark-body">
           Clippers get paid per view. Brands get reach they only pay for when it is verified.
         </p>
 

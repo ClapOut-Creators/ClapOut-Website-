@@ -17,12 +17,12 @@ export default function ManageStep() {
         body={step.body}
       />
       <div className="mt-8 md:pl-16">
-        <div className="rounded-2xl bg-black/[0.03] p-5">
+        <div className="rounded-2xl bg-black/[0.03] p-5 dark:bg-white/5">
           <div className="flex items-center justify-between">
-            <p className="flex items-center gap-2 text-sm font-medium text-black/80">
+            <p className="flex items-center gap-2 text-sm font-medium text-black/80 dark:text-white">
               <span className="h-2 w-2 rounded-full bg-[#2fae5c]" /> Campaign live
             </p>
-            <span className="flex items-center gap-1 text-xs text-text-body">
+            <span className="flex items-center gap-1 text-xs text-text-body dark:text-dark-body">
               <Users size={12} /> 428 clippers posting
             </span>
           </div>
@@ -31,7 +31,7 @@ export default function ManageStep() {
             {campaignPlatformStats.map((stat) => (
               <div key={stat.platform}>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="flex items-center gap-2 text-black/80">
+                  <span className="flex items-center gap-2 text-black/80 dark:text-white">
                     <img
                       src={PLATFORM_ICONS[stat.platform]}
                       alt=""
@@ -39,11 +39,11 @@ export default function ManageStep() {
                     />
                     {stat.clips} clips
                   </span>
-                  <span className="font-semibold text-black/80">{stat.views}</span>
+                  <span className="font-semibold text-black/80 dark:text-white">{stat.views}</span>
                 </div>
-                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-black/10">
+                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
                   <div
-                    className="h-full rounded-full bg-black/80"
+                    className="h-full rounded-full bg-black/80 dark:bg-white/70"
                     style={{ width: `${(stat.viewsValue / maxViews) * 100}%` }}
                   />
                 </div>

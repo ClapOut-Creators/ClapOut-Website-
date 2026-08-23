@@ -23,7 +23,7 @@ function ViewsChart() {
 
   return (
     <div className="flex gap-2">
-      <div className="flex shrink-0 flex-col justify-between py-1 text-right font-sfpro text-[0.6rem] text-text-body">
+      <div className="flex shrink-0 flex-col justify-between py-1 text-right font-sfpro text-[0.6rem] text-text-body dark:text-dark-body">
         <span>7.0M</span>
         <span>4.0M</span>
         <span>3.5M</span>
@@ -65,9 +65,9 @@ export default function TrackStep() {
         body={step.body}
       />
       <div className="mt-8 md:pl-16">
-        <div className="rounded-2xl bg-black/[0.03] p-5">
+        <div className="rounded-2xl bg-black/[0.03] p-5 dark:bg-white/5">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-black/80">
+            <p className="text-sm font-medium text-black/80 dark:text-white">
               Campaign dashboard
             </p>
             <span className="rounded-full bg-[#90EE90]/30 px-3 py-1 text-xs font-medium text-[#1F7A1F]">
@@ -81,20 +81,20 @@ export default function TrackStep() {
               return (
                 <div
                   key={stat.label}
-                  className="rounded-xl bg-white p-3 text-center"
+                  className="rounded-xl bg-white p-3 text-center dark:bg-dark-surface"
                 >
-                  <Icon size={16} className="mx-auto text-black/60" />
-                  <p className="mt-1 font-poppins text-lg font-semibold text-black/80">
+                  <Icon size={16} className="mx-auto text-black/60 dark:text-white/60" />
+                  <p className="mt-1 font-poppins text-lg font-semibold text-black/80 dark:text-white">
                     {stat.value}
                   </p>
-                  <p className="text-[0.65rem] text-text-body">{stat.label}</p>
+                  <p className="text-[0.65rem] text-text-body dark:text-dark-body">{stat.label}</p>
                 </div>
               );
             })}
           </div>
 
-          <div className="mt-4 rounded-xl bg-white p-4">
-            <div className="flex items-center justify-between font-sfpro text-xs text-text-body">
+          <div className="mt-4 rounded-xl bg-white p-4 dark:bg-dark-surface">
+            <div className="flex items-center justify-between font-sfpro text-xs text-text-body dark:text-dark-body">
               <span className="uppercase tracking-wide">
                 Verified views · 14D
               </span>
@@ -105,7 +105,7 @@ export default function TrackStep() {
             <div className="mt-2">
               <ViewsChart />
             </div>
-            <div className="mt-1 flex justify-between pl-8 font-sfpro text-[0.6rem] text-text-body">
+            <div className="mt-1 flex justify-between pl-8 font-sfpro text-[0.6rem] text-text-body dark:text-dark-body">
               {viewsChartData.map((d) => (
                 <span key={d.date}>{d.date}</span>
               ))}
@@ -114,21 +114,21 @@ export default function TrackStep() {
 
           <div className="mt-4">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-text-body">Budget used</span>
-              <span className="font-semibold text-black/80">
+              <span className="text-text-body dark:text-dark-body">Budget used</span>
+              <span className="font-semibold text-black/80 dark:text-white">
                 ${budgetUsed.spent.toLocaleString()} / $
                 {budgetUsed.cap.toLocaleString()}
               </span>
             </div>
-            <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-black/10">
+            <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
               <div
-                className="h-full rounded-full bg-black/80"
+                className="h-full rounded-full bg-black/80 dark:bg-white/70"
                 style={{ width: `${budgetPercent}%` }}
               />
             </div>
           </div>
 
-          <div className="mt-4 flex items-center justify-between font-sfpro text-xs uppercase tracking-wide text-text-body">
+          <div className="mt-4 flex items-center justify-between font-sfpro text-xs uppercase tracking-wide text-text-body dark:text-dark-body">
             <span>Top performing clips</span>
             <span>312 tracked</span>
           </div>
@@ -147,10 +147,14 @@ export default function TrackStep() {
             ))}
           </div>
 
-          <p className="mt-4 text-base text-[#7F7F7F] font-light flex items-center">
-            <img src="/shield.png" alt="shield" className="w-[30px] mr-2" />
+          <p className="mt-4 text-base font-light text-[#7F7F7F] dark:text-dark-body">
+            <img
+              src="/general/shield.png"
+              alt="shield"
+              className="mr-2 inline-block w-[30px] align-middle"
+            />
             Viewbot detection on, you only pay for{" "}
-            <span className="font-semibold ml-1">verified views</span>
+            <span className="font-semibold">verified views</span>
           </p>
         </div>
       </div>

@@ -19,10 +19,10 @@ export default function JoinStep() {
       <StepHeader icon={Rocket} number={step.number} eyebrow={step.eyebrow} heading={step.heading} body={step.body} />
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:pl-16">
         {campaigns.map((campaign) => (
-          <Card key={campaign.brand} className="bg-black/[0.03] p-5">
+          <Card key={campaign.brand} className="bg-black/[0.03] p-5 dark:bg-white/5">
             <div className="flex items-start justify-between">
               <div
-                className="flex h-16 w-28 items-center justify-center overflow-hidden rounded-xl border border-border-hairline"
+                className="flex h-16 w-28 items-center justify-center overflow-hidden rounded-xl border border-border-hairline dark:border-dark-border"
                 style={{ backgroundColor: campaign.logoBg }}
               >
                 {campaign.logo && (
@@ -41,15 +41,15 @@ export default function JoinStep() {
                 <span className="inline-flex rounded-full bg-[#90EE90]/40 px-3 py-1 text-xs font-medium text-[#1a7a1a]">
                   {campaign.status}
                 </span>
-                <p className="mt-2 flex items-center justify-end gap-1 text-xs text-text-body">
+                <p className="mt-2 flex items-center justify-end gap-1 text-xs text-text-body dark:text-dark-body">
                   <Clock size={12} /> {campaign.daysLeft}
                 </p>
               </div>
             </div>
 
-            <p className="mt-4 font-poppins text-lg font-semibold text-black/80">{campaign.brand}</p>
+            <p className="mt-4 font-poppins text-lg font-semibold text-black/80 dark:text-white">{campaign.brand}</p>
 
-            <div className="mt-2 flex items-center gap-2 text-xs text-text-body">
+            <div className="mt-2 flex items-center gap-2 text-xs text-text-body dark:text-dark-body">
               Platform
               <span className="flex items-center gap-1">
                 {campaign.platforms.map((platform) => (
@@ -65,22 +65,22 @@ export default function JoinStep() {
 
             <div className="mt-4 flex items-end justify-between text-sm">
               <div>
-                <p className="flex items-center gap-1 text-xs text-text-body">
+                <p className="flex items-center gap-1 text-xs text-text-body dark:text-dark-body">
                   <Wallet size={12} /> Paid Out
                 </p>
-                <p className="font-semibold text-black/80">
-                  {campaign.paidOut} <span className="font-normal text-text-body">/{campaign.goal}</span>
+                <p className="font-semibold text-black/80 dark:text-white">
+                  {campaign.paidOut} <span className="font-normal text-text-body dark:text-dark-body">/{campaign.goal}</span>
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-xs text-text-body">CPM</p>
-                <p className="font-semibold text-black/80">
-                  {campaign.cpm} <span className="font-normal text-text-body">/1k views</span>
+                <p className="text-xs text-text-body dark:text-dark-body">CPM</p>
+                <p className="font-semibold text-black/80 dark:text-white">
+                  {campaign.cpm} <span className="font-normal text-text-body dark:text-dark-body">/1k views</span>
                 </p>
               </div>
             </div>
 
-            <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-black/10">
+            <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-brand-orange to-brand-yellow"
                 style={{ width: `${progressPercent(campaign.paidOut, campaign.goal)}%` }}

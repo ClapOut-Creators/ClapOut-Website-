@@ -113,7 +113,7 @@ export default function LegalPage({ kind }: { kind: 'terms' | 'privacy' }) {
   const title = kind === 'terms' ? 'Terms of Service' : 'Privacy Policy';
 
   return (
-    <main className="min-h-screen bg-white px-5 pb-20 pt-8 sm:px-8 md:px-10">
+    <main className="min-h-screen bg-white px-5 pb-20 pt-8 transition-colors sm:px-8 md:px-10 dark:bg-dark-bg">
       <div className="mx-auto max-w-3xl">
         <div className="mb-10 flex items-center justify-between">
           <a href="#/" className="transition-opacity hover:opacity-80">
@@ -138,17 +138,17 @@ export default function LegalPage({ kind }: { kind: 'terms' | 'privacy' }) {
           </Button>
         </div>
 
-        <h1 className="font-poppins text-4xl font-semibold text-black/80 md:text-5xl">{title}</h1>
-        <p className="mt-3 font-sfpro text-sm uppercase tracking-widest text-text-body">
+        <h1 className="font-poppins text-4xl font-semibold text-black/80 md:text-5xl dark:text-white">{title}</h1>
+        <p className="mt-3 font-sfpro text-sm uppercase tracking-widest text-text-body dark:text-dark-body">
           Last updated: August 21, 2026
         </p>
 
         <div className="mt-12 flex flex-col gap-10">
           {sections.map((section) => (
             <section key={section.heading}>
-              <h2 className="mb-3 font-poppins text-lg font-medium text-black/80 sm:text-xl">{section.heading}</h2>
+              <h2 className="mb-3 font-poppins text-lg font-medium text-black/80 sm:text-xl dark:text-white">{section.heading}</h2>
               {section.body.map((paragraph, i) => (
-                <p key={i} className="mb-3 font-sfpro leading-relaxed text-text-body">
+                <p key={i} className="mb-3 font-sfpro leading-relaxed text-text-body dark:text-dark-body">
                   {paragraph}
                 </p>
               ))}
