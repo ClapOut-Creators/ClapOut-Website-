@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
-import Field, { INPUT_CLASS } from './Field';
+import FormField, { INPUT_CLASS } from '../../ui/FormField';
 import ChecklistRow from './ChecklistRow';
 import TermsNote from './TermsNote';
 import { payoutMethods } from '../../../data/payoutMethods';
@@ -77,7 +77,7 @@ export default function PaymentStep({ value, onChange, onBack, onComplete }: Pay
       <div className="mt-2">
         {showFields ? (
           <div className="flex flex-col gap-4">
-            <Field label="Network">
+            <FormField label="Network">
               <select
                 value={value.network}
                 onChange={(e) => onChange({ ...value, network: e.target.value })}
@@ -90,8 +90,8 @@ export default function PaymentStep({ value, onChange, onBack, onComplete }: Pay
                   </option>
                 ))}
               </select>
-            </Field>
-            <Field label="Account number" error={numberError}>
+            </FormField>
+            <FormField label="Account number" error={numberError}>
               <input
                 type="text"
                 placeholder="Account no."
@@ -99,8 +99,8 @@ export default function PaymentStep({ value, onChange, onBack, onComplete }: Pay
                 onChange={(e) => onChange({ ...value, accountNumber: e.target.value })}
                 className={INPUT_CLASS}
               />
-            </Field>
-            <Field label="Account name">
+            </FormField>
+            <FormField label="Account name">
               <input
                 type="text"
                 placeholder="Name on the account"
@@ -108,7 +108,7 @@ export default function PaymentStep({ value, onChange, onBack, onComplete }: Pay
                 onChange={(e) => onChange({ ...value, accountName: e.target.value })}
                 className={INPUT_CLASS}
               />
-            </Field>
+            </FormField>
           </div>
         ) : (
           <button

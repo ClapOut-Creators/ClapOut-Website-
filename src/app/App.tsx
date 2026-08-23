@@ -10,6 +10,7 @@ import Footer from "../components/layout/Footer";
 import LegalPage from "../pages/LegalPage";
 import CampaignsPage from "../pages/CampaignsPage";
 import CampaignDetailPage from "../pages/CampaignDetailPage";
+import ContactPage from "../pages/ContactPage";
 
 export default function App() {
   const hash = useHashRoute();
@@ -20,6 +21,7 @@ export default function App() {
   if (hash.startsWith("#/campaigns/")) {
     return <CampaignDetailPage slug={hash.slice("#/campaigns/".length)} />;
   }
+  if (hash === "#/contact") return <ContactPage />;
 
   return (
     <main id="top" className="bg-white transition-colors dark:bg-dark-bg" style={{ overflowX: "hidden" }}>

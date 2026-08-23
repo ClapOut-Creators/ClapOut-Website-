@@ -90,6 +90,14 @@ export interface BrandLogo {
   logo: string;
 }
 
+export interface ContactInfoCard {
+  icon: LucideIcon;
+  heading: string;
+  body: string;
+  linkLabel?: string;
+  linkHref?: string;
+}
+
 export interface SocialProofPhoto {
   src: string;
   alt: string;

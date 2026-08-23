@@ -1,5 +1,5 @@
 import { ArrowRight, Plus, X } from 'lucide-react';
-import Field, { INPUT_CLASS } from './Field';
+import FormField, { INPUT_CLASS } from '../../ui/FormField';
 import ChecklistRow from './ChecklistRow';
 import TermsNote from './TermsNote';
 
@@ -69,7 +69,7 @@ export default function SocialsStep({ links, onChange, onBack, onNext }: Socials
         {links.map((link, i) => {
           const valid = isValidSocialLink(link);
           return (
-            <Field
+            <FormField
               key={i}
               label="Social Link"
               error={link.trim() && !valid ? 'Enter a full link to a supported platform (Instagram, TikTok, YouTube, Facebook, X, Threads, Snapchat)' : undefined}
@@ -91,7 +91,7 @@ export default function SocialsStep({ links, onChange, onBack, onNext }: Socials
                   <X size={16} />
                 </button>
               </div>
-            </Field>
+            </FormField>
           );
         })}
 

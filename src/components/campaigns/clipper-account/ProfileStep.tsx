@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import Field, { INPUT_CLASS } from './Field';
+import FormField, { INPUT_CLASS } from '../../ui/FormField';
 
 export interface ProfileValue {
   fullName: string;
@@ -34,7 +34,7 @@ export default function ProfileStep({ value, onChange, onNext }: ProfileStepProp
       </p>
 
       <div className="mt-6 flex flex-col gap-4">
-        <Field label="Full name" required>
+        <FormField label="Full name" required>
           <input
             type="text"
             placeholder="Your name"
@@ -42,8 +42,8 @@ export default function ProfileStep({ value, onChange, onNext }: ProfileStepProp
             onChange={set('fullName')}
             className={INPUT_CLASS}
           />
-        </Field>
-        <Field label="Email" required>
+        </FormField>
+        <FormField label="Email" required>
           <input
             type="email"
             placeholder="you@email.com"
@@ -51,8 +51,8 @@ export default function ProfileStep({ value, onChange, onNext }: ProfileStepProp
             onChange={set('email')}
             className={INPUT_CLASS}
           />
-        </Field>
-        <Field label="WhatsApp Username" required>
+        </FormField>
+        <FormField label="WhatsApp Username" required>
           <input
             type="text"
             placeholder="@loverboy_12"
@@ -60,8 +60,8 @@ export default function ProfileStep({ value, onChange, onNext }: ProfileStepProp
             onChange={set('whatsappUsername')}
             className={INPUT_CLASS}
           />
-        </Field>
-        <Field
+        </FormField>
+        <FormField
           label="Phone number"
           required
           error={value.phoneNumber && !phoneValid ? 'Enter a valid phone number' : undefined}
@@ -73,7 +73,7 @@ export default function ProfileStep({ value, onChange, onNext }: ProfileStepProp
             value={value.phoneNumber}
             onChange={(phoneNumber) => onChange({ ...value, phoneNumber: phoneNumber ?? '' })}
           />
-        </Field>
+        </FormField>
       </div>
 
       <button
