@@ -1,5 +1,6 @@
 import { Scissors, Briefcase } from "lucide-react";
 import type { NavLink } from "../types/content";
+import { CREATORS_WHATSAPP_URL, BRANDS_PHONE } from "./links";
 
 export const navLinks: NavLink[] = [
   {
@@ -8,13 +9,13 @@ export const navLinks: NavLink[] = [
     subLinks: [
       {
         label: "Clippers",
-        href: "#how-it-works",
+        href: CREATORS_WHATSAPP_URL,
         description: "Get paid for clip videos",
         icon: Scissors,
       },
       {
         label: "Brand",
-        href: "#how-it-works",
+        href: `tel:${BRANDS_PHONE}`,
         description: "Run and manage a campaign",
         icon: Briefcase,
       },

@@ -87,6 +87,8 @@ export default function Navbar() {
                           key={subLink.label}
                           href={subLink.href}
                           onClick={(e) => scrollToHash(e, subLink.href)}
+                          target={subLink.href.startsWith("http") ? "_blank" : undefined}
+                          rel={subLink.href.startsWith("http") ? "noopener noreferrer" : undefined}
                           className="flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-black/5 dark:hover:bg-white/5"
                         >
                           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border-hairline bg-white text-brand-dark dark:border-dark-border dark:bg-dark-bg dark:text-white">
@@ -186,6 +188,8 @@ export default function Navbar() {
                               setMobileSubOpen(null);
                               scrollToHash(e, subLink.href);
                             }}
+                            target={subLink.href.startsWith("http") ? "_blank" : undefined}
+                            rel={subLink.href.startsWith("http") ? "noopener noreferrer" : undefined}
                             className="flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-black/5 dark:hover:bg-white/5"
                           >
                             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border-hairline bg-white text-brand-dark dark:border-dark-border dark:bg-dark-bg dark:text-white">
