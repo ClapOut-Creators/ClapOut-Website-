@@ -13,7 +13,7 @@ function isLinkActive(hash: string, href: string) {
 }
 
 function scrollToHash(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
-  if (!href.startsWith("#") || href.length <= 1) return;
+  if (!href.startsWith("#") || href.startsWith("#/") || href.length <= 1) return;
   const target = document.querySelector(href);
   if (!target) return;
   e.preventDefault();

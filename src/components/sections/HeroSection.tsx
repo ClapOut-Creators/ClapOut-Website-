@@ -1,13 +1,16 @@
-import { Music2 } from "lucide-react";
+import { Music2, Youtube } from "lucide-react";
 import Button from "../ui/Button";
 import PhoneMockup from "../ui/PhoneMockup";
 import LogoMarquee from "../ui/LogoMarquee";
-import { PLATFORM_ICONS } from "./how-it-works/platformIcons";
 import { trustedByLogos } from "../../data/brands";
 import { CREATORS_WHATSAPP_URL, BRANDS_PHONE } from "../../data/links";
-import type { Platform } from "../../types/content";
 
-const PLATFORM_DOTS: Platform[] = [
+const PLATFORM_DOT_ICONS: Record<'youtube' | 'tiktok', typeof Youtube> = {
+  youtube: Youtube,
+  tiktok: Music2,
+};
+
+const PLATFORM_DOTS: Array<'youtube' | 'tiktok'> = [
   "youtube",
   "tiktok",
   "youtube",
@@ -31,7 +34,7 @@ export default function HeroSection() {
         </span>
 
         <h1
-          className="mt-6 font-poppins font-medium text-black/80 dark:text-white"
+          className="mt-6 font-poppins font-semibold text-black/80 dark:text-white"
           style={{
             fontSize: "clamp(1.75rem, 1rem + 4vw, 5.07rem)",
             lineHeight: 1.1,
@@ -113,16 +116,19 @@ export default function HeroSection() {
       </div>
 
       <div className="mt-6 flex items-center justify-center gap-2 md:mt-8 md:gap-2.5">
-        {PLATFORM_DOTS.map((platform, i) => (
-          <span
-            key={i}
-            className="flex h-7 w-7 items-center justify-center rounded-full bg-black/10 md:h-8 md:w-8 dark:bg-white/10"
-          >
-            <img src={PLATFORM_ICONS[platform]} alt="" className="h-3.5 w-3.5 object-contain md:h-4 md:w-4" />
-          </span>
-        ))}
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-orange md:h-9 md:w-9">
-          <img src={PLATFORM_ICONS.tiktok} alt="" className="h-4 w-4 object-contain md:h-[1.125rem] md:w-[1.125rem]" />
+        {PLATFORM_DOTS.map((platform, i) => {
+          const Icon = PLATFORM_DOT_ICONS[platform];
+          return (
+            <span
+              key={i}
+              className="flex h-7 w-7 items-center justify-center rounded-full bg-black/10 text-brand-dark md:h-8 md:w-8 dark:bg-white/10 dark:text-white"
+            >
+              <Icon size={14} className="md:h-4 md:w-4" />
+            </span>
+          );
+        })}
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-orange text-white md:h-9 md:w-9">
+          <Music2 size={16} className="md:h-[1.125rem] md:w-[1.125rem]" />
         </span>
       </div>
 

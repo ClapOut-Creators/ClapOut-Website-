@@ -21,10 +21,10 @@ export default function App() {
   if (hash.startsWith("#/campaigns/")) {
     return <CampaignDetailPage slug={hash.slice("#/campaigns/".length)} />;
   }
-  if (hash === "#/contact") return <ContactPage />;
+  if (hash === "#/contact" || hash === "#/contact/partnership") return <ContactPage />;
 
   return (
-    <main id="top" className="bg-white transition-colors dark:bg-dark-bg" style={{ overflowX: "hidden" }}>
+    <main id="top" className="bg-white transition-colors dark:bg-dark-bg" style={{ overflowX: "clip" }}>
       <Navbar />
       <HeroSection />
       <HowItWorksSection />
