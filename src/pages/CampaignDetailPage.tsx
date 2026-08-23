@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowLeft, ChevronDown, ExternalLink } from "lucide-react";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import ClipperAccountModal from "../components/campaigns/ClipperAccountModal";
 import {
   PLATFORM_ICONS,
   PLATFORM_LABELS,
@@ -60,6 +61,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
   const campaign = campaigns.find((c) => c.slug === slug);
   const [expandTop, setExpandTop] = useState(false);
   const [expandBottom, setExpandBottom] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
 
   if (!campaign) {
     return (
@@ -347,11 +349,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
 
               <button
                 type="button"
-                onClick={() => {
-                  // TODO(Phase 13): open the Clipper Account registration
-                  // modal (doc/phases/13-clipper-account-modal.md). No
-                  // modal exists yet, so this is intentionally inert.
-                }}
+                onClick={() => setShowRegisterModal(true)}
                 className="w-full rounded-pill bg-brand-orange px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
               >
                 Register
@@ -360,6 +358,10 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
           </div>
         </div>
       </section>
+
+      {showRegisterModal && (
+        <ClipperAccountModal onClose={() => setShowRegisterModal(false)} />
+      )}
     </PageChrome>
   );
 }
