@@ -18,6 +18,13 @@ section — don't split them across separate phases.
 | 8 | ✅ [`08-footer.md`](./08-footer.md) | Footer |
 | 9 | ✅ [`09-legal-pages.md`](./09-legal-pages.md) | Terms/Privacy restyle |
 | 10 | ✅ [`10-qa-polish.md`](./10-qa-polish.md) | Cross-cutting QA, accessibility, responsive sweep, asset audit |
+| 11 | ✅ [`11-campaigns-list.md`](./11-campaigns-list.md) | Campaigns list page (`#/campaigns`) + hash-routing foundation |
+| 12 | ✅ [`12-campaign-detail.md`](./12-campaign-detail.md) | Campaign detail page (`#/campaigns/:slug`) |
+| 13 | [`13-clipper-account-modal.md`](./13-clipper-account-modal.md) | Clipper Account registration modal (profile → socials → payment → welcome) |
+
+Phases 11–13 are a new section (Campaigns) added after the original 0–10
+site rebuild and dark-mode work. Source is `doc/Clapout.pdf` pages 6–21 —
+not covered in `doc/design-reference.md`, which predates this section.
 
 ## Status tracking
 

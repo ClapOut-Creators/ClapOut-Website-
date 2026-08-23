@@ -20,6 +20,6 @@ export const navLinks: NavLink[] = [
       },
     ],
   },
-  { label: "Guide", href: "#" },
+  { label: "Campaigns", href: "#/campaigns" },
   { label: "Contact", href: "#" },
 ];

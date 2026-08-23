@@ -4,7 +4,7 @@ const COLUMNS = [
     links: [
       { label: 'About', href: '#about' },
       { label: 'How it works', href: '#how' },
-      { label: 'Campaigns', href: '#campaigns' },
+      { label: 'Campaigns', href: '#/campaigns' },
       { label: 'FAQ', href: '#faq' },
       { label: 'Feedback', href: '#feedback' },
     ],

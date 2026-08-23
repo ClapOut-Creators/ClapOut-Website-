@@ -2,8 +2,15 @@ import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Button from "../ui/Button";
 import ThemeToggle from "../ui/ThemeToggle";
+import { useHashRoute } from "../../hooks/useHashRoute";
 import { navLinks } from "../../data/nav";
 import { CREATORS_WHATSAPP_URL } from "../../data/links";
+
+function isLinkActive(hash: string, href: string) {
+  if (!href || href === "#") return false;
+  if (href.startsWith("#/")) return hash === href || hash.startsWith(`${href}/`);
+  return hash === href;
+}
 
 function scrollToHash(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
   if (!href.startsWith("#") || href.length <= 1) return;
@@ -14,7 +21,26 @@ function scrollToHash(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
   window.history.pushState(null, "", href);
 }
 
+// The logo always goes "home". On the home page itself that's a smooth
+// scroll-to-top of the current DOM; on any other route (e.g. /campaigns)
+// there's no #top element to scroll to, so fall back to a real route
+// change back to "/" (location.hash =, not pushState, so it fires
+// hashchange and App.tsx actually re-renders the home page).
+function goHome(e: React.MouseEvent<HTMLAnchorElement>) {
+  const top = document.getElementById("top");
+  if (top) {
+    e.preventDefault();
+    top.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.pushState(null, "", "#top");
+    return;
+  }
+  e.preventDefault();
+  window.location.hash = "";
+  window.scrollTo(0, 0);
+}
+
 export default function Navbar() {
+  const hash = useHashRoute();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
 
@@ -24,7 +50,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between gap-4 rounded-full border border-black/5 bg-white/95 px-5 py-2.5 shadow-sm backdrop-blur transition-colors md:px-6 md:py-3 dark:border-white/10 dark:bg-dark-surface/95">
           <a
             href="#top"
-            onClick={(e) => scrollToHash(e, "#top")}
+            onClick={goHome}
             className="flex shrink-0 items-center gap-2"
           >
             <img
@@ -42,7 +68,11 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={(e) => scrollToHash(e, link.href)}
-                    className="flex items-center gap-1 rounded-lg px-3 py-1.5 -mx-3 -my-1.5 font-poppins text-sm text-brand-dark/80 transition-colors group-hover:bg-black/5 group-hover:text-brand-dark group-focus-within:bg-black/5 group-focus-within:text-brand-dark dark:text-white/80 dark:group-hover:bg-white/10 dark:group-hover:text-white dark:group-focus-within:bg-white/10 dark:group-focus-within:text-white"
+                    className={`flex items-center gap-1 rounded-lg px-3 py-1.5 -mx-3 -my-1.5 font-poppins text-sm transition-colors group-hover:bg-black/5 group-focus-within:bg-black/5 dark:group-hover:bg-white/10 dark:group-focus-within:bg-white/10 ${
+                      isLinkActive(hash, link.href)
+                        ? 'text-brand-orange'
+                        : 'text-brand-dark/80 group-hover:text-brand-dark group-focus-within:text-brand-dark dark:text-white/80 dark:group-hover:text-white dark:group-focus-within:text-white'
+                    }`}
                   >
                     {link.label}
                     <ChevronDown
@@ -79,7 +109,11 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="flex items-center gap-1 font-poppins text-sm text-brand-dark/80 transition-colors hover:text-brand-dark dark:text-white/80 dark:hover:text-white"
+                  className={`flex items-center gap-1 font-poppins text-sm transition-colors ${
+                    isLinkActive(hash, link.href)
+                      ? 'text-brand-orange'
+                      : 'text-brand-dark/80 hover:text-brand-dark dark:text-white/80 dark:hover:text-white'
+                  }`}
                 >
                   {link.label}
                 </a>
@@ -125,7 +159,9 @@ export default function Navbar() {
                       onClick={() =>
                         setMobileSubOpen((prev) => (prev === link.label ? null : link.label))
                       }
-                      className="flex w-full items-center justify-between font-poppins text-sm text-brand-dark dark:text-white"
+                      className={`flex w-full items-center justify-between font-poppins text-sm ${
+                        isLinkActive(hash, link.href) ? 'text-brand-orange' : 'text-brand-dark dark:text-white'
+                      }`}
                     >
                       {link.label}
                       <ChevronDown
@@ -173,7 +209,9 @@ export default function Navbar() {
                     key={link.label}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-between font-poppins text-sm text-brand-dark dark:text-white"
+                    className={`flex items-center justify-between font-poppins text-sm ${
+                      isLinkActive(hash, link.href) ? 'text-brand-orange' : 'text-brand-dark dark:text-white'
+                    }`}
                   >
                     {link.label}
                   </a>
