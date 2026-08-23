@@ -23,8 +23,8 @@ export default function CashOutStep() {
         heading={step.heading}
         body={step.body}
       />
-      <div className="mt-8 overflow-hidden rounded-2xl border border-border-hairline md:ml-16">
-        <div className="flex items-center justify-between bg-black/[0.03] px-5 py-3 text-xs uppercase tracking-wide text-text-body">
+      <div className="mt-8 overflow-hidden rounded-2xl border border-border-hairline md:ml-16 dark:border-dark-border">
+        <div className="flex items-center justify-between bg-black/[0.03] px-5 py-3 text-xs uppercase tracking-wide text-text-body dark:bg-white/5 dark:text-dark-body">
           <span>Cycle</span>
           <span className="flex items-center gap-6">
             <span className="w-16">Status</span>
@@ -34,16 +34,16 @@ export default function CashOutStep() {
         {payouts.map((row) => (
           <div
             key={row.cycle}
-            className="flex items-center justify-between border-t border-border-hairline bg-black/[0.03] px-5 py-4"
+            className="flex items-center justify-between border-t border-border-hairline bg-black/[0.03] px-5 py-4 dark:border-dark-border dark:bg-white/5"
           >
             <span className="flex items-center gap-3">
-              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-black/10 text-brand-dark">
+              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-black/10 text-brand-dark dark:bg-white/10 dark:text-white">
                 <FileText size={14} />
               </span>
-              <span className="font-sfpro font-normal text-black/80">
+              <span className="font-sfpro font-normal text-black/80 dark:text-white">
                 {row.cycle.split(" · ")[0]}
               </span>
-              <span className="text-text-body">
+              <span className="text-text-body dark:text-dark-body">
                 {row.cycle.split(" · ")[1]}
               </span>
             </span>
@@ -53,7 +53,7 @@ export default function CashOutStep() {
               >
                 {row.status}
               </span>
-              <span className="text-black/80">
+              <span className="text-black/80 dark:text-white">
                 <span className="font-light">$</span>{" "}
                 <span className="font-light">
                   {row.amount.replace("$", "")}

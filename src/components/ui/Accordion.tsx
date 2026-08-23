@@ -11,16 +11,16 @@ export default function Accordion({ question, answer, className = '' }: Accordio
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={`border-b border-border-hairline ${className}`}>
+    <div className={`border-b border-border-hairline dark:border-dark-border ${className}`}>
       <button
         type="button"
         aria-expanded={open}
         onClick={() => setOpen((prev) => !prev)}
-        className="flex w-full items-center justify-between gap-4 py-5 text-left font-poppins text-lg text-black/80 md:text-xl"
+        className="flex w-full items-center justify-between gap-4 py-5 text-left font-poppins text-lg text-black/80 md:text-xl dark:text-white"
       >
         <span>{question}</span>
         <ChevronDown
-          className={`shrink-0 text-black/60 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          className={`shrink-0 text-black/60 transition-transform duration-200 dark:text-white/60 ${open ? 'rotate-180' : ''}`}
           size={20}
         />
       </button>
@@ -29,7 +29,7 @@ export default function Accordion({ question, answer, className = '' }: Accordio
           open ? 'grid-rows-[1fr] pb-5 opacity-100' : 'grid-rows-[0fr] opacity-0'
         }`}
       >
-        <p className="min-h-0 font-sfpro text-text-body">{answer}</p>
+        <p className="min-h-0 font-sfpro text-text-body dark:text-dark-body">{answer}</p>
       </div>
     </div>
   );

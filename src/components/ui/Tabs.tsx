@@ -15,14 +15,16 @@ export default function Tabs({ tabs, onChange, className = '' }: TabsProps) {
   };
 
   return (
-    <div className={`inline-flex rounded-pill border border-border-button p-1 ${className}`}>
+    <div className={`inline-flex rounded-pill border border-border-button p-1 dark:border-dark-border ${className}`}>
       {tabs.map((label, index) => (
         <button
           key={label}
           type="button"
           onClick={() => select(index)}
           className={`rounded-pill px-6 py-2 font-poppins text-sm transition-colors duration-200 ${
-            active === index ? 'bg-brand-orange text-white' : 'text-brand-dark hover:bg-black/5'
+            active === index
+              ? 'bg-brand-orange text-white'
+              : 'text-brand-dark hover:bg-black/5 dark:text-white dark:hover:bg-white/10'
           }`}
         >
           {label}

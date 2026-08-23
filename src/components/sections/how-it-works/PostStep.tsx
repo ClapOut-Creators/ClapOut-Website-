@@ -17,7 +17,7 @@ export default function PostStep() {
           {PLATFORMS.map((platform) => (
             <span
               key={platform}
-              className="inline-flex items-center gap-2 rounded-full border border-border-button px-4 py-2 text-sm text-brand-dark"
+              className="inline-flex items-center gap-2 rounded-full border border-border-button px-4 py-2 text-sm text-brand-dark dark:border-dark-border dark:text-white"
             >
               <img src={PLATFORM_ICONS[platform]} alt="" className="h-4 w-4 rounded object-contain" />
               {PLATFORM_LABELS[platform]}

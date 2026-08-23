@@ -10,18 +10,18 @@ export default function SetupStep() {
     <div>
       <StepHeader icon={Wallet} number={step.number} eyebrow={step.eyebrow} heading={step.heading} body={step.body} />
       <div className="mt-8 md:pl-16">
-        <div className="rounded-2xl bg-black/[0.03] p-5">
-          <p className="text-sm text-text-body">Payment method</p>
+        <div className="rounded-2xl bg-black/[0.03] p-5 dark:bg-white/5">
+          <p className="text-sm text-text-body dark:text-dark-body">Payment method</p>
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {payoutMethods.map((method, i) => (
               <div
                 key={method.id}
-                className={`rounded-2xl border bg-white p-4 ${
-                  i === 0 ? 'border-brand-orange' : 'border-border-hairline'
+                className={`rounded-2xl border bg-white p-4 dark:bg-dark-surface ${
+                  i === 0 ? 'border-brand-orange' : 'border-border-hairline dark:border-dark-border'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-2 font-poppins font-medium text-black/80">
+                  <span className="flex items-center gap-2 font-poppins font-medium text-black/80 dark:text-white">
                     {method.logo && (
                       <span className="flex h-6 w-8 shrink-0 items-center justify-center overflow-hidden rounded-md">
                         <img src={method.logo} alt="" className="h-full w-full object-cover" />
@@ -35,7 +35,7 @@ export default function SetupStep() {
                     </span>
                   )}
                 </div>
-                <p className="mt-1 text-xs text-text-body">{method.subtext}</p>
+                <p className="mt-1 text-xs text-text-body dark:text-dark-body">{method.subtext}</p>
               </div>
             ))}
           </div>

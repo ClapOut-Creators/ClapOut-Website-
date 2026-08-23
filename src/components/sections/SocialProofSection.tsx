@@ -3,10 +3,10 @@ import { socialProofPhotos } from "../../data/brands";
 import type { SocialProofPhoto } from "../../types/content";
 
 const TILE_BG = [
-  "bg-neutral-200",
-  "bg-neutral-300",
-  "bg-stone-200",
-  "bg-stone-300",
+  "bg-neutral-200 dark:bg-white/10",
+  "bg-neutral-300 dark:bg-white/20",
+  "bg-stone-200 dark:bg-white/10",
+  "bg-stone-300 dark:bg-white/20",
 ];
 
 function PhotoTile({
@@ -70,8 +70,8 @@ function PhotoMarqueeRow({
           />
         ))}
       </div>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white to-transparent sm:w-20" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white to-transparent sm:w-20" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white to-transparent sm:w-20 dark:from-dark-bg" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white to-transparent sm:w-20 dark:from-dark-bg" />
     </div>
   );
 }
@@ -85,15 +85,15 @@ export default function SocialProofSection() {
   ];
 
   return (
-    <section className="bg-white py-20 md:py-28">
+    <section className="bg-white py-20 transition-colors md:py-28 dark:bg-dark-bg">
       <div className="mx-auto max-w-4xl px-4 text-center">
-        <p className="font-sfpro text-lg uppercase tracking-wide text-[#A3A3A3]">
+        <p className="font-sfpro text-lg uppercase tracking-wide text-[#A3A3A3] dark:text-dark-body">
           Used by industry leaders
         </p>
-        <h2 className="mt-4 font-poppins text-4xl font-semibold text-black/80 md:text-5xl">
+        <h2 className="mt-4 font-poppins text-4xl font-semibold text-black/80 md:text-5xl dark:text-white">
           The creators and brands behind the campaigns.
         </h2>
-        <p className="mx-auto mt-4 max-w-xl font-sfpro text-lg font-normal text-[#464646]">
+        <p className="mx-auto mt-4 max-w-xl font-sfpro text-lg font-normal text-[#464646] dark:text-dark-body">
           Streamers, labels, and brands run campaigns here. Their clips are the
           ones your network gets paid to post.
         </p>
