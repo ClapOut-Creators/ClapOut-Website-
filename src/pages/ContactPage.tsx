@@ -6,6 +6,7 @@ import SupportPanel from '../components/contact/SupportPanel';
 import PartnershipPanel from '../components/contact/PartnershipPanel';
 import { contactCards } from '../data/contactCards';
 import { faqs } from '../data/faqs';
+import { useHashRoute } from '../hooks/useHashRoute';
 
 type ContactTab = 'support' | 'partnership';
 
@@ -15,7 +16,8 @@ const TABS: { id: ContactTab; label: string; caption: string }[] = [
 ];
 
 export default function ContactPage() {
-  const [tab, setTab] = useState<ContactTab>('support');
+  const hash = useHashRoute();
+  const [tab, setTab] = useState<ContactTab>(hash === '#/contact/partnership' ? 'partnership' : 'support');
 
   return (
     <main className="bg-white transition-colors dark:bg-dark-bg" style={{ overflowX: 'hidden' }}>
@@ -86,7 +88,7 @@ export default function ContactPage() {
                       onClick={() => setTab(t.id)}
                       className={`rounded-xl border p-3 text-left transition-colors ${
                         tab === t.id
-                          ? 'border-brand-dark bg-white dark:border-white dark:bg-dark-surface'
+                          ? 'border-brand-dark bg-[#EFEFEF] dark:border-white dark:bg-dark-surface'
                           : 'border-border-hairline bg-transparent hover:bg-black/5 dark:border-dark-border dark:hover:bg-white/5'
                       }`}
                     >
