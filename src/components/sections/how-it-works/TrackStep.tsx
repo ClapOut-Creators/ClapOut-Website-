@@ -9,6 +9,14 @@ import {
 
 const STAT_ICONS = { eye: Eye, zap: Zap, trending: TrendingUp };
 
+// Same clips as the hero phone feed, shown as autoplaying previews.
+const TOP_CLIPS = [
+  { src: '/reels/reel-1.mp4', views: '2.1M' },
+  { src: '/reels/reel-3.mp4', views: '1.8M' },
+  { src: '/reels/reel-6.mp4', views: '1.4M' },
+  { src: '/reels/reel-7.mp4', views: '996K' },
+];
+
 function ViewsChart() {
   const width = 400;
   const height = 120;
@@ -133,15 +141,19 @@ export default function TrackStep() {
             <span>312 tracked</span>
           </div>
           <div className="mt-2 grid grid-cols-4 gap-2">
-            {Array.from({ length: 4 }, (_, i) => (
-              <div key={i} className="relative overflow-hidden rounded-xl">
-                <img
-                  src="/campain-content-phone.png"
-                  alt="Top performing clip"
-                  className="w-full"
+            {TOP_CLIPS.map((clip) => (
+              <div key={clip.src} className="relative overflow-hidden rounded-xl bg-black">
+                <video
+                  src={clip.src}
+                  className="aspect-[9/16] w-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
                 />
                 <span className="absolute bottom-1.5 left-1.5 flex items-center gap-1 rounded-full bg-black/60 px-1.5 py-0.5 text-[0.55rem] text-white">
-                  <Eye size={9} /> 2.1M
+                  <Eye size={9} /> {clip.views}
                 </span>
               </div>
             ))}

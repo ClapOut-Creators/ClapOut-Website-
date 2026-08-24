@@ -55,7 +55,14 @@ function PhotoMarqueeRow({
   rowIndex: number;
   reverse?: boolean;
 }) {
-  const track = [...photos, ...photos];
+  // The keyframe shifts the track by -50%, so the loop is only seamless when
+  // half the track is at least as wide as the container (up to ~1537px).
+  // Repeat the set enough times (an even count, so -50% lands exactly on a
+  // set boundary) instead of assuming two copies are wide enough.
+  const TILE_SPAN = 176; // widest tile (md: 160px) + gap
+  const setWidth = Math.max(1, photos.length) * TILE_SPAN;
+  const repeats = Math.max(4, 2 * Math.ceil(1600 / setWidth));
+  const track = Array.from({ length: repeats }, () => photos).flat();
 
   return (
     <div className="relative overflow-hidden">
