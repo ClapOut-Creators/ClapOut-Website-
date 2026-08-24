@@ -38,7 +38,7 @@ export default function PostStep() {
             <video
               key={src}
               src={src}
-              className="aspect-[9/19] w-full rounded-[2.2rem] bg-black object-cover shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
+              className="aspect-[9/19] w-full rounded-xl bg-black object-cover shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
               autoPlay
               muted
               loop

@@ -59,6 +59,7 @@ export const campaigns: Campaign[] = [
   },
   {
     slug: 'coca-cola',
+    demo: true,
     brand: 'Coca-Cola',
     logo: '/clients/coca-cola.png',
     logoBg: '#E31C23',
@@ -76,6 +77,7 @@ export const campaigns: Campaign[] = [
   },
   {
     slug: 'nike',
+    demo: true,
     brand: 'NIKE',
     logo: '/clients/nike.png',
     logoBg: '#000000',
@@ -93,6 +95,7 @@ export const campaigns: Campaign[] = [
   },
   {
     slug: 'tekme-creatives',
+    demo: true,
     brand: 'Tekme Creatives',
     logo: '/clients/tekme.svg',
     logoFit: 'contain',
@@ -111,6 +114,7 @@ export const campaigns: Campaign[] = [
   },
   {
     slug: 'tripadverts',
+    demo: true,
     brand: 'TripAdverts.',
     logo: '/clients/tripadvisor.jpeg',
     logoBg: '#FFFFFF',
@@ -133,6 +137,7 @@ export const campaigns: Campaign[] = [
   // no real Google Doc/Drive links were supplied for any campaign yet.
   {
     slug: 'klap-viral-clipping',
+    demo: true,
     brand: 'Klap',
     logoBg: '#EC612C',
     status: 'Active',

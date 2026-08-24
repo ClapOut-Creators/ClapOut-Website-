@@ -22,6 +22,8 @@ export interface Campaign {
   logoFit?: 'cover' | 'contain';
   /** Background color for the logo swatch when no real logo asset is used. */
   logoBg: string;
+  /** Demo/dummy campaign: shown only as a static example, never listed on the campaigns page or linked to a detail page. */
+  demo?: boolean;
   status: string;
   daysLeft: string;
   platforms: Platform[];

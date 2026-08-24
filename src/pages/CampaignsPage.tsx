@@ -27,9 +27,11 @@ export default function CampaignsPage() {
         </div>
 
         <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3">
-          {campaigns.map((campaign) => (
-            <CampaignCard key={campaign.slug} campaign={campaign} />
-          ))}
+          {campaigns
+            .filter((campaign) => !campaign.demo)
+            .map((campaign) => (
+              <CampaignCard key={campaign.slug} campaign={campaign} />
+            ))}
         </div>
       </section>
 

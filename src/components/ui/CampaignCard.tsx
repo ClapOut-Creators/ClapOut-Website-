@@ -41,15 +41,24 @@ function useCountdownTick(enabled: boolean) {
 
 interface CampaignCardProps {
   campaign: Campaign;
+  /** When false the card is a static demo: no detail-page link, no hover affordance. */
+  interactive?: boolean;
   className?: string;
 }
 
-export default function CampaignCard({ campaign, className = '' }: CampaignCardProps) {
+export default function CampaignCard({ campaign, interactive = true, className = '' }: CampaignCardProps) {
   useCountdownTick(Boolean(campaign.endDate));
+  const baseClass = `block bg-black/[0.03] p-5 dark:bg-white/5 ${className}`;
   return (
     <Card
-      href={`#/campaigns/${campaign.slug}`}
-      className={`block bg-black/[0.03] p-5 transition-colors hover:bg-black/[0.06] dark:bg-white/5 dark:hover:bg-white/10 ${className}`}
+      {...(interactive
+        ? { href: `#/campaigns/${campaign.slug}` }
+        : {})}
+      className={
+        interactive
+          ? `${baseClass} transition-colors hover:bg-black/[0.06] dark:hover:bg-white/10`
+          : baseClass
+      }
     >
       <div className="flex items-start justify-between">
         <div
