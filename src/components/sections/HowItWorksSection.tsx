@@ -9,11 +9,6 @@ import CashOutStep from "./how-it-works/CashOutStep";
 import BriefStep from "./how-it-works/BriefStep";
 import ManageStep from "./how-it-works/ManageStep";
 import TrackStep from "./how-it-works/TrackStep";
-import {
-  CREATORS_WHATSAPP_URL,
-  BRANDS_PHONE,
-  BRANDS_PHONE_DISPLAY,
-} from "../../data/links";
 
 export default function HowItWorksSection() {
   const [activeTab, setActiveTab] = useState(0);
@@ -45,19 +40,11 @@ export default function HowItWorksSection() {
                   standard, so the best clippers show up.
                 </p>
                 <Button
-                  href={`tel:${BRANDS_PHONE}`}
+                  href="#/contact/partnership"
                   variant="dark"
-                  className="group mt-6 inline-flex items-center gap-2 px-8 py-3"
+                  className="mt-6 inline-flex items-center gap-2 px-8 py-3"
                 >
-                  <span className="relative inline-block h-5 w-[126px] overflow-hidden align-middle">
-                    <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap transition-transform duration-300 ease-out group-hover:-translate-y-full">
-                      Call us
-                    </span>
-                    <span className="absolute inset-0 flex translate-y-full items-center whitespace-nowrap transition-transform duration-300 ease-out group-hover:translate-y-0">
-                      {BRANDS_PHONE_DISPLAY}
-                    </span>
-                  </span>
-                  <ArrowRight size={16} className="shrink-0" />
+                  Talk to us <ArrowRight size={16} className="shrink-0" />
                 </Button>
               </>
             ) : (
@@ -70,13 +57,11 @@ export default function HowItWorksSection() {
                   your clips, and watch the views turn into earnings.
                 </p>
                 <Button
-                  href={CREATORS_WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#/campaigns"
                   variant="dark"
                   className="mt-6 inline-flex items-center gap-2 px-8 py-3"
                 >
-                  Join Clapout Community <ArrowRight size={16} />
+                  Start Clipping <ArrowRight size={16} />
                 </Button>
               </>
             )}

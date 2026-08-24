@@ -1,7 +1,8 @@
 import type { Campaign } from '../types/content';
 
 // Dummy detail-page copy shared by campaigns that don't have real detail
-// content yet (everything except Klap — see doc/phases/12-campaign-detail.md).
+// content yet (everything except E-WALE and Klap — see
+// doc/phases/12-campaign-detail.md).
 // Swap this out per-campaign once real briefs are supplied; the shape/fields
 // are already real, only the copy is a placeholder.
 const DUMMY_DETAIL = {
@@ -25,6 +26,37 @@ function dummyDescription(brand: string) {
 // (user-supplied) — TripAdverts' swatch was blank in the source design,
 // but a real (TripAdvisor) mark was supplied later, so it's used here.
 export const campaigns: Campaign[] = [
+  // Real campaign (user-supplied brief + banner, 2026-08-24) — budgets in
+  // Ghana cedis, hence the `currency` override.
+  {
+    slug: 'e-wale-clipping',
+    brand: 'E-wale tech',
+    logo: '/campaigns/e-wale-logo.png',
+    logoBg: '#0B51F0',
+    status: 'Active',
+    daysLeft: '4 Days left',
+    platforms: ['tiktok'],
+    paidOut: '₵34.99',
+    goal: '₵2,000',
+    cpm: '₵20.00',
+    title: 'E-WALE Clipping | ₵2k Budget | ₵20.0 CPM',
+    description:
+      'This campaign is focused on promoting an easy and convenient way for customers to access everyday digital services by dialing *714*22#.\n\nThrough the service, customers can pay ECG bills, water bills, DStv, GOtv and StarTimes subscriptions, buy airtime and data for MTN, Telecel and AT, and also purchase WAEC result-checking tokens.\n\nWhen creating your clip, keep the message simple and clear: dial *714*22# to conveniently pay bills, buy airtime/data, and access other digital services from your phone.\n\nA two-week Clapout creator campaign focused on pushing selected content on TikTok. Participating creators will post according to the campaign brief, submit their TikTok post links, and earn based on their verified views and performance.',
+    category: 'Product',
+    startDate: '2026-07-14',
+    // Full datetime deadline — the card's live countdown runs against 11:30pm
+    // on the last day, not midnight.
+    endDate: '2026-08-28T23:30:00',
+    avgReviewTime: '1d',
+    lastUpdated: 'Today at 11:04 PM',
+    budgetSpent: 34.99,
+    budgetTotal: 2000,
+    currency: '₵',
+    tags: ['Clipping', 'Product'],
+    bannerImage: '/campaigns/e-wale-banner.png',
+    requirementsNote: 'Content Requirements',
+    resourceLabel: 'Google Drive',
+  },
   {
     slug: 'coca-cola',
     brand: 'Coca-Cola',

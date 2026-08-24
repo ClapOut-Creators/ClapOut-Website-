@@ -44,6 +44,8 @@ export interface Campaign {
   lastUpdated?: string;
   budgetSpent?: number;
   budgetTotal?: number;
+  /** Currency symbol prefixed to the numeric budget figures on the detail page. Defaults to '$'. */
+  currency?: string;
   tags?: string[];
   bannerImage?: string;
   requirementsNote?: string;

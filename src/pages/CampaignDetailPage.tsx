@@ -95,6 +95,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
     );
   }
 
+  const currency = campaign.currency ?? "$";
   const budgetTotal = campaign.budgetTotal ?? 0;
   const budgetPercent =
     budgetTotal > 0
@@ -119,7 +120,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
               </h1>
 
               <p
-                className={`mt-4 font-sfpro text-text-body dark:text-dark-body ${expandTop ? "" : "line-clamp-3"}`}
+                className={`mt-4 whitespace-pre-line font-sfpro text-text-body dark:text-dark-body ${expandTop ? "" : "line-clamp-3"}`}
               >
                 {campaign.description}
               </p>
@@ -218,7 +219,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
           <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)]">
             <div>
               <p
-                className={`font-sfpro text-text-body dark:text-dark-body ${expandBottom ? "" : "line-clamp-3"}`}
+                className={`whitespace-pre-line font-sfpro text-text-body dark:text-dark-body ${expandBottom ? "" : "line-clamp-3"}`}
               >
                 {campaign.description}
               </p>
@@ -306,7 +307,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
             <div className="flex flex-col gap-4">
               <div className="rounded-2xl border border-border-hairline bg-black/[0.03] p-5 dark:border-dark-border dark:bg-white/5">
                 <p className="font-poppins text-lg font-semibold text-black/80 dark:text-white">
-                  ${budgetKLabel}{" "}
+                  {currency}{budgetKLabel}{" "}
                   <span className="font-sfpro text-sm font-normal text-text-body dark:text-dark-body">
                     budget
                   </span>
@@ -318,8 +319,8 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
                   />
                 </div>
                 <div className="mt-2 flex justify-between font-sfpro text-sm text-text-body dark:text-dark-body">
-                  <span>${(campaign.budgetSpent ?? 0).toLocaleString()}</span>
-                  <span>${(campaign.budgetTotal ?? 0).toLocaleString()}</span>
+                  <span>{currency}{(campaign.budgetSpent ?? 0).toLocaleString()}</span>
+                  <span>{currency}{(campaign.budgetTotal ?? 0).toLocaleString()}</span>
                 </div>
               </div>
 

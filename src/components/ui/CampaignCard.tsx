@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Clock, Wallet } from 'lucide-react';
 import Card from './Card';
 import { PLATFORM_ICONS, PLATFORM_LABELS } from '../sections/how-it-works/platformIcons';
@@ -9,17 +10,33 @@ function progressPercent(paidOut: string, goal: string) {
   return total > 0 ? Math.min(100, (value / total) * 100) : 0;
 }
 
-// Campaigns with a real `endDate` (currently just Klap) get a live
-// "N Days left" derived from it, so the card can't drift out of sync with
-// its own detail page. The rest fall back to the static `daysLeft` string.
+// Campaigns with a real `endDate` get a live "N Days left" countdown derived
+// from it, so the card can't drift out of sync with its own detail page. The
+// rest fall back to the static `daysLeft` string. A date-only endDate means
+// the campaign runs through the end of that day; a full datetime (e.g.
+// E-WALE's 2026-08-28T23:30:00) is treated as the exact deadline.
 function daysLeftLabel(campaign: Campaign) {
   if (!campaign.endDate) return campaign.daysLeft;
-  const end = new Date(campaign.endDate);
+  const end = new Date(
+    campaign.endDate.includes('T') ? campaign.endDate : `${campaign.endDate}T23:59:59`,
+  );
   if (Number.isNaN(end.getTime())) return campaign.daysLeft;
-  const diffDays = Math.ceil((end.getTime() - Date.now()) / 86_400_000);
-  if (diffDays < 0) return 'Ended';
+  const diffMs = end.getTime() - Date.now();
+  if (diffMs < 0) return 'Ended';
+  const diffDays = Math.floor(diffMs / 86_400_000);
   if (diffDays === 0) return 'Ends today';
   return `${diffDays} Days left`;
+}
+
+// Re-render once a minute so the countdown stays live while the page is open
+// (flipping to "Ends today"/"Ended" without a reload).
+function useCountdownTick(enabled: boolean) {
+  const [, setTick] = useState(0);
+  useEffect(() => {
+    if (!enabled) return;
+    const id = setInterval(() => setTick((t) => t + 1), 60_000);
+    return () => clearInterval(id);
+  }, [enabled]);
 }
 
 interface CampaignCardProps {
@@ -28,6 +45,7 @@ interface CampaignCardProps {
 }
 
 export default function CampaignCard({ campaign, className = '' }: CampaignCardProps) {
+  useCountdownTick(Boolean(campaign.endDate));
   return (
     <Card
       href={`#/campaigns/${campaign.slug}`}
