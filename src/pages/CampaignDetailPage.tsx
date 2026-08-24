@@ -264,7 +264,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
                 <p className="font-poppins text-sm font-semibold text-black/80 dark:text-white">
                   Resources
                 </p>
-                <div className="mt-2 flex w-full items-center justify-between rounded-xl border border-border-hairline bg-black/[0.03] p-3 dark:border-dark-border dark:bg-white/5">
+                <div className="mt-2 flex w-full max-w-[340px] items-center justify-between rounded-xl border border-border-hairline bg-black/[0.03] p-3 dark:border-dark-border dark:bg-white/5">
                   <span className="flex items-center gap-3 font-sfpro text-sm">
                     <img
                       src="/general/google-drive.png"
