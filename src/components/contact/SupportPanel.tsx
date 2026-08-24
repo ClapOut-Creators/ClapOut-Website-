@@ -33,7 +33,7 @@ export default function SupportPanel() {
         href={CREATORS_WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-pill bg-brand-orange px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-squircle bg-brand-orange px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
       >
         <img src="/general/whatsapp-white.png" alt="" className="h-5 w-5" />
         Join WhatsApp Community

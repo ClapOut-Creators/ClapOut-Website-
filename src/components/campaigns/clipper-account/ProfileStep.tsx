@@ -80,7 +80,7 @@ export default function ProfileStep({ value, onChange, onNext }: ProfileStepProp
         type="button"
         disabled={!isValid}
         onClick={onNext}
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-pill bg-brand-dark px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0 dark:bg-[#242424]"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-squircle bg-gradient-to-b from-[#0C0C0C] to-[#3F3F3F] px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
       >
         Continue <ArrowRight size={16} />
       </button>

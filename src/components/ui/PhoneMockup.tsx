@@ -1,8 +1,5 @@
-const TikTokGlyph = ({ className = '' }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
-    <path d="M16.6 5.82a4.28 4.28 0 0 1-1.05-2.82h-3.07v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.77.12V9.77a5.76 5.76 0 0 0-.77-.05 5.66 5.66 0 1 0 5.66 5.66V9.01a7.3 7.3 0 0 0 4.27 1.37V7.31a4.28 4.28 0 0 1-3.22-1.49Z" />
-  </svg>
-);
+import { useRef, useState } from 'react';
+import { TikTokIcon } from './BrandIcons';
 
 const HeartGlyph = ({ className = '' }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
@@ -25,11 +22,15 @@ const ShareGlyph = ({ className = '' }: { className?: string }) => (
 interface PhoneMockupProps {
   accountName: string;
   handle: string;
-  caption: string;
+  caption?: string;
   likes: string;
   comments: string;
   shares: string;
   timestamp: string;
+  /** Optional list of video sources played as a rotating feed inside the phone. */
+  videos?: string[];
+  /** Called with the new index whenever the feed advances to the next video. */
+  onVideoChange?: (index: number) => void;
   className?: string;
 }
 
@@ -41,8 +42,38 @@ export default function PhoneMockup({
   comments,
   shares,
   timestamp,
+  videos,
+  onVideoChange,
   className = '',
 }: PhoneMockupProps) {
+  const [videoIndex, setVideoIndex] = useState(0);
+  const [muted, setMuted] = useState(true);
+  const [sliding, setSliding] = useState(false);
+  const videoCount = videos?.length ?? 0;
+  const nextIndex = videoCount > 0 ? (videoIndex + 1) % videoCount : 0;
+  // TikTok-style feed: when the current clip ends, the whole screen scrolls up
+  // to reveal the next clip waiting underneath, then indices swap. A timeout
+  // backs up the transitionend event, which never fires in background tabs.
+  const slidingRef = useRef(false);
+  const slideTimer = useRef<number>();
+  const startSlide = () => {
+    if (slidingRef.current) return;
+    slidingRef.current = true;
+    setSliding(true);
+    slideTimer.current = window.setTimeout(finishSlide, 650);
+  };
+  const finishSlide = () => {
+    if (!slidingRef.current) return;
+    slidingRef.current = false;
+    window.clearTimeout(slideTimer.current);
+    setVideoIndex((i) => {
+      const next = (i + 1) % videoCount;
+      onVideoChange?.(next);
+      return next;
+    });
+    setSliding(false);
+  };
+
   return (
     <div className={`aspect-[9/19] rounded-[2.2rem] bg-white p-1.5 shadow-[0_30px_60px_rgba(0,0,0,0.35)] md:rounded-[2.6rem] md:p-2 ${className}`}>
       <div className="relative h-full w-full overflow-hidden rounded-[1.8rem] bg-[#101012] md:rounded-[2rem]">
@@ -53,6 +84,38 @@ export default function PhoneMockup({
               'radial-gradient(90% 65% at 30% 78%, rgba(236,97,44,0.85) 0%, rgba(236,97,44,0) 60%), radial-gradient(80% 60% at 78% 30%, rgba(137,207,240,0.5) 0%, rgba(137,207,240,0) 60%), radial-gradient(70% 55% at 72% 85%, rgba(144,238,144,0.45) 0%, rgba(144,238,144,0) 65%), #101012',
           }}
         />
+        {videos && videoCount > 0 && (
+          <div className="absolute inset-0 overflow-hidden">
+            <div
+              className="h-full w-full"
+              style={{
+                transform: sliding ? 'translateY(-100%)' : 'translateY(0)',
+                transition: sliding ? 'transform 500ms cubic-bezier(0.32, 0.72, 0, 1)' : 'none',
+              }}
+              onTransitionEnd={finishSlide}
+            >
+              <video
+                key={videoIndex}
+                src={videos[videoIndex]}
+                className="h-full w-full object-cover"
+                autoPlay
+                muted={muted}
+                playsInline
+                preload="auto"
+                onEnded={startSlide}
+                onError={startSlide}
+              />
+              <video
+                key={`next-${nextIndex}`}
+                src={videos[nextIndex]}
+                className="h-full w-full object-cover"
+                muted
+                playsInline
+                preload="auto"
+              />
+            </div>
+          </div>
+        )}
         <div
           className="absolute inset-x-0 bottom-0 h-2/5"
           style={{ background: 'linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%)' }}
@@ -71,13 +134,15 @@ export default function PhoneMockup({
             </div>
           </div>
           <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black/50 md:h-8 md:w-8">
-            <TikTokGlyph className="h-3 w-3 text-white md:h-4 md:w-4" />
+            <TikTokIcon className="h-3 w-3 text-white md:h-4 md:w-4" />
           </div>
         </div>
 
-        <p className="absolute left-3 right-12 top-[54%] text-[0.72rem] font-bold leading-snug text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)] md:left-4 md:right-14 md:text-sm">
-          {caption}
-        </p>
+        {caption && (
+          <p className="absolute left-3 right-12 top-[54%] text-[0.72rem] font-bold leading-snug text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)] md:left-4 md:right-14 md:text-sm">
+            {caption}
+          </p>
+        )}
 
         <div className="absolute bottom-14 right-2.5 flex flex-col items-center gap-2.5 md:bottom-16 md:right-3 md:gap-3">
           <div className="flex flex-col items-center gap-0.5">
@@ -100,12 +165,16 @@ export default function PhoneMockup({
           <span className="text-[0.55rem] font-semibold tabular-nums text-white/90 md:text-[0.7rem]">
             {timestamp}
           </span>
-          <span className="flex items-center gap-1 rounded-full bg-black/50 px-2 py-0.5 text-[0.5rem] font-medium text-white md:text-[0.6rem]">
+          <button
+            type="button"
+            onClick={videos ? () => setMuted((m) => !m) : undefined}
+            className="flex items-center gap-1 rounded-full bg-black/50 px-2 py-0.5 text-[0.5rem] font-medium text-white md:text-[0.6rem]"
+          >
             <svg viewBox="0 0 24 24" className="h-2.5 w-2.5 fill-current md:h-3 md:w-3" aria-hidden="true">
               <path d="M4 9v6h4l5 4V5L8 9H4Zm14.5 3 2-2-1-1-2 2-2-2-1 1 2 2-2 2 1 1 2-2 2 2 1-1-2-2Z" />
             </svg>
-            Tap for sound
-          </span>
+            {muted ? 'Tap for sound' : 'Sound on'}
+          </button>
         </div>
       </div>
     </div>

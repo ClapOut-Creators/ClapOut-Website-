@@ -71,7 +71,6 @@ export default function SocialsStep({ links, onChange, onBack, onNext }: Socials
           return (
             <FormField
               key={i}
-              label="Social Link"
               error={link.trim() && !valid ? 'Enter a full link to a supported platform (Instagram, TikTok, YouTube, Facebook, X, Threads, Snapchat)' : undefined}
             >
               <div className="flex items-center gap-2">
@@ -100,7 +99,7 @@ export default function SocialsStep({ links, onChange, onBack, onNext }: Socials
           onClick={addLink}
           disabled={!lastLinkValid}
           title={!lastLinkValid ? 'Enter a valid social link before adding another' : undefined}
-          className="flex items-center justify-center gap-1.5 rounded-xl border border-dashed border-border-button py-2.5 font-poppins text-sm text-brand-dark transition-colors hover:bg-black/5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent dark:border-dark-border dark:text-white dark:hover:bg-white/5"
+          className="flex items-center justify-center gap-1.5 rounded-squircle border border-dashed border-border-button py-2.5 font-poppins text-sm text-brand-dark transition-colors hover:bg-black/5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent dark:border-dark-border dark:text-white dark:hover:bg-white/5"
         >
           <Plus size={14} /> Add social profile link
         </button>
@@ -112,7 +111,7 @@ export default function SocialsStep({ links, onChange, onBack, onNext }: Socials
         <button
           type="button"
           onClick={onBack}
-          className="flex-1 rounded-pill border border-border-button px-6 py-3 font-poppins font-medium text-brand-dark transition-colors hover:bg-black/5 dark:border-dark-border dark:text-white dark:hover:bg-white/10"
+          className="flex-1 rounded-squircle border border-border-button px-6 py-3 font-poppins font-medium text-brand-dark transition-colors hover:bg-black/5 dark:border-dark-border dark:text-white dark:hover:bg-white/10"
         >
           Back
         </button>
@@ -120,7 +119,7 @@ export default function SocialsStep({ links, onChange, onBack, onNext }: Socials
           type="button"
           disabled={!isValid}
           onClick={onNext}
-          className="flex flex-1 items-center justify-center gap-2 rounded-pill bg-brand-dark px-6 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0 dark:bg-[#242424]"
+          className="flex flex-1 items-center justify-center gap-2 rounded-squircle bg-gradient-to-b from-[#0C0C0C] to-[#3F3F3F] px-6 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
         >
           Continue <ArrowRight size={16} />
         </button>

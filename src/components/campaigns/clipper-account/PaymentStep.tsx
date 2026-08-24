@@ -114,7 +114,7 @@ export default function PaymentStep({ value, onChange, onBack, onComplete }: Pay
           <button
             type="button"
             onClick={() => setShowFields(true)}
-            className="flex w-full items-center justify-center gap-1.5 rounded-xl border border-dashed border-border-button py-2.5 font-poppins text-sm text-brand-dark transition-colors hover:bg-black/5 dark:border-dark-border dark:text-white dark:hover:bg-white/5"
+            className="flex w-full items-center justify-center gap-1.5 rounded-squircle border border-dashed border-border-button py-2.5 font-poppins text-sm text-brand-dark transition-colors hover:bg-black/5 dark:border-dark-border dark:text-white dark:hover:bg-white/5"
           >
             <Plus size={14} /> Add payment method
           </button>
@@ -127,7 +127,7 @@ export default function PaymentStep({ value, onChange, onBack, onComplete }: Pay
         <button
           type="button"
           onClick={onBack}
-          className="flex-1 rounded-pill border border-border-button px-6 py-3 font-poppins font-medium text-brand-dark transition-colors hover:bg-black/5 dark:border-dark-border dark:text-white dark:hover:bg-white/10"
+          className="flex-1 rounded-squircle border border-border-button px-6 py-3 font-poppins font-medium text-brand-dark transition-colors hover:bg-black/5 dark:border-dark-border dark:text-white dark:hover:bg-white/10"
         >
           Back
         </button>
@@ -135,7 +135,7 @@ export default function PaymentStep({ value, onChange, onBack, onComplete }: Pay
           type="button"
           disabled={!isValid}
           onClick={onComplete}
-          className="flex-1 rounded-pill bg-brand-dark px-6 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0 dark:bg-[#242424]"
+          className="flex-1 rounded-squircle bg-gradient-to-b from-[#0C0C0C] to-[#3F3F3F] px-6 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
         >
           Complete
         </button>

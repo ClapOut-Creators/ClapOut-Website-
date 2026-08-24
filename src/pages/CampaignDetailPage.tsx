@@ -50,7 +50,7 @@ function BackLink() {
   return (
     <a
       href="#/campaigns"
-      className="inline-flex items-center gap-1.5 rounded-pill border border-border-button px-4 py-1.5 text-sm text-brand-dark transition-colors hover:bg-black/5 dark:border-dark-border dark:text-white dark:hover:bg-white/10"
+      className="inline-flex items-center gap-1.5 rounded-squircle border border-border-button px-4 py-1.5 text-sm text-brand-dark transition-colors hover:bg-black/5 dark:border-dark-border dark:text-white dark:hover:bg-white/10"
     >
       <ArrowLeft size={14} /> Back
     </a>
@@ -350,7 +350,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
               <button
                 type="button"
                 onClick={() => setShowRegisterModal(true)}
-                className="w-full rounded-pill bg-brand-orange px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
+                className="w-full rounded-squircle bg-brand-orange px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
               >
                 Register
               </button>

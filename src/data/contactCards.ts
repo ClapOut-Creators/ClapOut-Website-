@@ -2,16 +2,14 @@ import { Mail, Clock, MessageCircle } from 'lucide-react';
 import type { ContactInfoCard } from '../types/content';
 import { CREATORS_WHATSAPP_URL } from './links';
 
-// Copy read directly off doc/Clapout.pdf pages 23/25 (Contact page) —
-// support.clapout@gmail.com is a real, separate address from the
-// Footer's hello@clapout.co, not a typo to merge.
+// Copy read directly off doc/Clapout.pdf pages 23/25 (Contact page).
 export const contactCards: ContactInfoCard[] = [
   {
     icon: Mail,
     heading: 'Email Support',
     body: 'Get help with analytics, viewbot detection, and platform features',
-    linkLabel: 'support.clapout@gmail.com',
-    linkHref: 'mailto:support.clapout@gmail.com',
+    linkLabel: 'clapoutcreators@gmail.com',
+    linkHref: 'mailto:clapoutcreators@gmail.com',
   },
   {
     icon: Clock,
