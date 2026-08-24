@@ -4,7 +4,6 @@ import PhoneMockup from "../ui/PhoneMockup";
 import LogoMarquee from "../ui/LogoMarquee";
 import { TikTokIcon, YouTubeIcon, InstagramIcon, FacebookIcon, XIcon } from "../ui/BrandIcons";
 import { trustedByLogos } from "../../data/brands";
-import { CREATORS_WHATSAPP_URL, BRANDS_PHONE } from "../../data/links";
 
 const HERO_REELS = [
   '/reels/reel-1.mp4',
@@ -72,16 +71,14 @@ export default function HeroSection() {
 
         <div className="mx-auto mt-8 flex max-w-xs flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
           <Button
-            href={CREATORS_WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#/campaigns"
             variant="dark"
             className="w-full px-[42px] py-3 sm:w-auto"
           >
             Start Clipping
           </Button>
           <Button
-            href={`tel:${BRANDS_PHONE}`}
+            href="#/contact/partnership"
             variant="orange"
             className="w-full px-[34px] py-3 sm:w-auto"
           >

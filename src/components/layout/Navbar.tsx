@@ -4,7 +4,6 @@ import Button from "../ui/Button";
 import ThemeToggle from "../ui/ThemeToggle";
 import { useHashRoute } from "../../hooks/useHashRoute";
 import { navLinks } from "../../data/nav";
-import { CREATORS_WHATSAPP_URL } from "../../data/links";
 
 function isLinkActive(hash: string, href: string) {
   if (!href || href === "#") return false;
@@ -127,9 +126,7 @@ export default function Navbar() {
             <ThemeToggle />
             <div className="hidden md:block">
               <Button
-                href={CREATORS_WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#/contact/partnership"
                 variant="orange"
                 className="px-8 py-2.5 text-sm"
               >
@@ -223,9 +220,7 @@ export default function Navbar() {
               )}
             </nav>
             <Button
-              href={CREATORS_WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#/contact/partnership"
               variant="orange"
               className="mt-4 w-full py-2.5 text-sm"
               onClick={() => setMobileOpen(false)}

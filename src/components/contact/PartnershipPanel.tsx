@@ -56,9 +56,15 @@ const BUDGET_OPTIONS = [
 
 type FormEl = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
+// Web3Forms access key — public by design (it only encodes the destination
+// inbox, clapoutcreators@gmail.com, without revealing it).
+const WEB3FORMS_ACCESS_KEY = "083d1c73-4eb5-47a6-9238-7c38942ea6c3";
+
 export default function PartnershipPanel() {
   const [value, setValue] = useState<PartnershipFormValue>(EMPTY_FORM);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const set =
     (key: keyof PartnershipFormValue) => (e: React.ChangeEvent<FormEl>) =>
@@ -77,12 +83,45 @@ export default function PartnershipPanel() {
     value.budget,
   );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isValid) return;
-    // No backend — this is a client-side-only confirmation state, nothing
-    // is actually submitted anywhere (see doc/phases/14-contact-page.md).
-    setSubmitted(true);
+    if (!isValid || sending) return;
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `New partnership inquiry — ${value.company.trim() || value.name.trim()}`,
+          from_name: "Clapout Website",
+          botcheck: false,
+          // Field names double as the labels in the delivered email.
+          "Name": value.name,
+          "Email": value.email,
+          "Company": value.company || "—",
+          "Phone number": value.phoneNumber,
+          "What they're promoting": value.promoting,
+          "Link": value.link,
+          "Content to clip": value.contentType,
+          "Timeline": value.timeline,
+          "Budget": value.budget,
+          "Notes": value.notes || "—",
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Submission failed");
+      }
+      setSubmitted(true);
+    } catch {
+      setError(
+        "Something went wrong sending your request. Please try again, or email us directly at clapoutcreators@gmail.com.",
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   if (submitted) {
@@ -260,12 +299,18 @@ export default function PartnershipPanel() {
         </FormField>
       </div>
 
+      {error && (
+        <p className="mt-4 rounded-xl bg-red-500/10 px-4 py-3 font-sfpro text-sm text-red-600 dark:text-red-400">
+          {error}
+        </p>
+      )}
+
       <button
         type="submit"
-        disabled={!isValid}
+        disabled={!isValid || sending}
         className="mt-6 w-full rounded-squircle bg-brand-orange px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
       >
-        Send Partnership Request
+        {sending ? "Sending…" : "Send Partnership Request"}
       </button>
     </form>
   );
