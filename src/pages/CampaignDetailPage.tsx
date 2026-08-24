@@ -113,7 +113,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
           <BackLink />
 
           {/* Top row: title/description/tags/meta on the left, banner on the right */}
-          <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)]">
+          <div className="mt-8 grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)]">
             <div>
               <h1 className="font-poppins text-2xl font-semibold leading-snug text-black/80 dark:text-white md:text-3xl">
                 {campaign.title}
@@ -198,15 +198,15 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
               </div>
             </div>
 
-            <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl lg:aspect-auto lg:h-full lg:min-h-[280px]">
+            <div className="w-full overflow-hidden rounded-2xl">
               {campaign.bannerImage ? (
                 <img
                   src={campaign.bannerImage}
                   alt={campaign.brand}
-                  className="h-full w-full object-cover"
+                  className="h-auto w-full"
                 />
               ) : (
-                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#3a2a24] via-brand-orange/40 to-[#17171a] font-sfpro text-xs uppercase tracking-widest text-white/50">
+                <div className="flex aspect-[16/9] w-full items-center justify-center bg-gradient-to-br from-[#3a2a24] via-brand-orange/40 to-[#17171a] font-sfpro text-xs uppercase tracking-widest text-white/50">
                   Banner image coming soon
                 </div>
               )}
