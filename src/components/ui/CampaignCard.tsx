@@ -88,7 +88,7 @@ export default function CampaignCard({ campaign, className = '' }: CampaignCardP
               key={platform}
               src={PLATFORM_ICONS[platform]}
               alt={PLATFORM_LABELS[platform]}
-              className="h-5 w-5 rounded object-contain"
+              className="h-3.5 w-3.5 rounded-sm object-contain"
             />
           ))}
         </span>

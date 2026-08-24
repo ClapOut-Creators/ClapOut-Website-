@@ -6,6 +6,14 @@ import type { Platform } from '../../../types/content';
 
 const PLATFORMS: Platform[] = ['tiktok', 'facebook', 'instagram', 'youtube', 'x'];
 
+// Same clips as the hero phone feed, shown as autoplaying previews.
+const POST_CLIPS = [
+  '/reels/reel-2.mp4',
+  '/reels/reel-4.mp4',
+  '/reels/reel-5.mp4',
+  '/reels/reel-3.mp4',
+];
+
 export default function PostStep() {
   const step = steps[2];
 
@@ -26,12 +34,16 @@ export default function PostStep() {
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {Array.from({ length: 4 }, (_, i) => (
-            <img
-              key={i}
-              src="/campain-content-phone.png"
-              alt="Post campaign content on ClapOut Clips"
-              className="w-full rounded-[2.2rem] shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
+          {POST_CLIPS.map((src) => (
+            <video
+              key={src}
+              src={src}
+              className="aspect-[9/19] w-full rounded-[2.2rem] bg-black object-cover shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
             />
           ))}
         </div>
