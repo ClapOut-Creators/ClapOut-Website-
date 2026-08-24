@@ -30,7 +30,7 @@ export default function WelcomeStep() {
         href={CREATORS_WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-pill bg-brand-dark px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] dark:bg-[#242424]"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-squircle bg-gradient-to-b from-[#0C0C0C] to-[#3F3F3F] px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
       >
         Join the campaign community
         <img src="/general/whatsapp.png" alt="" className="h-5 w-5" />

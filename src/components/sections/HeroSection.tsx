@@ -1,26 +1,35 @@
-import { Music2, Youtube } from "lucide-react";
+import { useState } from "react";
 import Button from "../ui/Button";
 import PhoneMockup from "../ui/PhoneMockup";
 import LogoMarquee from "../ui/LogoMarquee";
+import { TikTokIcon, YouTubeIcon, InstagramIcon, FacebookIcon, XIcon } from "../ui/BrandIcons";
 import { trustedByLogos } from "../../data/brands";
 import { CREATORS_WHATSAPP_URL, BRANDS_PHONE } from "../../data/links";
 
-const PLATFORM_DOT_ICONS: Record<'youtube' | 'tiktok', typeof Youtube> = {
-  youtube: Youtube,
-  tiktok: Music2,
-};
+const HERO_REELS = [
+  '/reels/reel-1.mp4',
+  '/reels/reel-2.mp4',
+  '/reels/reel-3.mp4',
+  '/reels/reel-4.mp4',
+  '/reels/reel-5.mp4',
+  '/reels/reel-6.mp4',
+  '/reels/reel-7.mp4',
+];
 
-const PLATFORM_DOTS: Array<'youtube' | 'tiktok'> = [
-  "youtube",
-  "tiktok",
-  "youtube",
-  "tiktok",
-  "youtube",
-  "tiktok",
-  "youtube",
+// One icon per reel; the highlighted icon follows the video currently playing.
+const PLATFORM_DOTS = [
+  InstagramIcon,
+  YouTubeIcon,
+  TikTokIcon,
+  FacebookIcon,
+  XIcon,
+  InstagramIcon,
+  TikTokIcon,
 ];
 
 export default function HeroSection() {
+  const [activeReel, setActiveReel] = useState(0);
+
   return (
     <section className="relative w-full overflow-hidden bg-white pb-16 pt-32 transition-colors md:pb-24 md:pt-40 dark:bg-dark-bg">
       <div className="mx-auto max-w-6xl px-4 text-center">
@@ -34,7 +43,7 @@ export default function HeroSection() {
         </span>
 
         <h1
-          className="mt-6 font-poppins font-semibold text-black/80 dark:text-white"
+          className="mt-6 font-poppins font-bold text-black/80 dark:text-white"
           style={{
             fontSize: "clamp(1.75rem, 1rem + 4vw, 5.07rem)",
             lineHeight: 1.1,
@@ -85,21 +94,22 @@ export default function HeroSection() {
         <div className="absolute right-1/2 top-1/2 w-24 origin-bottom-right -translate-y-1/2 -translate-x-6 -rotate-[11deg] sm:w-28 md:w-[10.5rem]">
           <div className="aspect-[9/19] overflow-hidden rounded-[1.6rem] bg-[#1c1c1e] p-1.5 shadow-2xl md:rounded-[2rem]">
             <div className="relative h-full w-full overflow-hidden rounded-[1.25rem] bg-[#2a2a2d] md:rounded-[1.6rem]">
-              <div className="absolute left-2 right-2 top-3 rounded-md bg-white/85 p-1.5 md:left-3 md:right-3 md:top-4 md:p-2">
-                <p className="text-[0.32rem] font-semibold leading-snug text-neutral-800 md:text-[0.45rem]">
-                  The moment the campaign went live, the clippers went to work
-                </p>
-              </div>
-              <span className="absolute bottom-2 left-2 text-[0.4rem] font-bold uppercase tracking-wide text-[#2fae5c] md:bottom-3 md:left-3 md:text-[0.55rem]">
-                Live
-              </span>
+              <img
+                src="/reels/wishly-cover.jpg"
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
+              />
             </div>
           </div>
         </div>
 
         <div className="absolute left-1/2 top-1/2 w-28 origin-bottom-left -translate-y-1/2 translate-x-6 rotate-[10deg] sm:w-32 md:w-48">
-          <div className="flex aspect-[9/19] items-center justify-center rounded-[1.8rem] bg-[#111112] shadow-2xl md:rounded-[2.2rem]">
-            <Music2 className="h-8 w-8 text-white/25 md:h-12 md:w-12" />
+          <div className="relative aspect-[9/19] overflow-hidden rounded-[1.8rem] bg-[#111112] shadow-2xl md:rounded-[2.2rem]">
+            <img
+              src="/reels/techme-cover.jpg"
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+            />
           </div>
         </div>
 
@@ -107,29 +117,31 @@ export default function HeroSection() {
           className="relative z-10 w-52 sm:w-60 md:w-[17.5rem]"
           accountName="ClapOut Clips"
           handle="@clapout.clips"
-          caption="E-WALE's drop hit 1M views in 48 hours 🤯"
           likes="388.6K"
           comments="4806"
           shares="11.2K"
           timestamp="00:02/01:00"
+          videos={HERO_REELS}
+          onVideoChange={setActiveReel}
         />
       </div>
 
       <div className="mt-6 flex items-center justify-center gap-2 md:mt-8 md:gap-2.5">
-        {PLATFORM_DOTS.map((platform, i) => {
-          const Icon = PLATFORM_DOT_ICONS[platform];
+        {PLATFORM_DOTS.map((Icon, i) => {
+          const active = i === activeReel;
           return (
             <span
               key={i}
-              className="flex h-7 w-7 items-center justify-center rounded-full bg-black/10 text-brand-dark md:h-8 md:w-8 dark:bg-white/10 dark:text-white"
+              className={`flex items-center justify-center rounded-full transition-all duration-300 ${
+                active
+                  ? 'h-8 w-8 scale-110 bg-brand-orange text-white md:h-9 md:w-9'
+                  : 'h-7 w-7 bg-black/10 text-brand-dark md:h-8 md:w-8 dark:bg-white/10 dark:text-white'
+              }`}
             >
-              <Icon size={14} className="md:h-4 md:w-4" />
+              <Icon className={active ? 'h-4 w-4 md:h-[1.125rem] md:w-[1.125rem]' : 'h-3.5 w-3.5 md:h-4 md:w-4'} />
             </span>
           );
         })}
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-orange text-white md:h-9 md:w-9">
-          <Music2 size={16} className="md:h-[1.125rem] md:w-[1.125rem]" />
-        </span>
       </div>
 
       <div className="mx-auto mt-5 w-[min(86vw,26rem)] md:mt-6 md:w-[min(60vw,34rem)]">

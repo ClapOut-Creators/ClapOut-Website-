@@ -1,12 +1,12 @@
 import type { Platform } from '../../../types/content';
 
-// Real platform icon assets (user-supplied) in public/socials/.
+// Official platform logos as vector SVGs in public/socials/ — crisp at any size.
 export const PLATFORM_ICONS: Record<Platform, string> = {
-  tiktok: '/socials/tiktok%201.png',
-  facebook: '/socials/social%201.png',
-  instagram: '/socials/instagram%201.png',
-  youtube: '/socials/youtube%201.png',
-  x: '/socials/twitter%201.png',
+  tiktok: '/socials/tiktok.svg',
+  facebook: '/socials/facebook.svg',
+  instagram: '/socials/instagram.svg',
+  youtube: '/socials/youtube.svg',
+  x: '/socials/x.svg',
 };
 
 export const PLATFORM_LABELS: Record<Platform, string> = {

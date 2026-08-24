@@ -50,7 +50,7 @@ function BackLink() {
   return (
     <a
       href="#/campaigns"
-      className="inline-flex items-center gap-1.5 rounded-pill border border-border-button px-4 py-1.5 text-sm text-brand-dark transition-colors hover:bg-black/5 dark:border-dark-border dark:text-white dark:hover:bg-white/10"
+      className="inline-flex items-center gap-1.5 rounded-squircle border border-border-button px-4 py-1.5 text-sm text-brand-dark transition-colors hover:bg-black/5 dark:border-dark-border dark:text-white dark:hover:bg-white/10"
     >
       <ArrowLeft size={14} /> Back
     </a>
@@ -264,7 +264,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
                 <p className="font-poppins text-sm font-semibold text-black/80 dark:text-white">
                   Resources
                 </p>
-                <div className="mt-2 flex w-full items-center justify-between rounded-xl border border-border-hairline bg-black/[0.03] p-3 dark:border-dark-border dark:bg-white/5">
+                <div className="mt-2 flex w-full max-w-[340px] items-center justify-between rounded-xl border border-border-hairline bg-black/[0.03] p-3 dark:border-dark-border dark:bg-white/5">
                   <span className="flex items-center gap-3 font-sfpro text-sm">
                     <img
                       src="/general/google-drive.png"
@@ -350,7 +350,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
               <button
                 type="button"
                 onClick={() => setShowRegisterModal(true)}
-                className="w-full rounded-pill bg-brand-orange px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
+                className="w-full rounded-squircle bg-brand-orange px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
               >
                 Register
               </button>

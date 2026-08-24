@@ -14,12 +14,13 @@ const COLUMNS = [
     links: [
       { label: 'Terms of Service', href: '#/terms' },
       { label: 'Privacy Policy', href: '#/privacy' },
+      { label: 'Platform Policies', href: '#/policies' },
     ],
   },
   {
     title: 'Contact',
     links: [
-      { label: 'hello@clapout.co', href: 'mailto:hello@clapout.co' },
+      { label: 'clapoutcreators@gmail.com', href: 'mailto:clapoutcreators@gmail.com' },
       { label: 'Accra · Ghana', href: undefined },
       { label: 'Join Clapout', href: '#join' },
     ],

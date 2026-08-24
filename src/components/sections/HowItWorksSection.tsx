@@ -17,7 +17,7 @@ import {
 
 export default function HowItWorksSection() {
   const [activeTab, setActiveTab] = useState(0);
-  const isBrands = activeTab === 1;
+  const isBrands = activeTab === 0;
 
   return (
     <section id="how-it-works" className="scroll-mt-28 bg-white py-20 transition-colors md:py-28 dark:bg-dark-bg">
@@ -28,7 +28,7 @@ export default function HowItWorksSection() {
               How it works
             </p>
             <Tabs
-              tabs={["For Creators", "For Brands"]}
+              tabs={["For Brands", "For Creators"]}
               onChange={setActiveTab}
               className="mt-4"
             />

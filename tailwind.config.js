@@ -32,6 +32,7 @@ export default {
       },
       borderRadius: {
         pill: "58px",
+        squircle: "12px",
       },
     },
   },

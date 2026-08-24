@@ -55,7 +55,7 @@ const TERMS: LegalSection[] = [
     heading: '8. Changes and contact',
     body: [
       'We may update these Terms from time to time. Material changes will be announced on this page with an updated revision date. Continued use of Clapout after changes take effect constitutes acceptance.',
-      'Questions about these Terms can be sent to hello@clapout.co.',
+      'Questions about these Terms can be sent to clapoutcreators@gmail.com.',
     ],
   },
 ];
@@ -97,13 +97,13 @@ const PRIVACY: LegalSection[] = [
   {
     heading: '6. Your rights',
     body: [
-      'You may request access to, correction of, or deletion of your personal data, and you may close your account at any time. To exercise any of these rights, contact hello@clapout.co. If you are in Ghana, you also have rights under the Data Protection Act, 2012 (Act 843), and may contact the Data Protection Commission.',
+      'You may request access to, correction of, or deletion of your personal data, and you may close your account at any time. To exercise any of these rights, contact clapoutcreators@gmail.com. If you are in Ghana, you also have rights under the Data Protection Act, 2012 (Act 843), and may contact the Data Protection Commission.',
     ],
   },
   {
     heading: '7. Changes and contact',
     body: [
-      'We may update this policy from time to time; the revision date below reflects the latest version. Questions about this policy can be sent to hello@clapout.co.',
+      'We may update this policy from time to time; the revision date below reflects the latest version. Questions about this policy can be sent to clapoutcreators@gmail.com.',
     ],
   },
 ];
