@@ -216,7 +216,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
           <div className="mt-8 border-t border-border-hairline dark:border-dark-border" />
 
           {/* Bottom row: description/requirements/resources on the left, budget/info/register on the right */}
-          <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)]">
+          <div className="mt-8 grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)]">
             <div>
               <p
                 className={`whitespace-pre-line font-sfpro text-text-body dark:text-dark-body ${expandBottom ? "" : "line-clamp-3"}`}
