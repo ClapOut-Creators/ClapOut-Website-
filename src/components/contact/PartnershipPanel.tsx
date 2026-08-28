@@ -48,7 +48,6 @@ const TIMELINE_OPTIONS = [
   "Flexible",
 ];
 const BUDGET_OPTIONS = [
-  "Under GH₵2,000",
   "GH₵2,000 – 5,000",
   "GH₵5,000 – 10,000",
   "GH₵10,000+",
