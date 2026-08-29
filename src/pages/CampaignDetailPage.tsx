@@ -95,6 +95,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
     );
   }
 
+  const isClosed = campaign.status.toLowerCase() === "closed";
   const currency = campaign.currency ?? "$";
   const budgetTotal = campaign.budgetTotal ?? 0;
   const budgetPercent =
@@ -265,7 +266,12 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
                 <p className="font-poppins text-sm font-semibold text-black/80 dark:text-white">
                   Resources
                 </p>
-                <div className="mt-2 flex w-full max-w-[340px] items-center justify-between rounded-xl border border-border-hairline bg-black/[0.03] p-3 dark:border-dark-border dark:bg-white/5">
+                <div
+                  className={`mt-2 flex w-full max-w-[340px] items-center justify-between rounded-xl border border-border-hairline bg-black/[0.03] p-3 dark:border-dark-border dark:bg-white/5 ${
+                    isClosed ? "cursor-not-allowed opacity-50" : ""
+                  }`}
+                  title={isClosed ? "Campaign closed" : undefined}
+                >
                   <span className="flex items-center gap-3 font-sfpro text-sm">
                     <img
                       src="/general/google-drive.png"
@@ -281,7 +287,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
                       </span>
                     </span>
                   </span>
-                  {campaign.resourceUrl ? (
+                  {campaign.resourceUrl && !isClosed ? (
                     <a
                       href={campaign.resourceUrl}
                       target="_blank"
@@ -351,9 +357,14 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
               <button
                 type="button"
                 onClick={() => setShowRegisterModal(true)}
-                className="w-full rounded-squircle bg-brand-orange px-8 py-3 font-poppins font-medium text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
+                disabled={isClosed}
+                className={`w-full rounded-squircle px-8 py-3 font-poppins font-medium text-white transition-all duration-200 ${
+                  isClosed
+                    ? "cursor-not-allowed bg-black/20 dark:bg-white/10"
+                    : "bg-brand-orange hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
+                }`}
               >
-                Register
+                {isClosed ? "Registration closed" : "Register"}
               </button>
             </div>
           </div>

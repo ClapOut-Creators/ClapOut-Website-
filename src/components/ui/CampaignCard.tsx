@@ -49,6 +49,7 @@ interface CampaignCardProps {
 export default function CampaignCard({ campaign, interactive = true, className = '' }: CampaignCardProps) {
   useCountdownTick(Boolean(campaign.endDate));
   const baseClass = `block bg-black/[0.03] p-5 dark:bg-white/5 ${className}`;
+  const isActive = campaign.status.toLowerCase() === 'active';
   return (
     <Card
       {...(interactive
@@ -78,7 +79,13 @@ export default function CampaignCard({ campaign, interactive = true, className =
           )}
         </div>
         <div className="text-right">
-          <span className="inline-flex rounded-full bg-[#90EE90]/40 px-3 py-1 text-xs font-medium text-[#1a7a1a]">
+          <span
+            className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${
+              isActive
+                ? 'bg-[#90EE90]/40 text-[#1a7a1a]'
+                : 'bg-black/10 text-text-body dark:bg-white/10 dark:text-dark-body'
+            }`}
+          >
             {campaign.status}
           </span>
           <p className="mt-2 flex items-center justify-end gap-1 text-xs text-text-body dark:text-dark-body">

@@ -33,7 +33,7 @@ export const campaigns: Campaign[] = [
     brand: 'E-wale tech',
     logo: '/campaigns/e-wale-logo.png',
     logoBg: '#0B51F0',
-    status: 'Active',
+    status: 'Closed',
     daysLeft: '4 Days left',
     platforms: ['tiktok'],
     paidOut: '₵34.99',
