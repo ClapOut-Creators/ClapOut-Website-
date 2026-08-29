@@ -174,7 +174,9 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
               <div className="mt-3 flex flex-wrap items-center gap-2 font-sfpro text-sm text-text-body dark:text-dark-body">
                 <span>
                   Avg review time:{" "}
-                  <span className="font-medium text-[#3aa53a]">{campaign.avgReviewTime}</span>
+                  <span className="font-medium text-[#3aa53a]">
+                    {campaign.avgReviewTime}
+                  </span>
                 </span>
                 <span
                   className="h-4 w-px bg-border-hairline dark:bg-dark-border"
@@ -313,7 +315,8 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
             <div className="flex flex-col gap-4">
               <div className="rounded-2xl border border-border-hairline bg-black/[0.03] p-5 dark:border-dark-border dark:bg-white/5">
                 <p className="font-poppins text-lg font-semibold text-black/80 dark:text-white">
-                  {currency}{budgetKLabel}{" "}
+                  {currency}
+                  {budgetKLabel}{" "}
                   <span className="font-sfpro text-sm font-normal text-text-body dark:text-dark-body">
                     budget
                   </span>
@@ -325,8 +328,14 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
                   />
                 </div>
                 <div className="mt-2 flex justify-between font-sfpro text-sm text-text-body dark:text-dark-body">
-                  <span>{currency}{(campaign.budgetSpent ?? 0).toLocaleString()}</span>
-                  <span>{currency}{(campaign.budgetTotal ?? 0).toLocaleString()}</span>
+                  <span>
+                    {currency}
+                    {(campaign.budgetSpent ?? 0).toLocaleString()}
+                  </span>
+                  <span>
+                    {currency}
+                    {(campaign.budgetTotal ?? 0).toLocaleString()}
+                  </span>
                 </div>
               </div>
 

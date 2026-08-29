@@ -2,17 +2,20 @@ import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Button from "../ui/Button";
 import ThemeToggle from "../ui/ThemeToggle";
+import CommunityModal from "../shared/CommunityModal";
 import { useHashRoute } from "../../hooks/useHashRoute";
 import { navLinks } from "../../data/nav";
 
 function isLinkActive(hash: string, href: string) {
   if (!href || href === "#") return false;
-  if (href.startsWith("#/")) return hash === href || hash.startsWith(`${href}/`);
+  if (href.startsWith("#/"))
+    return hash === href || hash.startsWith(`${href}/`);
   return hash === href;
 }
 
 function scrollToHash(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
-  if (!href.startsWith("#") || href.startsWith("#/") || href.length <= 1) return;
+  if (!href.startsWith("#") || href.startsWith("#/") || href.length <= 1)
+    return;
   const target = document.querySelector(href);
   if (!target) return;
   e.preventDefault();
@@ -42,6 +45,7 @@ export default function Navbar() {
   const hash = useHashRoute();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
+  const [showCommunityModal, setShowCommunityModal] = useState(false);
 
   return (
     <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4 md:top-9 md:px-0">
@@ -69,8 +73,8 @@ export default function Navbar() {
                     onClick={(e) => scrollToHash(e, link.href)}
                     className={`flex items-center gap-1 rounded-lg px-3 py-1.5 -mx-3 -my-1.5 font-poppins text-sm transition-colors group-hover:bg-black/5 group-focus-within:bg-black/5 dark:group-hover:bg-white/10 dark:group-focus-within:bg-white/10 ${
                       isLinkActive(hash, link.href)
-                        ? 'text-brand-orange'
-                        : 'text-brand-dark/80 group-hover:text-brand-dark group-focus-within:text-brand-dark dark:text-white/80 dark:group-hover:text-white dark:group-focus-within:text-white'
+                        ? "text-brand-orange"
+                        : "text-brand-dark/80 group-hover:text-brand-dark group-focus-within:text-brand-dark dark:text-white/80 dark:group-hover:text-white dark:group-focus-within:text-white"
                     }`}
                   >
                     {link.label}
@@ -86,8 +90,16 @@ export default function Navbar() {
                           key={subLink.label}
                           href={subLink.href}
                           onClick={(e) => scrollToHash(e, subLink.href)}
-                          target={subLink.href.startsWith("http") ? "_blank" : undefined}
-                          rel={subLink.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                          target={
+                            subLink.href.startsWith("http")
+                              ? "_blank"
+                              : undefined
+                          }
+                          rel={
+                            subLink.href.startsWith("http")
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
                           className="flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-black/5 dark:hover:bg-white/5"
                         >
                           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border-hairline bg-white text-brand-dark dark:border-dark-border dark:bg-dark-bg dark:text-white">
@@ -112,14 +124,21 @@ export default function Navbar() {
                   href={link.href}
                   className={`flex items-center gap-1 font-poppins text-sm transition-colors ${
                     isLinkActive(hash, link.href)
-                      ? 'text-brand-orange'
-                      : 'text-brand-dark/80 hover:text-brand-dark dark:text-white/80 dark:hover:text-white'
+                      ? "text-brand-orange"
+                      : "text-brand-dark/80 hover:text-brand-dark dark:text-white/80 dark:hover:text-white"
                   }`}
                 >
                   {link.label}
                 </a>
               ),
             )}
+            <button
+              type="button"
+              onClick={() => setShowCommunityModal(true)}
+              className="flex items-center gap-1.5 font-poppins text-sm text-brand-dark/80 transition-colors hover:text-brand-dark dark:text-white/80 dark:hover:text-white"
+            >
+              Join our Community
+            </button>
           </nav>
 
           <div className="flex shrink-0 items-center gap-3">
@@ -156,23 +175,29 @@ export default function Navbar() {
                       type="button"
                       aria-expanded={mobileSubOpen === link.label}
                       onClick={() =>
-                        setMobileSubOpen((prev) => (prev === link.label ? null : link.label))
+                        setMobileSubOpen((prev) =>
+                          prev === link.label ? null : link.label,
+                        )
                       }
                       className={`flex w-full items-center justify-between font-poppins text-sm ${
-                        isLinkActive(hash, link.href) ? 'text-brand-orange' : 'text-brand-dark dark:text-white'
+                        isLinkActive(hash, link.href)
+                          ? "text-brand-orange"
+                          : "text-brand-dark dark:text-white"
                       }`}
                     >
                       {link.label}
                       <ChevronDown
                         size={14}
                         className={`transition-transform duration-200 ${
-                          mobileSubOpen === link.label ? 'rotate-180' : ''
+                          mobileSubOpen === link.label ? "rotate-180" : ""
                         }`}
                       />
                     </button>
                     <div
                       className={`grid overflow-hidden transition-all duration-300 ${
-                        mobileSubOpen === link.label ? 'grid-rows-[1fr] pt-3 opacity-100' : 'grid-rows-[0fr] opacity-0'
+                        mobileSubOpen === link.label
+                          ? "grid-rows-[1fr] pt-3 opacity-100"
+                          : "grid-rows-[0fr] opacity-0"
                       }`}
                     >
                       <div className="flex min-h-0 flex-col gap-1">
@@ -185,8 +210,16 @@ export default function Navbar() {
                               setMobileSubOpen(null);
                               scrollToHash(e, subLink.href);
                             }}
-                            target={subLink.href.startsWith("http") ? "_blank" : undefined}
-                            rel={subLink.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                            target={
+                              subLink.href.startsWith("http")
+                                ? "_blank"
+                                : undefined
+                            }
+                            rel={
+                              subLink.href.startsWith("http")
+                                ? "noopener noreferrer"
+                                : undefined
+                            }
                             className="flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-black/5 dark:hover:bg-white/5"
                           >
                             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border-hairline bg-white text-brand-dark dark:border-dark-border dark:bg-dark-bg dark:text-white">
@@ -211,13 +244,26 @@ export default function Navbar() {
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className={`flex items-center justify-between font-poppins text-sm ${
-                      isLinkActive(hash, link.href) ? 'text-brand-orange' : 'text-brand-dark dark:text-white'
+                      isLinkActive(hash, link.href)
+                        ? "text-brand-orange"
+                        : "text-brand-dark dark:text-white"
                     }`}
                   >
                     {link.label}
                   </a>
                 ),
               )}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileOpen(false);
+                  setShowCommunityModal(true);
+                }}
+                className="flex items-center gap-2 font-poppins text-sm text-brand-dark dark:text-white"
+              >
+                <img src="/general/whatsapp.png" alt="" className="h-4 w-4" />
+                Join our Community
+              </button>
             </nav>
             <Button
               href="#/contact/partnership"
@@ -230,6 +276,10 @@ export default function Navbar() {
           </div>
         )}
       </div>
+
+      {showCommunityModal && (
+        <CommunityModal onClose={() => setShowCommunityModal(false)} />
+      )}
     </header>
   );
 }
