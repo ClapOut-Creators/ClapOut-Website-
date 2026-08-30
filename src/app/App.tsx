@@ -3,7 +3,6 @@ import { useHashRoute } from "../hooks/useHashRoute";
 import Navbar from "../components/layout/Navbar";
 import HeroSection from "../components/sections/HeroSection";
 import HowItWorksSection from "../components/sections/HowItWorksSection";
-import SocialProofSection from "../components/sections/SocialProofSection";
 import FaqSection from "../components/sections/FaqSection";
 import TestimonialsSection from "../components/sections/TestimonialsSection";
 import ClosingCtaSection from "../components/sections/ClosingCtaSection";
