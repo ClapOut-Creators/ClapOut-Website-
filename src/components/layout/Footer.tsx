@@ -1,9 +1,10 @@
+import { scrollToHash } from '../../lib/scrollToHash';
+
 const COLUMNS = [
   {
     title: 'Explore',
     links: [
-      { label: 'About', href: '#about' },
-      { label: 'How it works', href: '#how' },
+      { label: 'How it works', href: '#how-it-works' },
       { label: 'Campaigns', href: '#/campaigns' },
       { label: 'FAQ', href: '#faq' },
       { label: 'Feedback', href: '#feedback' },
@@ -59,6 +60,7 @@ export default function Footer() {
                     {link.href ? (
                       <a
                         href={link.href}
+                        onClick={(e) => scrollToHash(e, link.href)}
                         className="font-sfpro text-[15px] text-white/70 transition-colors duration-200 hover:text-white"
                       >
                         {link.label}

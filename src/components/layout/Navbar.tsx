@@ -5,22 +5,13 @@ import ThemeToggle from "../ui/ThemeToggle";
 import CommunityModal from "../shared/CommunityModal";
 import { useHashRoute } from "../../hooks/useHashRoute";
 import { navLinks } from "../../data/nav";
+import { scrollToHash } from "../../lib/scrollToHash";
 
 function isLinkActive(hash: string, href: string) {
   if (!href || href === "#") return false;
   if (href.startsWith("#/"))
     return hash === href || hash.startsWith(`${href}/`);
   return hash === href;
-}
-
-function scrollToHash(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
-  if (!href.startsWith("#") || href.startsWith("#/") || href.length <= 1)
-    return;
-  const target = document.querySelector(href);
-  if (!target) return;
-  e.preventDefault();
-  target.scrollIntoView({ behavior: "smooth", block: "start" });
-  window.history.pushState(null, "", href);
 }
 
 // The logo always goes "home". On the home page itself that's a smooth
@@ -145,9 +136,10 @@ export default function Navbar() {
             <ThemeToggle />
             <div className="hidden md:block">
               <Button
-                href="#/contact/partnership"
+                href="#join"
                 variant="orange"
                 className="px-8 py-2.5 text-sm"
+                onClick={(e) => scrollToHash(e, "#join")}
               >
                 Get Started
               </Button>
@@ -266,10 +258,13 @@ export default function Navbar() {
               </button>
             </nav>
             <Button
-              href="#/contact/partnership"
+              href="#join"
               variant="orange"
               className="mt-4 w-full py-2.5 text-sm"
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => {
+                setMobileOpen(false);
+                scrollToHash(e, "#join");
+              }}
             >
               Get Started
             </Button>
