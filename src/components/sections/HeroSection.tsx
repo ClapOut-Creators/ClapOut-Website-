@@ -2,17 +2,23 @@ import { useState } from "react";
 import Button from "../ui/Button";
 import PhoneMockup from "../ui/PhoneMockup";
 import LogoMarquee from "../ui/LogoMarquee";
-import { TikTokIcon, YouTubeIcon, InstagramIcon, FacebookIcon, XIcon } from "../ui/BrandIcons";
+import {
+  TikTokIcon,
+  YouTubeIcon,
+  InstagramIcon,
+  FacebookIcon,
+  XIcon,
+} from "../ui/BrandIcons";
 import { trustedByLogos } from "../../data/brands";
 
 const HERO_REELS = [
-  '/reels/reel-1.mp4',
-  '/reels/reel-2.mp4',
-  '/reels/reel-3.mp4',
-  '/reels/reel-4.mp4',
-  '/reels/reel-5.mp4',
-  '/reels/reel-6.mp4',
-  '/reels/reel-7.mp4',
+  "/reels/reel-1.mp4",
+  "/reels/reel-2.mp4",
+  "/reels/reel-3.mp4",
+  "/reels/reel-4.mp4",
+  "/reels/reel-5.mp4",
+  "/reels/reel-6.mp4",
+  "/reels/reel-7.mp4",
 ];
 
 // One icon per reel; the highlighted icon follows the video currently playing.
@@ -42,7 +48,7 @@ export default function HeroSection() {
         </span>
 
         <h1
-          className="mt-6 font-poppins font-bold text-black/80 dark:text-white"
+          className="mt-6 font-poppins font-[600] text-black/80 dark:text-white"
           style={{
             fontSize: "clamp(1.75rem, 1rem + 4vw, 5.07rem)",
             lineHeight: 1.1,
@@ -131,11 +137,17 @@ export default function HeroSection() {
               key={i}
               className={`flex items-center justify-center rounded-full transition-all duration-300 ${
                 active
-                  ? 'h-8 w-8 scale-110 bg-brand-orange text-white md:h-9 md:w-9'
-                  : 'h-7 w-7 bg-black/10 text-brand-dark md:h-8 md:w-8 dark:bg-white/10 dark:text-white'
+                  ? "h-8 w-8 scale-110 bg-brand-orange text-white md:h-9 md:w-9"
+                  : "h-7 w-7 bg-black/10 text-brand-dark md:h-8 md:w-8 dark:bg-white/10 dark:text-white"
               }`}
             >
-              <Icon className={active ? 'h-4 w-4 md:h-[1.125rem] md:w-[1.125rem]' : 'h-3.5 w-3.5 md:h-4 md:w-4'} />
+              <Icon
+                className={
+                  active
+                    ? "h-4 w-4 md:h-[1.125rem] md:w-[1.125rem]"
+                    : "h-3.5 w-3.5 md:h-4 md:w-4"
+                }
+              />
             </span>
           );
         })}
