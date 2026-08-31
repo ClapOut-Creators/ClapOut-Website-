@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Clock, Wallet } from 'lucide-react';
 import Card from './Card';
 import { PLATFORM_ICONS, PLATFORM_LABELS } from '../sections/how-it-works/platformIcons';
+import { useCountdown } from '../../hooks/useCountdown';
 import type { Campaign } from '../../types/content';
 
 function progressPercent(paidOut: string, goal: string) {
@@ -48,8 +49,10 @@ interface CampaignCardProps {
 
 export default function CampaignCard({ campaign, interactive = true, className = '' }: CampaignCardProps) {
   useCountdownTick(Boolean(campaign.endDate));
-  const baseClass = `block bg-black/[0.03] p-5 dark:bg-white/5 ${className}`;
   const isActive = campaign.status.toLowerCase() === 'active';
+  const isUpcoming = campaign.status.toLowerCase() === 'upcoming';
+  const openCountdown = useCountdown(isUpcoming ? campaign.startDate : undefined);
+  const baseClass = `block bg-black/[0.03] p-5 dark:bg-white/5 ${className}`;
   return (
     <Card
       {...(interactive
@@ -82,14 +85,14 @@ export default function CampaignCard({ campaign, interactive = true, className =
           <span
             className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${
               isActive
-                ? 'bg-[#90EE90]/40 text-[#1a7a1a]'
+                ? 'bg-[#90EE90]/40 text-[#1a7a1a] dark:bg-[#1a7a1a]/40 dark:text-[#90EE90]'
                 : 'bg-black/10 text-text-body dark:bg-white/10 dark:text-dark-body'
             }`}
           >
             {campaign.status}
           </span>
           <p className="mt-2 flex items-center justify-end gap-1 text-xs text-text-body dark:text-dark-body">
-            <Clock size={12} /> {daysLeftLabel(campaign)}
+            <Clock size={12} /> {isUpcoming && openCountdown ? `Opens in ${openCountdown}` : daysLeftLabel(campaign)}
           </p>
         </div>
       </div>

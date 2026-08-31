@@ -20,7 +20,7 @@ export default function BriefStep() {
             <p className="flex items-center gap-2 text-sm text-text-body dark:text-dark-body">
               <SlidersHorizontal size={14} /> What we configure for you
             </p>
-            <span className="rounded-full bg-[#90EE90]/30 px-3 py-1 text-xs font-normal tracking-wide text-[#3B8F0E]">
+            <span className="rounded-full bg-[#90EE90]/30 px-3 py-1 text-xs font-normal tracking-wide text-[#3B8F0E] dark:bg-[#3B8F0E]/40 dark:text-[#90EE90]">
               Managed
             </span>
           </div>

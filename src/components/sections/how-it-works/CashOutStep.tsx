@@ -7,8 +7,8 @@ import { steps } from "../../../data/steps";
 // #FFC857 amber) so they pass WCAG AA (4.5:1) against their own tinted
 // pill backgrounds — the lighter values read as near-invisible.
 const STATUS_STYLES: Record<string, string> = {
-  Paid: "border border-[#90EE90] bg-[#90EE90]/20 text-[#1F7A1F]",
-  Pending: "border border-[#FFC857] bg-[#FFC857]/20 text-[#8A5A00]",
+  Paid: "border border-[#90EE90] bg-[#90EE90]/20 text-[#1F7A1F] dark:bg-[#1F7A1F]/30 dark:text-[#90EE90]",
+  Pending: "border border-[#FFC857] bg-[#FFC857]/20 text-[#8A5A00] dark:bg-[#8A5A00]/30 dark:text-[#FFC857]",
 };
 
 export default function CashOutStep() {
