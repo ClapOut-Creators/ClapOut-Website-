@@ -78,7 +78,7 @@ export default function TrackStep() {
             <p className="text-sm font-medium text-black/80 dark:text-white">
               Campaign dashboard
             </p>
-            <span className="rounded-full bg-[#90EE90]/30 px-3 py-1 text-xs font-medium text-[#1F7A1F]">
+            <span className="rounded-full bg-[#90EE90]/30 px-3 py-1 text-xs font-medium text-[#1F7A1F] dark:bg-[#1F7A1F]/40 dark:text-[#90EE90]">
               Live
             </span>
           </div>

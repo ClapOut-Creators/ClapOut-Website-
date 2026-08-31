@@ -7,6 +7,7 @@ import {
   PLATFORM_ICONS,
   PLATFORM_LABELS,
 } from "../components/sections/how-it-works/platformIcons";
+import { useCountdown } from "../hooks/useCountdown";
 import { campaigns } from "../data/campaigns";
 
 interface CampaignDetailPageProps {
@@ -96,8 +97,12 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
   }
 
   const isClosed = campaign.status.toLowerCase() === "closed";
+  const isUpcoming = campaign.status.toLowerCase() === "upcoming";
+  const openCountdown = useCountdown(isUpcoming ? campaign.startDate : undefined);
+  const isOpening = isUpcoming && Boolean(openCountdown);
   const currency = campaign.currency ?? "$";
   const budgetTotal = campaign.budgetTotal ?? 0;
+  const hasBudget = budgetTotal > 0;
   const budgetPercent =
     budgetTotal > 0
       ? Math.min(100, ((campaign.budgetSpent ?? 0) / budgetTotal) * 100)
@@ -195,7 +200,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
                 <span>
                   End date:{" "}
                   <span className="font-medium text-black/80 dark:text-white">
-                    {formatDate(campaign.endDate)}
+                    {formatDate(campaign.endDate) ?? "—"}
                   </span>
                 </span>
               </div>
@@ -315,8 +320,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
             <div className="flex flex-col gap-4">
               <div className="rounded-2xl border border-border-hairline bg-black/[0.03] p-5 dark:border-dark-border dark:bg-white/5">
                 <p className="font-poppins text-lg font-semibold text-black/80 dark:text-white">
-                  {currency}
-                  {budgetKLabel}{" "}
+                  {hasBudget ? `${currency}${budgetKLabel}` : `${currency}—`}{" "}
                   <span className="font-sfpro text-sm font-normal text-text-body dark:text-dark-body">
                     budget
                   </span>
@@ -329,12 +333,10 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
                 </div>
                 <div className="mt-2 flex justify-between font-sfpro text-sm text-text-body dark:text-dark-body">
                   <span>
-                    {currency}
-                    {(campaign.budgetSpent ?? 0).toLocaleString()}
+                    {hasBudget ? `${currency}${(campaign.budgetSpent ?? 0).toLocaleString()}` : `${currency}—`}
                   </span>
                   <span>
-                    {currency}
-                    {(campaign.budgetTotal ?? 0).toLocaleString()}
+                    {hasBudget ? `${currency}${(campaign.budgetTotal ?? 0).toLocaleString()}` : `${currency}—`}
                   </span>
                 </div>
               </div>
@@ -343,7 +345,7 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
                 <InfoRow label="Category" value={campaign.category} />
                 <InfoRow
                   label="Start - End date"
-                  value={`${formatDate(campaign.startDate)} - ${formatDate(campaign.endDate)}`}
+                  value={`${formatDate(campaign.startDate)} - ${formatDate(campaign.endDate) ?? "—"}`}
                 />
                 <InfoRow
                   label="Platforms"
@@ -366,14 +368,18 @@ export default function CampaignDetailPage({ slug }: CampaignDetailPageProps) {
               <button
                 type="button"
                 onClick={() => setShowRegisterModal(true)}
-                disabled={isClosed}
+                disabled={isClosed || isOpening}
                 className={`w-full rounded-squircle px-8 py-3 font-poppins font-medium text-white transition-all duration-200 ${
-                  isClosed
+                  isClosed || isOpening
                     ? "cursor-not-allowed bg-black/20 dark:bg-white/10"
                     : "bg-brand-orange hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
                 }`}
               >
-                {isClosed ? "Registration closed" : "Register"}
+                {isOpening
+                  ? `Opening in ${openCountdown}`
+                  : isClosed
+                    ? "Registration closed"
+                    : "Register"}
               </button>
             </div>
           </div>
