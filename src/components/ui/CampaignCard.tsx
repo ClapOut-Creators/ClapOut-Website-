@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Clock, Wallet } from 'lucide-react';
 import Card from './Card';
+import { platformCampaignUrl } from '../../lib/api';
 import { PLATFORM_ICONS, PLATFORM_LABELS } from '../sections/how-it-works/platformIcons';
 import { useCountdown } from '../../hooks/useCountdown';
 import type { Campaign } from '../../types/content';
@@ -42,7 +43,7 @@ function useCountdownTick(enabled: boolean) {
 
 interface CampaignCardProps {
   campaign: Campaign;
-  /** When false the card is a static demo: no detail-page link, no hover affordance. */
+  /** When false the card is a static demo: no campaign link, no hover affordance. */
   interactive?: boolean;
   className?: string;
 }
@@ -55,8 +56,11 @@ export default function CampaignCard({ campaign, interactive = true, className =
   const baseClass = `block bg-black/[0.03] p-5 dark:bg-white/5 ${className}`;
   return (
     <Card
+      // Cards link out to the ClapOut Studio platform's public campaign page
+      // (full-page navigation, same tab) — that's where registration lives. The
+      // internal `#/campaigns/:slug` detail page stays as a dead-code fallback.
       {...(interactive
-        ? { href: `#/campaigns/${campaign.slug}` }
+        ? { href: platformCampaignUrl(campaign.slug) }
         : {})}
       className={
         interactive
