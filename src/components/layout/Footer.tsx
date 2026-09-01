@@ -53,7 +53,7 @@ export default function Footer() {
               className="h-16 w-auto select-none sm:h-[72px]"
               draggable={false}
             />
-            <p className="mt-5 max-w-sm font-sfpro text-[15px] leading-relaxed text-white/70">
+            <p className="mt-5 max-w-sm font-sfpro text-[13px] leading-relaxed text-white/70">
               A creator distribution platform connecting brands with
               micro&#8209;influencers who make content travel — and get paid
               for verified performance.
@@ -72,12 +72,12 @@ export default function Footer() {
                       <a
                         href={link.href}
                         onClick={(e) => scrollToHash(e, link.href)}
-                        className="font-sfpro text-[15px] text-white/70 transition-colors duration-200 hover:text-white"
+                        className="font-sfpro text-[13px] text-white/70 transition-colors duration-200 hover:text-white"
                       >
                         {link.label}
                       </a>
                     ) : (
-                      <span className="font-sfpro text-[15px] text-white/70">{link.label}</span>
+                      <span className="font-sfpro text-[13px] text-white/70">{link.label}</span>
                     )}
                   </li>
                 ))}
