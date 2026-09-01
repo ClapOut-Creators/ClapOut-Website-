@@ -11,6 +11,17 @@ const COLUMNS = [
     ],
   },
   {
+    title: 'Guides',
+    links: [
+      { label: 'How to Become a Clipper?', href: '#/guides/how-to-become-a-clipper' },
+      { label: 'How Much Do Clippers Make?', href: '#/guides/how-much-do-clippers-make' },
+      { label: 'Clipping Side Hustle', href: '#/guides/clipping-side-hustle' },
+      { label: 'Freelance Clipper Guide', href: '#/guides/freelance-clipper-guide' },
+      { label: 'Remote Clipping Jobs', href: '#/guides/remote-clipping-jobs' },
+      { label: 'Best Editing Tools', href: '#/guides/best-editing-tools' },
+    ],
+  },
+  {
     title: 'Legal',
     links: [
       { label: 'Terms of Service', href: '#/terms' },
@@ -35,7 +46,7 @@ export default function Footer() {
     <footer className="overflow-hidden bg-[#0C0C0C]">
       <div className="mx-auto max-w-6xl px-5 pt-16 sm:px-8 md:px-10 md:pt-24">
         <div className="grid gap-x-8 gap-y-12 md:grid-cols-12">
-          <div className="md:col-span-5">
+          <div className="md:col-span-4">
             <img
               src="/clapout-logo.png"
               alt="Clapout logo"
@@ -50,7 +61,7 @@ export default function Footer() {
           </div>
 
           {COLUMNS.map((column, i) => (
-            <div key={column.title} className={i === 0 ? 'md:col-span-3 md:col-start-6' : 'md:col-span-2'}>
+            <div key={column.title} className={i === 0 ? 'md:col-span-2 md:col-start-5' : 'md:col-span-2'}>
               <h3 className="mb-6 font-poppins text-[11px] font-medium uppercase tracking-[0.3em] text-white/40">
                 {column.title}
               </h3>

@@ -13,6 +13,7 @@ import PolicyPage from "../pages/PolicyPage";
 import CampaignsPage from "../pages/CampaignsPage";
 import CampaignDetailPage from "../pages/CampaignDetailPage";
 import ContactPage from "../pages/ContactPage";
+import GuidePage from "../pages/GuidePage";
 
 export default function App() {
   const hash = useHashRoute();
@@ -58,6 +59,21 @@ export default function App() {
     return (
       <>
         <PolicyPage slug={hash.slice("#/policies/".length)} />
+        <Analytics />
+      </>
+    );
+  }
+  if (hash === "#/guides")
+    return (
+      <>
+        <GuidePage />
+        <Analytics />
+      </>
+    );
+  if (hash.startsWith("#/guides/")) {
+    return (
+      <>
+        <GuidePage slug={hash.slice("#/guides/".length)} />
         <Analytics />
       </>
     );
