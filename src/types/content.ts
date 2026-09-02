@@ -46,9 +46,16 @@ export interface Campaign {
   lastUpdated?: string;
   budgetSpent?: number;
   budgetTotal?: number;
+  /** Raw numeric CPM (`cpm` above is the pre-formatted display string). Feeds the campaign card's "₵ 10.00/1k" pill. */
+  cpmValue?: number;
+  /** Registrations received so far — the participants pill on the campaign card. Absent = not reported, which renders as an em dash rather than 0. */
+  registrationCount?: number;
+  /** Raw ISO timestamp of the last change (`lastUpdated` above is the pre-formatted detail-page string). Feeds the card's "26d ago" label. */
+  updatedAt?: string;
   /** Currency symbol prefixed to the numeric budget figures on the detail page. Defaults to '$'. */
   currency?: string;
   tags?: string[];
+  /** Campaign banner artwork (the API's `bannerUrl`) — the image at the top of the campaign card and detail page. */
   bannerImage?: string;
   requirementsNote?: string;
   requirementsDocUrl?: string;

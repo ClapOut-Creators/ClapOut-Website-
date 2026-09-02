@@ -5,12 +5,21 @@ import type { Campaign } from '../types/content';
 // doc/phases/12-campaign-detail.md).
 // Swap this out per-campaign once real briefs are supplied; the shape/fields
 // are already real, only the copy is a placeholder.
+// `updatedAt` drives the campaign card's live "2h ago" label, so a hard-coded
+// timestamp would read older every day this file sits unchanged. These are
+// bundled placeholders, not records of a real edit, so they're anchored to page
+// load instead.
+function hoursAgo(hours: number): string {
+  return new Date(Date.now() - hours * 3_600_000).toISOString();
+}
+
 const DUMMY_DETAIL = {
   category: 'Product',
   startDate: '2026-08-01',
   endDate: '2026-10-01',
   avgReviewTime: '1d',
   lastUpdated: 'Today at 11:04 PM',
+  updatedAt: hoursAgo(5),
   tags: ['Clipping', 'Product'],
   requirementsNote: 'Content Requirements',
   resourceLabel: 'Google Drive',
@@ -48,6 +57,10 @@ export const campaigns: Campaign[] = [
     startDate: '2026-09-01T11:00:00',
     avgReviewTime: '1d',
     lastUpdated: 'Today at 11:04 PM',
+    updatedAt: hoursAgo(2),
+    // No budget or CPM announced yet, so the card's money line, CPM pill and
+    // meter take their unannounced ('—') branches — cpmValue stays unset.
+    registrationCount: 4,
     currency: '₵',
     tags: ['Clipping', 'Product'],
     bannerImage: '/campaigns/e-wale-banner.png',
@@ -71,6 +84,8 @@ export const campaigns: Campaign[] = [
     description: dummyDescription('Coca-Cola'),
     budgetSpent: 10576.9,
     budgetTotal: 25000,
+    cpmValue: 10,
+    registrationCount: 128,
   },
   {
     slug: 'nike',
@@ -89,6 +104,8 @@ export const campaigns: Campaign[] = [
     description: dummyDescription('NIKE'),
     budgetSpent: 50576.9,
     budgetTotal: 100000,
+    cpmValue: 45,
+    registrationCount: 342,
   },
   {
     slug: 'tekme-creatives',
@@ -108,6 +125,8 @@ export const campaigns: Campaign[] = [
     description: dummyDescription('Tekme Creatives'),
     budgetSpent: 20.9,
     budgetTotal: 5000,
+    cpmValue: 0.9,
+    registrationCount: 12,
   },
   {
     slug: 'tripadverts',
@@ -126,6 +145,8 @@ export const campaigns: Campaign[] = [
     description: dummyDescription('TripAdverts'),
     budgetSpent: 576.9,
     budgetTotal: 11000,
+    cpmValue: 2,
+    registrationCount: 47,
   },
   // The only campaign with *real* detail-page content in doc/Clapout.pdf
   // (page 8) — the other 4 above use DUMMY_DETAIL placeholder copy until
@@ -151,8 +172,11 @@ export const campaigns: Campaign[] = [
     endDate: '2026-08-28',
     avgReviewTime: '1d',
     lastUpdated: 'Today at 11:04 PM',
+    updatedAt: hoursAgo(9),
     budgetSpent: 246.35,
     budgetTotal: 7000,
+    cpmValue: 2,
+    registrationCount: 31,
     tags: ['Clipping', 'Product'],
     requirementsNote: 'Content Requirements',
     resourceLabel: 'Google Drive',

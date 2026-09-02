@@ -46,6 +46,12 @@ export interface PublicCampaign {
   startDate: string;
   endDate: string | null;
   avgReviewTime: string;
+  /**
+   * Registrations received so far — the participants pill on the campaign
+   * card. Optional while the backend rolls the field out; the card renders the
+   * unannounced em dash rather than 0 when it is absent.
+   */
+  registrationCount?: number;
   tags: string[];
   bannerUrl: string | null;
   requirementsNote: string | null;
@@ -182,6 +188,12 @@ export function mapCampaign(source: PublicCampaign): Campaign {
     // no-budget branches (`hasBudget === false` → `₵—`, empty progress bar).
     budgetSpent: source.budgetSpent ?? undefined,
     budgetTotal: source.budgetTotal ?? undefined,
+    // Raw figures the campaign card formats itself (abbreviated money, the
+    // "₵ 10.00/1k" CPM pill, the participants pill and the "26d ago" label),
+    // rather than reusing the pre-formatted strings above.
+    cpmValue: source.cpm ?? undefined,
+    registrationCount: source.registrationCount ?? undefined,
+    updatedAt: source.updatedAt,
     currency: source.currency,
     tags: source.tags,
     bannerImage: optional(source.bannerUrl),
