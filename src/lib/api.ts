@@ -230,3 +230,61 @@ export async function fetchCampaigns(): Promise<Campaign[]> {
     clearTimeout(timeout);
   }
 }
+
+/**
+ * Body of `POST /public/partnership-inquiries` — the landing "Partnership
+ * Inquiry" form, mirrored into the admin dashboard (see INTEGRATION-PLAN.md
+ * "Partnership inquiries"). Optional fields are omitted rather than sent empty.
+ */
+export interface PartnershipInquiryPayload {
+  name: string;
+  email: string;
+  company?: string;
+  /** International format, e.g. '+233201234567'. */
+  phone: string;
+  promoting: string;
+  link: string;
+  contentType: string;
+  timeline: string;
+  budget: string;
+  notes?: string;
+  /** Whether Web3Forms accepted the notification email for clapoutcreators@gmail.com. */
+  emailDelivered: boolean;
+  /**
+   * Honeypot — must be empty for a real visitor. A non-empty value makes the
+   * API answer 201 with a throwaway id and store nothing.
+   */
+  website: string;
+}
+
+/**
+ * `POST /public/partnership-inquiries` (no auth). Rejects on network failure,
+ * timeout, non-OK status or an unexpected payload; the caller decides what the
+ * visitor sees (the form still succeeds when the notification email went out).
+ * The payload carries the visitor's contact details, so it is never logged.
+ */
+export async function submitPartnershipInquiry(
+  payload: PartnershipInquiryPayload,
+): Promise<{ id: string; createdAt: string }> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/public/partnership-inquiries`, {
+      method: 'POST',
+      signal: controller.signal,
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!response.ok) {
+      throw new Error(`POST /public/partnership-inquiries failed with ${response.status}`);
+    }
+    const body = (await response.json()) as { data?: { id?: string; createdAt?: string } };
+    if (!body?.data?.id || !body.data.createdAt) {
+      throw new Error('POST /public/partnership-inquiries returned an unexpected payload');
+    }
+    return { id: body.data.id, createdAt: body.data.createdAt };
+  } finally {
+    clearTimeout(timeout);
+  }
+}
