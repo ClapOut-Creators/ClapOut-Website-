@@ -29,6 +29,31 @@ html {
   scroll-behavior: smooth;
 }
 
+/* --------------------------------------------------------------------------
+   Campaigns page scale
+   --------------------------------------------------------------------------
+   The campaigns list is a 1:1 port of the ClapOut Studio platform's public
+   campaigns page, which was drawn at the 1728px Figma width and carries the
+   design's literal pixel values (31px h1, 358px cards). The platform shrinks
+   that back to landing-page size with `zoom: .8` on <body> from 1024px up, so
+   this page reproduces the same rule on the page content only — the navbar and
+   footer are the landing's own and keep their own size. `zoom` (not
+   `transform: scale`) because it reflows layout, so nothing overflows or gets
+   clipped, and text stays crisp.
+   -------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .co-page-scale {
+    zoom: 0.8;
+  }
+}
+
+/* Blocks whose text comes from brands rather than from us: campaign titles.
+   `anywhere` (not just `break-word`) also keeps a long token out of the
+   block's min-content width, so a flex or grid parent cannot stretch to it. */
+.co-user-text {
+  overflow-wrap: anywhere;
+}
+
 @keyframes scrub-sweep {
   0% {
     left: 2%;
