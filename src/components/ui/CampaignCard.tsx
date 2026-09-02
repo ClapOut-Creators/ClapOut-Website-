@@ -9,7 +9,10 @@ import type { Campaign } from '../../types/content';
 function progressPercent(paidOut: string, goal: string) {
   const value = parseFloat(paidOut.replace(/[^0-9.]/g, ''));
   const total = parseFloat(goal.replace(/[^0-9.]/g, ''));
-  return total > 0 ? Math.min(100, (value / total) * 100) : 0;
+  // A non-numeric value (e.g. the '₵—' placeholder) must read as nothing paid
+  // out — never as an invalid width that the browser renders full.
+  if (!Number.isFinite(value) || !Number.isFinite(total) || total <= 0) return 0;
+  return Math.min(100, (value / total) * 100);
 }
 
 // Campaigns with a real `endDate` get a live "N Days left" countdown derived
@@ -52,6 +55,7 @@ export default function CampaignCard({ campaign, interactive = true, className =
   useCountdownTick(Boolean(campaign.endDate));
   const isActive = campaign.status.toLowerCase() === 'active';
   const isUpcoming = campaign.status.toLowerCase() === 'upcoming';
+  const isClosed = campaign.status.toLowerCase() === 'closed';
   const openCountdown = useCountdown(isUpcoming ? campaign.startDate : undefined);
   const baseClass = `block bg-black/[0.03] p-5 dark:bg-white/5 ${className}`;
   return (
@@ -96,7 +100,7 @@ export default function CampaignCard({ campaign, interactive = true, className =
             {campaign.status}
           </span>
           <p className="mt-2 flex items-center justify-end gap-1 text-xs text-text-body dark:text-dark-body">
-            <Clock size={12} /> {isUpcoming && openCountdown ? `Opens in ${openCountdown}` : daysLeftLabel(campaign)}
+            <Clock size={12} /> {isClosed ? 'Ended' : isUpcoming && openCountdown ? `Opens in ${openCountdown}` : daysLeftLabel(campaign)}
           </p>
         </div>
       </div>
