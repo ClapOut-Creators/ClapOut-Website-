@@ -1,14 +1,22 @@
-import { useEffect, useState } from 'react';
-import { Clock, Wallet } from 'lucide-react';
-import Card from './Card';
-import { PLATFORM_ICONS, PLATFORM_LABELS } from '../sections/how-it-works/platformIcons';
-import { useCountdown } from '../../hooks/useCountdown';
-import type { Campaign } from '../../types/content';
+import { useEffect, useState } from "react";
+import { Clock, Wallet } from "lucide-react";
+import Card from "./Card";
+import { platformCampaignUrl } from "../../lib/api";
+import {
+  PLATFORM_ICONS,
+  PLATFORM_LABELS,
+} from "../sections/how-it-works/platformIcons";
+import { useCountdown } from "../../hooks/useCountdown";
+import type { Campaign } from "../../types/content";
 
 function progressPercent(paidOut: string, goal: string) {
-  const value = parseFloat(paidOut.replace(/[^0-9.]/g, ''));
-  const total = parseFloat(goal.replace(/[^0-9.]/g, ''));
-  return total > 0 ? Math.min(100, (value / total) * 100) : 0;
+  const value = parseFloat(paidOut.replace(/[^0-9.]/g, ""));
+  const total = parseFloat(goal.replace(/[^0-9.]/g, ""));
+  // A non-numeric value (e.g. the '₵—' placeholder) must read as nothing paid
+  // out — never as an invalid width that the browser renders full.
+  if (!Number.isFinite(value) || !Number.isFinite(total) || total <= 0)
+    return 0;
+  return Math.min(100, (value / total) * 100);
 }
 
 // Campaigns with a real `endDate` get a live "N Days left" countdown derived
@@ -19,13 +27,15 @@ function progressPercent(paidOut: string, goal: string) {
 function daysLeftLabel(campaign: Campaign) {
   if (!campaign.endDate) return campaign.daysLeft;
   const end = new Date(
-    campaign.endDate.includes('T') ? campaign.endDate : `${campaign.endDate}T23:59:59`,
+    campaign.endDate.includes("T")
+      ? campaign.endDate
+      : `${campaign.endDate}T23:59:59`,
   );
   if (Number.isNaN(end.getTime())) return campaign.daysLeft;
   const diffMs = end.getTime() - Date.now();
-  if (diffMs < 0) return 'Ended';
+  if (diffMs < 0) return "Ended";
   const diffDays = Math.floor(diffMs / 86_400_000);
-  if (diffDays === 0) return 'Ends today';
+  if (diffDays === 0) return "Ends today";
   return `${diffDays} Days left`;
 }
 
@@ -42,22 +52,30 @@ function useCountdownTick(enabled: boolean) {
 
 interface CampaignCardProps {
   campaign: Campaign;
-  /** When false the card is a static demo: no detail-page link, no hover affordance. */
+  /** When false the card is a static demo: no campaign link, no hover affordance. */
   interactive?: boolean;
   className?: string;
 }
 
-export default function CampaignCard({ campaign, interactive = true, className = '' }: CampaignCardProps) {
+export default function CampaignCard({
+  campaign,
+  interactive = true,
+  className = "",
+}: CampaignCardProps) {
   useCountdownTick(Boolean(campaign.endDate));
-  const isActive = campaign.status.toLowerCase() === 'active';
-  const isUpcoming = campaign.status.toLowerCase() === 'upcoming';
-  const openCountdown = useCountdown(isUpcoming ? campaign.startDate : undefined);
+  const isActive = campaign.status.toLowerCase() === "active";
+  const isUpcoming = campaign.status.toLowerCase() === "upcoming";
+  const isClosed = campaign.status.toLowerCase() === "closed";
+  const openCountdown = useCountdown(
+    isUpcoming ? campaign.startDate : undefined,
+  );
   const baseClass = `block bg-black/[0.03] p-5 dark:bg-white/5 ${className}`;
   return (
     <Card
-      {...(interactive
-        ? { href: `/campaigns/${campaign.slug}` }
-        : {})}
+      // Cards link out to the ClapOut Studio platform's public campaign page
+      // (full-page navigation, same tab) — that's where registration lives. The
+      // internal `#/campaigns/:slug` detail page stays as a dead-code fallback.
+      {...(interactive ? { href: `/campaigns/${campaign.slug}` } : {})}
       className={
         interactive
           ? `${baseClass} transition-colors hover:bg-black/[0.06] dark:hover:bg-white/10`
@@ -74,9 +92,9 @@ export default function CampaignCard({ campaign, interactive = true, className =
               src={campaign.logo}
               alt={campaign.brand}
               className={
-                campaign.logoFit === 'contain'
-                  ? 'h-full w-full object-contain p-3'
-                  : 'h-full w-full object-cover'
+                campaign.logoFit === "contain"
+                  ? "h-full w-full object-contain p-3"
+                  : "h-full w-full object-cover"
               }
             />
           )}
@@ -85,19 +103,26 @@ export default function CampaignCard({ campaign, interactive = true, className =
           <span
             className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${
               isActive
-                ? 'bg-[#90EE90]/40 text-[#1a7a1a] dark:bg-[#1a7a1a]/40 dark:text-[#90EE90]'
-                : 'bg-black/10 text-text-body dark:bg-white/10 dark:text-dark-body'
+                ? "bg-[#90EE90]/40 text-[#1a7a1a] dark:bg-[#1a7a1a]/40 dark:text-[#90EE90]"
+                : "bg-black/10 text-text-body dark:bg-white/10 dark:text-dark-body"
             }`}
           >
             {campaign.status}
           </span>
           <p className="mt-2 flex items-center justify-end gap-1 text-xs text-text-body dark:text-dark-body">
-            <Clock size={12} /> {isUpcoming && openCountdown ? `Opens in ${openCountdown}` : daysLeftLabel(campaign)}
+            <Clock size={12} />{" "}
+            {isClosed
+              ? "Ended"
+              : isUpcoming && openCountdown
+                ? `Opens in ${openCountdown}`
+                : daysLeftLabel(campaign)}
           </p>
         </div>
       </div>
 
-      <p className="mt-4 font-poppins text-lg font-semibold text-black/80 dark:text-white">{campaign.brand}</p>
+      <p className="mt-4 font-poppins text-lg font-semibold text-black/80 dark:text-white">
+        {campaign.brand}
+      </p>
 
       <div className="mt-2 flex items-center gap-2 text-xs text-text-body dark:text-dark-body">
         Platform
@@ -119,13 +144,19 @@ export default function CampaignCard({ campaign, interactive = true, className =
             <Wallet size={12} /> Paid Out
           </p>
           <p className="font-semibold text-black/80 dark:text-white">
-            {campaign.paidOut} <span className="font-normal text-text-body dark:text-dark-body">/{campaign.goal}</span>
+            {campaign.paidOut}{" "}
+            <span className="font-normal text-text-body dark:text-dark-body">
+              /{campaign.goal}
+            </span>
           </p>
         </div>
         <div className="text-right">
           <p className="text-xs text-text-body dark:text-dark-body">CPM</p>
           <p className="font-semibold text-black/80 dark:text-white">
-            {campaign.cpm} <span className="font-normal text-text-body dark:text-dark-body">/1k views</span>
+            {campaign.cpm}{" "}
+            <span className="font-normal text-text-body dark:text-dark-body">
+              /1k views
+            </span>
           </p>
         </div>
       </div>
@@ -133,7 +164,9 @@ export default function CampaignCard({ campaign, interactive = true, className =
       <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
         <div
           className="h-full rounded-full bg-gradient-to-r from-brand-orange to-brand-yellow"
-          style={{ width: `${progressPercent(campaign.paidOut, campaign.goal)}%` }}
+          style={{
+            width: `${progressPercent(campaign.paidOut, campaign.goal)}%`,
+          }}
         />
       </div>
     </Card>

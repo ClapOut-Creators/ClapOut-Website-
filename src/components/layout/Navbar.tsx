@@ -5,11 +5,11 @@ import ThemeToggle from "../ui/ThemeToggle";
 import CommunityModal from "../shared/CommunityModal";
 import { useRoute, navigate } from "../../hooks/useRoute";
 import { navLinks } from "../../data/nav";
+import { scrollToHash } from "../../lib/scrollToHash";
 
 function isLinkActive(path: string, href: string) {
   if (!href || href === "#") return false;
-  if (href.startsWith("/"))
-    return path === href || path.startsWith(`${href}/`);
+  if (href.startsWith("/")) return path === href || path.startsWith(`${href}/`);
   return path === href;
 }
 
@@ -145,6 +145,7 @@ export default function Navbar() {
                 href="/contact/partnership"
                 variant="orange"
                 className="px-8 py-2.5 text-sm"
+                onClick={(e) => scrollToHash(e, "#join")}
               >
                 Get Started
               </Button>
@@ -266,7 +267,10 @@ export default function Navbar() {
               href="/contact/partnership"
               variant="orange"
               className="mt-4 w-full py-2.5 text-sm"
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => {
+                setMobileOpen(false);
+                scrollToHash(e, "#join");
+              }}
             >
               Get Started
             </Button>

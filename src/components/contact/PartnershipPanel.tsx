@@ -3,6 +3,7 @@ import { Check } from "lucide-react";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import FormField, { INPUT_CLASS } from "../ui/FormField";
+import { submitPartnershipInquiry } from "../../lib/api";
 
 interface PartnershipFormValue {
   name: string;
@@ -61,6 +62,9 @@ const WEB3FORMS_ACCESS_KEY = "083d1c73-4eb5-47a6-9238-7c38942ea6c3";
 
 export default function PartnershipPanel() {
   const [value, setValue] = useState<PartnershipFormValue>(EMPTY_FORM);
+  // Honeypot: hidden from people, so anything in it came from a bot. Sent to
+  // the backend only — Web3Forms has its own `botcheck` field.
+  const [honeypot, setHoneypot] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -88,36 +92,70 @@ export default function PartnershipPanel() {
     setSending(true);
     setError(null);
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `New partnership inquiry — ${value.company.trim() || value.name.trim()}`,
-          from_name: "Clapout Website",
-          botcheck: false,
-          // Field names double as the labels in the delivered email.
-          "Name": value.name,
-          "Email": value.email,
-          "Company": value.company || "—",
-          "Phone number": value.phoneNumber,
-          "What they're promoting": value.promoting,
-          "Link": value.link,
-          "Content to clip": value.contentType,
-          "Timeline": value.timeline,
-          "Budget": value.budget,
-          "Notes": value.notes || "—",
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Submission failed");
+      // 1. Notification email to clapoutcreators@gmail.com. A failure here is
+      //    recorded, not fatal — the backend copy below still reaches admins.
+      let emailDelivered = false;
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            subject: `New partnership inquiry — ${value.company.trim() || value.name.trim()}`,
+            from_name: "Clapout Website",
+            botcheck: false,
+            // Field names double as the labels in the delivered email.
+            "Name": value.name,
+            "Email": value.email,
+            "Company": value.company || "—",
+            "Phone number": value.phoneNumber,
+            "What they're promoting": value.promoting,
+            "Link": value.link,
+            "Content to clip": value.contentType,
+            "Timeline": value.timeline,
+            "Budget": value.budget,
+            "Notes": value.notes || "—",
+          }),
+        });
+        const data = await res.json();
+        emailDelivered = res.ok && Boolean(data.success);
+      } catch {
+        emailDelivered = false;
       }
-      setSubmitted(true);
-    } catch {
-      setError(
-        "Something went wrong sending your request. Please try again, or email us directly at clapoutcreators@gmail.com.",
-      );
+      if (!emailDelivered) {
+        console.warn("Partnership inquiry: notification email was not delivered");
+      }
+
+      // 2. Same inquiry to the backend, so it shows up in the admin dashboard.
+      let inquiryStored = false;
+      try {
+        await submitPartnershipInquiry({
+          name: value.name,
+          email: value.email,
+          company: value.company || undefined,
+          phone: value.phoneNumber,
+          promoting: value.promoting,
+          link: value.link,
+          contentType: value.contentType,
+          timeline: value.timeline,
+          budget: value.budget,
+          notes: value.notes || undefined,
+          emailDelivered,
+          website: honeypot,
+        });
+        inquiryStored = true;
+      } catch {
+        console.warn("Partnership inquiry: backend submission failed");
+      }
+
+      // One channel through is enough for the visitor — we have their inquiry.
+      if (emailDelivered || inquiryStored) {
+        setSubmitted(true);
+      } else {
+        setError(
+          "Something went wrong sending your request. Please try again, or email us directly at clapoutcreators@gmail.com.",
+        );
+      }
     } finally {
       setSending(false);
     }
@@ -142,6 +180,20 @@ export default function PartnershipPanel() {
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* Honeypot. Parked off-screen rather than display:none/hidden, which
+          bots know to skip; people never see or tab into it, so a filled value
+          means the backend should quietly discard the inquiry. */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        className="absolute left-[-9999px] top-0 h-px w-px opacity-0"
+      />
+
       <h3 className="font-poppins text-lg font-semibold text-black/80 dark:text-white">
         Partnership Inquiry
       </h3>

@@ -2,7 +2,7 @@ import Button from '../ui/Button';
 
 export default function ClosingCtaSection() {
   return (
-    <section className="bg-white py-16 transition-colors md:py-20 dark:bg-dark-bg">
+    <section id="join" className="scroll-mt-28 bg-white py-16 transition-colors md:py-20 dark:bg-dark-bg">
       <div className="mx-auto max-w-3xl px-4 text-center">
         <h2
           className="font-poppins font-medium"

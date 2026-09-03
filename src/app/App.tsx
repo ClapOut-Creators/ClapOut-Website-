@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { useRoute } from "../hooks/useRoute";
 import Navbar from "../components/layout/Navbar";
@@ -12,6 +13,7 @@ import PolicyPage from "../pages/PolicyPage";
 import CampaignsPage from "../pages/CampaignsPage";
 import CampaignDetailPage from "../pages/CampaignDetailPage";
 import ContactPage from "../pages/ContactPage";
+import GuidePage from "../pages/GuidePage";
 
 export default function App() {
   const path = useRoute();

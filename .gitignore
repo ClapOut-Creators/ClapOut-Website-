@@ -4,6 +4,11 @@ node_modules/
 # Build output
 dist/
 
+# Local env (see .env.example — that one IS committed)
+.env
+.env.*
+!.env.example
+
 # Local tooling / session data
 .claude/
 .remember/
