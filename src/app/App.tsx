@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
-import { useHashRoute } from "../hooks/useHashRoute";
+import { useRoute } from "../hooks/useRoute";
 import Navbar from "../components/layout/Navbar";
 import HeroSection from "../components/sections/HeroSection";
 import HowItWorksSection from "../components/sections/HowItWorksSection";
@@ -14,53 +14,53 @@ import CampaignDetailPage from "../pages/CampaignDetailPage";
 import ContactPage from "../pages/ContactPage";
 
 export default function App() {
-  const hash = useHashRoute();
+  const path = useRoute();
 
-  if (hash === "#/terms")
+  if (path === "/terms")
     return (
       <>
         <LegalPage kind="terms" />
         <Analytics />
       </>
     );
-  if (hash === "#/privacy")
+  if (path === "/privacy")
     return (
       <>
         <LegalPage kind="privacy" />
         <Analytics />
       </>
     );
-  if (hash === "#/policies")
+  if (path === "/policies")
     return (
       <>
         <PolicyPage />
         <Analytics />
       </>
     );
-  if (hash.startsWith("#/policies/")) {
+  if (path.startsWith("/policies/")) {
     return (
       <>
-        <PolicyPage slug={hash.slice("#/policies/".length)} />
+        <PolicyPage slug={path.slice("/policies/".length)} />
         <Analytics />
       </>
     );
   }
-  if (hash === "#/campaigns")
+  if (path === "/campaigns")
     return (
       <>
         <CampaignsPage />
         <Analytics />
       </>
     );
-  if (hash.startsWith("#/campaigns/")) {
+  if (path.startsWith("/campaigns/")) {
     return (
       <>
-        <CampaignDetailPage slug={hash.slice("#/campaigns/".length)} />
+        <CampaignDetailPage slug={path.slice("/campaigns/".length)} />
         <Analytics />
       </>
     );
   }
-  if (hash === "#/contact" || hash === "#/contact/partnership")
+  if (path === "/contact" || path === "/contact/partnership")
     return (
       <>
         <ContactPage />

@@ -4,7 +4,7 @@ const COLUMNS = [
     links: [
       { label: 'About', href: '#about' },
       { label: 'How it works', href: '#how' },
-      { label: 'Campaigns', href: '#/campaigns' },
+      { label: 'Campaigns', href: '/campaigns' },
       { label: 'FAQ', href: '#faq' },
       { label: 'Feedback', href: '#feedback' },
     ],
@@ -12,9 +12,9 @@ const COLUMNS = [
   {
     title: 'Legal',
     links: [
-      { label: 'Terms of Service', href: '#/terms' },
-      { label: 'Privacy Policy', href: '#/privacy' },
-      { label: 'Platform Policies', href: '#/policies' },
+      { label: 'Terms of Service', href: '/terms' },
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Platform Policies', href: '/policies' },
     ],
   },
   {

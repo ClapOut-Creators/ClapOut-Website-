@@ -50,7 +50,7 @@ function PageChrome({ children }: { children: React.ReactNode }) {
 function BackLink() {
   return (
     <a
-      href="#/campaigns"
+      href="/campaigns"
       className="inline-flex items-center gap-1.5 rounded-squircle border border-border-button px-4 py-1.5 text-sm text-brand-dark transition-colors hover:bg-black/5 dark:border-dark-border dark:text-white dark:hover:bg-white/10"
     >
       <ArrowLeft size={14} /> Back

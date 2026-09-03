@@ -40,7 +40,7 @@ export default function HowItWorksSection() {
                   standard, so the best clippers show up.
                 </p>
                 <Button
-                  href="#/contact/partnership"
+                  href="/contact/partnership"
                   variant="dark"
                   className="mt-6 inline-flex items-center gap-2 px-8 py-3"
                 >
@@ -57,7 +57,7 @@ export default function HowItWorksSection() {
                   your clips, and watch the views turn into earnings.
                 </p>
                 <Button
-                  href="#/campaigns"
+                  href="/campaigns"
                   variant="dark"
                   className="mt-6 inline-flex items-center gap-2 px-8 py-3"
                 >

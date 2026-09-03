@@ -56,7 +56,7 @@ export default function CampaignCard({ campaign, interactive = true, className =
   return (
     <Card
       {...(interactive
-        ? { href: `#/campaigns/${campaign.slug}` }
+        ? { href: `/campaigns/${campaign.slug}` }
         : {})}
       className={
         interactive

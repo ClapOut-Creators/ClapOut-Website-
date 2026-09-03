@@ -20,14 +20,14 @@ export default function ClosingCtaSection() {
 
         <div className="mx-auto mt-8 flex max-w-xs flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
           <Button
-            href="#/campaigns"
+            href="/campaigns"
             variant="orange"
             className="w-full px-[34px] py-3 sm:w-auto"
           >
             Start Clipping
           </Button>
           <Button
-            href="#/contact/partnership"
+            href="/contact/partnership"
             variant="dark"
             className="w-full px-[34px] py-3 sm:w-auto"
           >
