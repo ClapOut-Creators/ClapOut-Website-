@@ -10,7 +10,14 @@ export interface NavLink {
   subLinks?: NavLink[];
 }
 
-export type Platform = "x" | "tiktok" | "facebook" | "instagram" | "youtube";
+export type Platform =
+  | "x"
+  | "tiktok"
+  | "facebook"
+  | "instagram"
+  | "youtube"
+  | "snapchat"
+  | "whatsapp";
 
 export interface Campaign {
   /** URL-safe id used for the `#/campaigns/:slug` detail-page route. */
@@ -19,7 +26,7 @@ export interface Campaign {
   /** Real logo image path. When absent, the swatch falls back to logoBg/logoTextColor text. */
   logo?: string;
   /** How the logo image fills its swatch — 'cover' for full-bleed banner logos, 'contain' for wordmarks that need padding. Defaults to 'cover'. */
-  logoFit?: 'cover' | 'contain';
+  logoFit?: "cover" | "contain";
   /** Background color for the logo swatch when no real logo asset is used. */
   logoBg: string;
   /** Demo/dummy campaign: shown only as a static example, never listed on the campaigns page or linked to a detail page. */
