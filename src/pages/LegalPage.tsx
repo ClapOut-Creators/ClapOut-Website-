@@ -1,5 +1,6 @@
 import { ArrowLeft } from 'lucide-react';
 import Button from '../components/ui/Button';
+import { navigate } from '../hooks/useRoute';
 
 interface LegalSection {
   heading: string;
@@ -116,7 +117,7 @@ export default function LegalPage({ kind }: { kind: 'terms' | 'privacy' }) {
     <main className="min-h-screen bg-white px-5 pb-20 pt-8 transition-colors sm:px-8 md:px-10 dark:bg-dark-bg">
       <div className="mx-auto max-w-3xl">
         <div className="mb-10 flex items-center justify-between">
-          <a href="#/" className="transition-opacity hover:opacity-80">
+          <a href="/" className="transition-opacity hover:opacity-80">
             <img
               src="/clapout-logo.png"
               alt="Clapout logo"
@@ -127,9 +128,7 @@ export default function LegalPage({ kind }: { kind: 'terms' | 'privacy' }) {
           <Button
             variant="outline"
             className="px-5 py-2 text-sm"
-            onClick={() => {
-              window.location.hash = '#/';
-            }}
+            onClick={() => navigate('/')}
           >
             <span className="inline-flex items-center gap-2">
               <ArrowLeft size={16} />

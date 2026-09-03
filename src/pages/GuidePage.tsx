@@ -2,6 +2,7 @@ import { ArrowUpRight, BookOpen, Clock } from 'lucide-react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import Button from '../components/ui/Button';
+import { navigate } from '../hooks/useRoute';
 import { GUIDES, getGuide } from '../data/guides';
 import type { GuideBlock } from '../data/guides';
 
@@ -56,7 +57,7 @@ function GuideIndex() {
           {GUIDES.map((guide) => (
             <li key={guide.slug}>
               <a
-                href={`#/guides/${guide.slug}`}
+                href={`/guides/${guide.slug}`}
                 className="group block rounded-2xl border border-black/10 p-5 transition-colors hover:border-black/30 sm:p-6 dark:border-white/10 dark:hover:border-white/30"
               >
                 <span className="flex items-start justify-between gap-4">
@@ -108,7 +109,7 @@ export default function GuidePage({ slug }: { slug?: string }) {
       <article className="pb-20 pt-32 md:pb-24 md:pt-40">
         <div className="mx-auto max-w-3xl px-5 sm:px-8 md:px-10">
           <a
-            href="#/guides"
+            href="/guides"
             className="font-sfpro text-sm uppercase tracking-widest text-text-body transition-colors hover:text-black dark:text-dark-body dark:hover:text-white"
           >
             ← All guides
@@ -172,9 +173,7 @@ export default function GuidePage({ slug }: { slug?: string }) {
             </p>
             <Button
               className="mt-6 px-7 py-3"
-              onClick={() => {
-                window.location.hash = '#/campaigns';
-              }}
+              onClick={() => navigate('/campaigns')}
             >
               Browse campaigns
             </Button>
@@ -188,7 +187,7 @@ export default function GuidePage({ slug }: { slug?: string }) {
               {others.map((g) => (
                 <li key={g.slug}>
                   <a
-                    href={`#/guides/${g.slug}`}
+                    href={`/guides/${g.slug}`}
                     className="font-sfpro text-[15px] text-text-body transition-colors hover:text-black dark:text-dark-body dark:hover:text-white"
                   >
                     {g.label}

@@ -8,18 +8,18 @@ export const navLinks: NavLink[] = [
     subLinks: [
       {
         label: "Clippers",
-        href: "#/campaigns",
+        href: "/campaigns",
         description: "Get paid for clip videos",
         icon: Scissors,
       },
       {
         label: "Brand",
-        href: "#/contact/partnership",
+        href: "/contact/partnership",
         description: "Run and manage a campaign",
         icon: Briefcase,
       },
     ],
   },
-  { label: "Campaigns", href: "#/campaigns" },
-  { label: "Contact", href: "#/contact" },
+  { label: "Campaigns", href: "/campaigns" },
+  { label: "Contact", href: "/contact" },
 ];

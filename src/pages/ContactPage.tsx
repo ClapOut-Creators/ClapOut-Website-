@@ -6,7 +6,7 @@ import SupportPanel from '../components/contact/SupportPanel';
 import PartnershipPanel from '../components/contact/PartnershipPanel';
 import { contactCards } from '../data/contactCards';
 import { faqs } from '../data/faqs';
-import { useHashRoute } from '../hooks/useHashRoute';
+import { useRoute } from '../hooks/useRoute';
 
 type ContactTab = 'support' | 'partnership';
 
@@ -16,8 +16,8 @@ const TABS: { id: ContactTab; label: string; caption: string }[] = [
 ];
 
 export default function ContactPage() {
-  const hash = useHashRoute();
-  const [tab, setTab] = useState<ContactTab>(hash === '#/contact/partnership' ? 'partnership' : 'support');
+  const path = useRoute();
+  const [tab, setTab] = useState<ContactTab>(path === '/contact/partnership' ? 'partnership' : 'support');
 
   return (
     <main className="bg-white transition-colors dark:bg-dark-bg" style={{ overflowX: 'hidden' }}>

@@ -3,22 +3,20 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import Button from "../ui/Button";
 import ThemeToggle from "../ui/ThemeToggle";
 import CommunityModal from "../shared/CommunityModal";
-import { useHashRoute } from "../../hooks/useHashRoute";
+import { useRoute, navigate } from "../../hooks/useRoute";
 import { navLinks } from "../../data/nav";
 import { scrollToHash } from "../../lib/scrollToHash";
 
-function isLinkActive(hash: string, href: string) {
+function isLinkActive(path: string, href: string) {
   if (!href || href === "#") return false;
-  if (href.startsWith("#/"))
-    return hash === href || hash.startsWith(`${href}/`);
-  return hash === href;
+  if (href.startsWith("/")) return path === href || path.startsWith(`${href}/`);
+  return path === href;
 }
 
 // The logo always goes "home". On the home page itself that's a smooth
 // scroll-to-top of the current DOM; on any other route (e.g. /campaigns)
 // there's no #top element to scroll to, so fall back to a real route
-// change back to "/" (location.hash =, not pushState, so it fires
-// hashchange and App.tsx actually re-renders the home page).
+// change back to "/".
 function goHome(e: React.MouseEvent<HTMLAnchorElement>) {
   const top = document.getElementById("top");
   if (top) {
@@ -28,12 +26,11 @@ function goHome(e: React.MouseEvent<HTMLAnchorElement>) {
     return;
   }
   e.preventDefault();
-  window.location.hash = "";
-  window.scrollTo(0, 0);
+  navigate("/");
 }
 
 export default function Navbar() {
-  const hash = useHashRoute();
+  const path = useRoute();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
   const [showCommunityModal, setShowCommunityModal] = useState(false);
@@ -63,7 +60,7 @@ export default function Navbar() {
                     href={link.href}
                     onClick={(e) => scrollToHash(e, link.href)}
                     className={`flex items-center gap-1 rounded-lg px-3 py-1.5 -mx-3 -my-1.5 font-poppins text-sm transition-colors group-hover:bg-black/5 group-focus-within:bg-black/5 dark:group-hover:bg-white/10 dark:group-focus-within:bg-white/10 ${
-                      isLinkActive(hash, link.href)
+                      isLinkActive(path, link.href)
                         ? "text-brand-orange"
                         : "text-brand-dark/80 group-hover:text-brand-dark group-focus-within:text-brand-dark dark:text-white/80 dark:group-hover:text-white dark:group-focus-within:text-white"
                     }`}
@@ -114,7 +111,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   className={`flex items-center gap-1 font-poppins text-sm transition-colors ${
-                    isLinkActive(hash, link.href)
+                    isLinkActive(path, link.href)
                       ? "text-brand-orange"
                       : "text-brand-dark/80 hover:text-brand-dark dark:text-white/80 dark:hover:text-white"
                   }`}
@@ -172,7 +169,7 @@ export default function Navbar() {
                         )
                       }
                       className={`flex w-full items-center justify-between font-poppins text-sm ${
-                        isLinkActive(hash, link.href)
+                        isLinkActive(path, link.href)
                           ? "text-brand-orange"
                           : "text-brand-dark dark:text-white"
                       }`}
@@ -236,7 +233,7 @@ export default function Navbar() {
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className={`flex items-center justify-between font-poppins text-sm ${
-                      isLinkActive(hash, link.href)
+                      isLinkActive(path, link.href)
                         ? "text-brand-orange"
                         : "text-brand-dark dark:text-white"
                     }`}
@@ -258,7 +255,7 @@ export default function Navbar() {
               </button>
             </nav>
             <Button
-              href="#join"
+              href="/contact/partnership"
               variant="orange"
               className="mt-4 w-full py-2.5 text-sm"
               onClick={(e) => {

@@ -20,7 +20,7 @@ export type Platform =
   | "whatsapp";
 
 export interface Campaign {
-  /** URL-safe id used for the `#/campaigns/:slug` detail-page route. */
+  /** URL-safe id used for the `/campaigns/:slug` detail-page route. */
   slug: string;
   brand: string;
   /** Real logo image path. When absent, the swatch falls back to logoBg/logoTextColor text. */
@@ -38,7 +38,7 @@ export interface Campaign {
   goal: string;
   cpm: string;
 
-  // --- Detail-page fields (#/campaigns/:slug) — optional because most
+  // --- Detail-page fields (/campaigns/:slug) — optional because most
   // existing campaigns don't have real detail content yet (see
   // doc/phases/12-campaign-detail.md). CampaignDetailPage shows a
   // "coming soon" state when `title` is absent rather than rendering

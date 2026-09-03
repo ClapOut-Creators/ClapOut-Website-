@@ -1,40 +1,53 @@
-import { scrollToHash } from '../../lib/scrollToHash';
+import { scrollToHash } from "../../lib/scrollToHash";
 
 const COLUMNS = [
   {
-    title: 'Explore',
+    title: "Explore",
     links: [
-      { label: 'How it works', href: '#how-it-works' },
-      { label: 'Campaigns', href: '#/campaigns' },
-      { label: 'FAQ', href: '#faq' },
-      { label: 'Feedback', href: '#feedback' },
+      { label: "About", href: "#about" },
+      { label: "How it works", href: "#how" },
+      { label: "Campaigns", href: "/campaigns" },
+      { label: "FAQ", href: "#faq" },
+      { label: "Feedback", href: "#feedback" },
     ],
   },
   {
-    title: 'Guides',
+    title: "Guides",
     links: [
-      { label: 'How to Become a Clipper?', href: '#/guides/how-to-become-a-clipper' },
-      { label: 'How Much Do Clippers Make?', href: '#/guides/how-much-do-clippers-make' },
-      { label: 'Clipping Side Hustle', href: '#/guides/clipping-side-hustle' },
-      { label: 'Freelance Clipper Guide', href: '#/guides/freelance-clipper-guide' },
-      { label: 'Remote Clipping Jobs', href: '#/guides/remote-clipping-jobs' },
-      { label: 'Best Editing Tools', href: '#/guides/best-editing-tools' },
+      {
+        label: "How to Become a Clipper?",
+        href: "/guides/how-to-become-a-clipper",
+      },
+      {
+        label: "How Much Do Clippers Make?",
+        href: "/guides/how-much-do-clippers-make",
+      },
+      { label: "Clipping Side Hustle", href: "/guides/clipping-side-hustle" },
+      {
+        label: "Freelance Clipper Guide",
+        href: "/guides/freelance-clipper-guide",
+      },
+      { label: "Remote Clipping Jobs", href: "/guides/remote-clipping-jobs" },
+      { label: "Best Editing Tools", href: "/guides/best-editing-tools" },
     ],
   },
   {
-    title: 'Legal',
+    title: "Legal",
     links: [
-      { label: 'Terms of Service', href: '#/terms' },
-      { label: 'Privacy Policy', href: '#/privacy' },
-      { label: 'Platform Policies', href: '#/policies' },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Platform Policies", href: "/policies" },
     ],
   },
   {
-    title: 'Contact',
+    title: "Contact",
     links: [
-      { label: 'clapoutcreators@gmail.com', href: 'mailto:clapoutcreators@gmail.com' },
-      { label: 'Accra · Ghana', href: undefined },
-      { label: 'Join Clapout', href: '#join' },
+      {
+        label: "clapoutcreators@gmail.com",
+        href: "mailto:clapoutcreators@gmail.com",
+      },
+      { label: "Accra · Ghana", href: undefined },
+      { label: "Join Clapout", href: "#join" },
     ],
   },
 ];
@@ -55,13 +68,18 @@ export default function Footer() {
             />
             <p className="mt-5 max-w-sm font-sfpro text-[13px] leading-relaxed text-white/70">
               A creator distribution platform connecting brands with
-              micro&#8209;influencers who make content travel — and get paid
-              for verified performance.
+              micro&#8209;influencers who make content travel — and get paid for
+              verified performance.
             </p>
           </div>
 
           {COLUMNS.map((column, i) => (
-            <div key={column.title} className={i === 0 ? 'md:col-span-2 md:col-start-5' : 'md:col-span-2'}>
+            <div
+              key={column.title}
+              className={
+                i === 0 ? "md:col-span-2 md:col-start-5" : "md:col-span-2"
+              }
+            >
               <h3 className="mb-6 font-poppins text-[11px] font-medium uppercase tracking-[0.3em] text-white/40">
                 {column.title}
               </h3>
@@ -77,7 +95,9 @@ export default function Footer() {
                         {link.label}
                       </a>
                     ) : (
-                      <span className="font-sfpro text-[13px] text-white/70">{link.label}</span>
+                      <span className="font-sfpro text-[13px] text-white/70">
+                        {link.label}
+                      </span>
                     )}
                   </li>
                 ))}
@@ -90,17 +110,22 @@ export default function Footer() {
           <p className="font-sfpro text-xs tracking-widest text-white/40">
             © {year} Clapout. All rights reserved.
           </p>
-          <p className="font-sfpro text-xs uppercase tracking-widest text-white/40">Create. Post. Get Paid.</p>
+          <p className="font-sfpro text-xs uppercase tracking-widest text-white/40">
+            Create. Post. Get Paid.
+          </p>
         </div>
       </div>
 
       {/* Giant wordmark bleeding off the bottom edge */}
-      <div aria-hidden className="pointer-events-none flex justify-center overflow-hidden">
+      <div
+        aria-hidden
+        className="pointer-events-none flex justify-center overflow-hidden"
+      >
         <span
           className="select-none whitespace-nowrap font-poppins font-bold uppercase leading-none text-white/[0.06]"
           style={{
-            fontSize: 'clamp(6rem, 26vw, 26rem)',
-            marginBottom: '-0.12em',
+            fontSize: "clamp(6rem, 26vw, 26rem)",
+            marginBottom: "-0.12em",
           }}
         >
           Clapout

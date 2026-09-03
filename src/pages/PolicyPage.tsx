@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import Button from '../components/ui/Button';
+import { navigate } from '../hooks/useRoute';
 import { POLICIES, getPolicy } from '../data/policies';
 
 const LAST_UPDATED = 'August 23, 2026';
@@ -10,7 +11,7 @@ function PageShell({ children }: { children: ReactNode }) {
     <main className="min-h-screen bg-white px-5 pb-20 pt-8 transition-colors sm:px-8 md:px-10 dark:bg-dark-bg">
       <div className="mx-auto max-w-3xl">
         <div className="mb-10 flex items-center justify-between">
-          <a href="#/" className="transition-opacity hover:opacity-80">
+          <a href="/" className="transition-opacity hover:opacity-80">
             <img
               src="/clapout-logo.png"
               alt="Clapout logo"
@@ -21,9 +22,7 @@ function PageShell({ children }: { children: ReactNode }) {
           <Button
             variant="outline"
             className="px-5 py-2 text-sm"
-            onClick={() => {
-              window.location.hash = '#/';
-            }}
+            onClick={() => navigate('/')}
           >
             <span className="inline-flex items-center gap-2">
               <ArrowLeft size={16} />
@@ -48,11 +47,11 @@ function PolicyIndex() {
       </p>
       <p className="mt-6 font-sfpro leading-relaxed text-text-body dark:text-dark-body">
         These policies sit alongside our{' '}
-        <a href="#/terms" className="underline decoration-black/20 underline-offset-4 transition-colors hover:text-black dark:hover:text-white">
+        <a href="/terms" className="underline decoration-black/20 underline-offset-4 transition-colors hover:text-black dark:hover:text-white">
           Terms of Service
         </a>{' '}
         and{' '}
-        <a href="#/privacy" className="underline decoration-black/20 underline-offset-4 transition-colors hover:text-black dark:hover:text-white">
+        <a href="/privacy" className="underline decoration-black/20 underline-offset-4 transition-colors hover:text-black dark:hover:text-white">
           Privacy Policy
         </a>{' '}
         and explain how campaigns on Clapout are run, verified, and paid.
@@ -62,7 +61,7 @@ function PolicyIndex() {
         {POLICIES.map((policy) => (
           <li key={policy.slug}>
             <a
-              href={`#/policies/${policy.slug}`}
+              href={`/policies/${policy.slug}`}
               className="group block rounded-2xl border border-black/10 p-5 transition-colors hover:border-black/30 sm:p-6 dark:border-white/10 dark:hover:border-white/30"
             >
               <span className="flex items-start justify-between gap-4">
@@ -97,7 +96,7 @@ export default function PolicyPage({ slug }: { slug?: string }) {
   return (
     <PageShell>
       <a
-        href="#/policies"
+        href="/policies"
         className="font-sfpro text-sm uppercase tracking-widest text-text-body transition-colors hover:text-black dark:text-dark-body dark:hover:text-white"
       >
         ← All policies
@@ -132,7 +131,7 @@ export default function PolicyPage({ slug }: { slug?: string }) {
           {others.map((p) => (
             <li key={p.slug}>
               <a
-                href={`#/policies/${p.slug}`}
+                href={`/policies/${p.slug}`}
                 className="font-sfpro text-[15px] text-text-body transition-colors hover:text-black dark:text-dark-body dark:hover:text-white"
               >
                 {p.title}
