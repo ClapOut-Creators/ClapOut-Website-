@@ -13,15 +13,6 @@ function isLinkActive(path: string, href: string) {
   return path === href;
 }
 
-function scrollToHash(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
-  if (!href.startsWith("#") || href.length <= 1) return;
-  const target = document.querySelector(href);
-  if (!target) return;
-  e.preventDefault();
-  target.scrollIntoView({ behavior: "smooth", block: "start" });
-  window.history.pushState(null, "", href);
-}
-
 // The logo always goes "home". On the home page itself that's a smooth
 // scroll-to-top of the current DOM; on any other route (e.g. /campaigns)
 // there's no #top element to scroll to, so fall back to a real route
@@ -142,7 +133,7 @@ export default function Navbar() {
             <ThemeToggle />
             <div className="hidden md:block">
               <Button
-                href="/contact/partnership"
+                href="#join"
                 variant="orange"
                 className="px-8 py-2.5 text-sm"
                 onClick={(e) => scrollToHash(e, "#join")}

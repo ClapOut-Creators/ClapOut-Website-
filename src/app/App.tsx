@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { useRoute } from "../hooks/useRoute";
 import Navbar from "../components/layout/Navbar";
@@ -43,6 +42,21 @@ export default function App() {
     return (
       <>
         <PolicyPage slug={path.slice("/policies/".length)} />
+        <Analytics />
+      </>
+    );
+  }
+  if (path === "/guides")
+    return (
+      <>
+        <GuidePage />
+        <Analytics />
+      </>
+    );
+  if (path.startsWith("/guides/")) {
+    return (
+      <>
+        <GuidePage slug={path.slice("/guides/".length)} />
         <Analytics />
       </>
     );

@@ -16,19 +16,19 @@ const COLUMNS = [
     links: [
       {
         label: "How to Become a Clipper?",
-        href: "#/guides/how-to-become-a-clipper",
+        href: "/guides/how-to-become-a-clipper",
       },
       {
         label: "How Much Do Clippers Make?",
-        href: "#/guides/how-much-do-clippers-make",
+        href: "/guides/how-much-do-clippers-make",
       },
-      { label: "Clipping Side Hustle", href: "#/guides/clipping-side-hustle" },
+      { label: "Clipping Side Hustle", href: "/guides/clipping-side-hustle" },
       {
         label: "Freelance Clipper Guide",
-        href: "#/guides/freelance-clipper-guide",
+        href: "/guides/freelance-clipper-guide",
       },
-      { label: "Remote Clipping Jobs", href: "#/guides/remote-clipping-jobs" },
-      { label: "Best Editing Tools", href: "#/guides/best-editing-tools" },
+      { label: "Remote Clipping Jobs", href: "/guides/remote-clipping-jobs" },
+      { label: "Best Editing Tools", href: "/guides/best-editing-tools" },
     ],
   },
   {

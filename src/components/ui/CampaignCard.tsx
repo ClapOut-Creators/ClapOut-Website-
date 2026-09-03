@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Clock, Wallet } from "lucide-react";
 import Card from "./Card";
-import { platformCampaignUrl } from "../../lib/api";
 import {
   PLATFORM_ICONS,
   PLATFORM_LABELS,
@@ -72,9 +71,6 @@ export default function CampaignCard({
   const baseClass = `block bg-black/[0.03] p-5 dark:bg-white/5 ${className}`;
   return (
     <Card
-      // Cards link out to the ClapOut Studio platform's public campaign page
-      // (full-page navigation, same tab) — that's where registration lives. The
-      // internal `#/campaigns/:slug` detail page stays as a dead-code fallback.
       {...(interactive ? { href: `/campaigns/${campaign.slug}` } : {})}
       className={
         interactive
