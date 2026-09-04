@@ -35,6 +35,19 @@ function installLinkInterceptor() {
   });
 }
 
+// The section arrives with the home page's render, which happens after the
+// popstate that requested it, so poll a few frames for it to appear.
+function scrollToSectionWhenRendered(id: string, attempts = 30) {
+  const target = document.getElementById(id);
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  if (attempts > 0) {
+    requestAnimationFrame(() => scrollToSectionWhenRendered(id, attempts - 1));
+  }
+}
+
 export function useRoute() {
   const [path, setPath] = useState(currentPath());
 
@@ -42,7 +55,15 @@ export function useRoute() {
     installLinkInterceptor();
     const onPopState = () => {
       setPath(currentPath());
-      window.scrollTo(0, 0);
+      // A hash on the new path names a home-page section (e.g. "/#join" from
+      // "Get Started" on another route): scroll to it once it has rendered.
+      // Otherwise start the new page at the top.
+      const hash = window.location.hash;
+      if (hash.length > 1) {
+        scrollToSectionWhenRendered(hash.slice(1));
+      } else {
+        window.scrollTo(0, 0);
+      }
     };
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
