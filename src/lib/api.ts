@@ -21,6 +21,14 @@ export function platformCampaignUrl(slug: string): string {
   return `${PLATFORM_URL}/campaigns/${slug}`;
 }
 
+/**
+ * The platform's sign-in page. A visitor who already has a session there is
+ * sent straight on to their dashboard by the platform itself.
+ */
+export function platformSignInUrl(): string {
+  return `${PLATFORM_URL}/auth/sign-in`;
+}
+
 /** Wire shape returned by `GET /public/campaigns` — numeric money fields, ISO dates, nullable optionals. */
 export interface PublicCampaign {
   slug: string;

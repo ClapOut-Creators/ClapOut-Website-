@@ -6,6 +6,7 @@ import CommunityModal from "../shared/CommunityModal";
 import { useRoute, navigate } from "../../hooks/useRoute";
 import { navLinks } from "../../data/nav";
 import { scrollToHash } from "../../lib/scrollToHash";
+import { platformSignInUrl } from "../../lib/api";
 
 function isLinkActive(path: string, href: string) {
   if (!href || href === "#") return false;
@@ -133,10 +134,9 @@ export default function Navbar() {
             <ThemeToggle />
             <div className="hidden md:block">
               <Button
-                href="#join"
+                href={platformSignInUrl()}
                 variant="orange"
                 className="px-8 py-2.5 text-sm"
-                onClick={(e) => scrollToHash(e, "#join")}
               >
                 Get Started
               </Button>
@@ -255,13 +255,10 @@ export default function Navbar() {
               </button>
             </nav>
             <Button
-              href="/contact/partnership"
+              href={platformSignInUrl()}
               variant="orange"
               className="mt-4 w-full py-2.5 text-sm"
-              onClick={(e) => {
-                setMobileOpen(false);
-                scrollToHash(e, "#join");
-              }}
+              onClick={() => setMobileOpen(false)}
             >
               Get Started
             </Button>
