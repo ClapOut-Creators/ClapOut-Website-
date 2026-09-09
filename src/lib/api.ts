@@ -1,20 +1,20 @@
-import type { Campaign, Platform } from '../types/content';
+import type { Campaign, Platform } from "../types/content";
 
 /**
  * Backend API base (see INTEGRATION-PLAN.md "API contract (v1)"). Defaults to the
  * local backend so `npm run dev` works with zero setup; override with
  * VITE_API_BASE_URL in .env (see .env.example).
  */
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:4000/api/v1').replace(
-  /\/+$/,
-  '',
-);
+const API_BASE_URL = (
+  import.meta.env.VITE_API_BASE_URL ?? "http://localhost:4000/api/v1"
+).replace(/\/+$/, "");
+
+const PLATFORM_BASE_URL = "https://app.clapoutcreators.com";
 
 /** Origin of the ClapOut Studio platform — campaign cards link into its public detail pages. */
-const PLATFORM_URL = (import.meta.env.VITE_PLATFORM_URL ?? 'http://localhost:4200').replace(
-  /\/+$/,
-  '',
-);
+const PLATFORM_URL = (
+  import.meta.env.VITE_PLATFORM_URL ?? "http://localhost:4200"
+).replace(/\/+$/, "");
 
 /** Public campaign detail page on the platform (full-page navigation target, not a hash route). */
 export function platformCampaignUrl(slug: string): string {
@@ -26,7 +26,12 @@ export function platformCampaignUrl(slug: string): string {
  * sent straight on to their dashboard by the platform itself.
  */
 export function platformSignInUrl(): string {
-  return `${PLATFORM_URL}/auth/sign-in`;
+  return `${PLATFORM_BASE_URL}/auth/sign-in`;
+}
+
+/** The platform's public registration page. */
+export function platformRegisterUrl(): string {
+  return `${PLATFORM_BASE_URL}/auth/sign-up`;
 }
 
 /** Wire shape returned by `GET /public/campaigns` — numeric money fields, ISO dates, nullable optionals. */
@@ -38,10 +43,10 @@ export interface PublicCampaign {
     name: string;
     logoUrl: string | null;
     logoBg: string;
-    logoFit: 'cover' | 'contain';
+    logoFit: "cover" | "contain";
   };
   /** UPCOMING: announced but not open yet — money fields are null until they're set. */
-  status: 'UPCOMING' | 'ACTIVE' | 'CLOSED';
+  status: "UPCOMING" | "ACTIVE" | "CLOSED";
   registrationOpen: boolean;
   platforms: Platform[];
   currency: string;
@@ -71,10 +76,10 @@ export interface PublicCampaign {
 
 const REQUEST_TIMEOUT_MS = 8_000;
 
-const STATUS_LABELS: Record<PublicCampaign['status'], string> = {
-  UPCOMING: 'Upcoming',
-  ACTIVE: 'Active',
-  CLOSED: 'Closed',
+const STATUS_LABELS: Record<PublicCampaign["status"], string> = {
+  UPCOMING: "Upcoming",
+  ACTIVE: "Active",
+  CLOSED: "Closed",
 };
 
 function optional(value: string | null | undefined): string | undefined {
@@ -85,23 +90,23 @@ function optional(value: string | null | undefined): string | undefined {
 // September as 'Sept' and en-US puts the month first, neither of which matches
 // the static data's 'Opens 1 Sep'.
 const SHORT_MONTHS = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 /** Date-only values ('2026-09-01') would parse as UTC midnight; anchor them to local time instead. */
 function parseDate(value: string, dateOnlyTime: string): Date {
-  return new Date(value.includes('T') ? value : `${value}T${dateOnlyTime}`);
+  return new Date(value.includes("T") ? value : `${value}T${dateOnlyTime}`);
 }
 
 /**
@@ -111,9 +116,13 @@ function parseDate(value: string, dateOnlyTime: string): Date {
  * decimals per field (see `mapCampaign`). A null figure isn't announced yet and
  * renders as the em-dash placeholder the static data uses (`₵—`).
  */
-function formatMoney(currency: string, value: number | null, fractionDigits: number): string {
+function formatMoney(
+  currency: string,
+  value: number | null,
+  fractionDigits: number,
+): string {
   if (value === null) return `${currency}—`;
-  return `${currency}${value.toLocaleString('en-US', {
+  return `${currency}${value.toLocaleString("en-US", {
     minimumFractionDigits: fractionDigits,
     maximumFractionDigits: fractionDigits,
   })}`;
@@ -129,18 +138,18 @@ function formatMoney(currency: string, value: number | null, fractionDigits: num
  * the value it falls back to when `endDate` is null/unparsable.
  */
 function daysLeftLabel(source: PublicCampaign): string {
-  if (source.status === 'UPCOMING') {
-    const start = parseDate(source.startDate, '00:00:00');
-    if (Number.isNaN(start.getTime())) return '—';
+  if (source.status === "UPCOMING") {
+    const start = parseDate(source.startDate, "00:00:00");
+    if (Number.isNaN(start.getTime())) return "—";
     return `Opens ${start.getDate()} ${SHORT_MONTHS[start.getMonth()]}`;
   }
-  if (!source.endDate) return '—';
-  const end = parseDate(source.endDate, '23:59:59');
-  if (Number.isNaN(end.getTime())) return '—';
+  if (!source.endDate) return "—";
+  const end = parseDate(source.endDate, "23:59:59");
+  if (Number.isNaN(end.getTime())) return "—";
   const diffMs = end.getTime() - Date.now();
-  if (diffMs < 0) return 'Ended';
+  if (diffMs < 0) return "Ended";
   const diffDays = Math.floor(diffMs / 86_400_000);
-  if (diffDays === 0) return 'Ends today';
+  if (diffDays === 0) return "Ends today";
   return `${diffDays} Days left`;
 }
 
@@ -148,7 +157,10 @@ function daysLeftLabel(source: PublicCampaign): string {
 function formatLastUpdated(updatedAt: string): string | undefined {
   const date = new Date(updatedAt);
   if (Number.isNaN(date.getTime())) return undefined;
-  const time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  const time = date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+  });
   const now = new Date();
   const dayDiff = Math.round(
     (new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() -
@@ -179,7 +191,9 @@ export function mapCampaign(source: PublicCampaign): Campaign {
     goal: formatMoney(
       source.currency,
       source.budgetTotal,
-      source.budgetTotal !== null && Number.isInteger(source.budgetTotal) ? 0 : 2,
+      source.budgetTotal !== null && Number.isInteger(source.budgetTotal)
+        ? 0
+        : 2,
     ),
     cpm: formatMoney(source.currency, source.cpm, 2),
 
@@ -224,14 +238,14 @@ export async function fetchCampaigns(): Promise<Campaign[]> {
   try {
     const response = await fetch(`${API_BASE_URL}/public/campaigns`, {
       signal: controller.signal,
-      headers: { Accept: 'application/json' },
+      headers: { Accept: "application/json" },
     });
     if (!response.ok) {
       throw new Error(`GET /public/campaigns failed with ${response.status}`);
     }
     const payload = (await response.json()) as { data?: PublicCampaign[] };
     if (!Array.isArray(payload?.data)) {
-      throw new Error('GET /public/campaigns returned an unexpected payload');
+      throw new Error("GET /public/campaigns returned an unexpected payload");
     }
     return payload.data.map(mapCampaign);
   } finally {
@@ -278,18 +292,30 @@ export async function submitPartnershipInquiry(
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
   try {
-    const response = await fetch(`${API_BASE_URL}/public/partnership-inquiries`, {
-      method: 'POST',
-      signal: controller.signal,
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(payload),
-    });
+    const response = await fetch(
+      `${API_BASE_URL}/public/partnership-inquiries`,
+      {
+        method: "POST",
+        signal: controller.signal,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      },
+    );
     if (!response.ok) {
-      throw new Error(`POST /public/partnership-inquiries failed with ${response.status}`);
+      throw new Error(
+        `POST /public/partnership-inquiries failed with ${response.status}`,
+      );
     }
-    const body = (await response.json()) as { data?: { id?: string; createdAt?: string } };
+    const body = (await response.json()) as {
+      data?: { id?: string; createdAt?: string };
+    };
     if (!body?.data?.id || !body.data.createdAt) {
-      throw new Error('POST /public/partnership-inquiries returned an unexpected payload');
+      throw new Error(
+        "POST /public/partnership-inquiries returned an unexpected payload",
+      );
     }
     return { id: body.data.id, createdAt: body.data.createdAt };
   } finally {

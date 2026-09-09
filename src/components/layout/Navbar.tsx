@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Button from "../ui/Button";
-import ThemeToggle from "../ui/ThemeToggle";
 import CommunityModal from "../shared/CommunityModal";
 import { useRoute, navigate } from "../../hooks/useRoute";
 import { navLinks } from "../../data/nav";
 import { scrollToHash } from "../../lib/scrollToHash";
-import { platformSignInUrl } from "../../lib/api";
+import { platformRegisterUrl, platformSignInUrl } from "../../lib/api";
 
 function isLinkActive(path: string, href: string) {
   if (!href || href === "#") return false;
@@ -131,14 +130,20 @@ export default function Navbar() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-3">
-            <ThemeToggle />
-            <div className="hidden md:block">
+            <div className="hidden items-center gap-2 md:flex">
               <Button
                 href={platformSignInUrl()}
-                variant="orange"
-                className="px-8 py-2.5 text-sm"
+                variant="outline"
+                className="px-6 py-2.5 text-sm"
               >
-                Get Started
+                Login
+              </Button>
+              <Button
+                href={platformRegisterUrl()}
+                variant="orange"
+                className="px-7 py-2.5 text-sm"
+              >
+                Register
               </Button>
             </div>
 
@@ -254,14 +259,24 @@ export default function Navbar() {
                 Join our Community
               </button>
             </nav>
-            <Button
-              href={platformSignInUrl()}
-              variant="orange"
-              className="mt-4 w-full py-2.5 text-sm"
-              onClick={() => setMobileOpen(false)}
-            >
-              Get Started
-            </Button>
+            <div className="mt-4 grid gap-2">
+              <Button
+                href={platformSignInUrl()}
+                variant="outline"
+                className="w-full py-2.5 text-sm"
+                onClick={() => setMobileOpen(false)}
+              >
+                Login
+              </Button>
+              <Button
+                href={platformRegisterUrl()}
+                variant="orange"
+                className="w-full py-2.5 text-sm"
+                onClick={() => setMobileOpen(false)}
+              >
+                Register
+              </Button>
+            </div>
           </div>
         )}
       </div>
