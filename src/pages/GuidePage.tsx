@@ -32,7 +32,7 @@ function Block({ block }: { block: GuideBlock }) {
       {block.title ? (
         <p className="mb-1.5 font-poppins text-sm font-medium text-black/80 dark:text-white">{block.title}</p>
       ) : null}
-      <p className="font-sfpro text-[15px] leading-relaxed text-text-body dark:text-dark-body">{block.text}</p>
+      <p className="font-sfpro text-base leading-relaxed text-text-body dark:text-dark-body">{block.text}</p>
     </div>
   );
 }
@@ -45,7 +45,7 @@ function GuideIndex() {
           <BookOpen size={14} />
           Guides
         </span>
-        <h1 className="mt-6 font-poppins text-4xl font-semibold text-black/80 md:text-5xl dark:text-white">
+        <h1 className="mt-6 font-poppins text-4xl font-semibold text-black/80 md:text-[74px] dark:text-white">
           Clipper Guides
         </h1>
         <p className="mt-4 max-w-xl font-sfpro leading-relaxed text-text-body dark:text-dark-body">
@@ -65,7 +65,7 @@ function GuideIndex() {
                     <span className="block font-poppins text-lg font-medium text-black/80 dark:text-white">
                       {guide.title}
                     </span>
-                    <span className="mt-1.5 block font-sfpro text-[15px] leading-relaxed text-text-body dark:text-dark-body">
+                    <span className="mt-1.5 block font-sfpro text-base leading-relaxed text-text-body dark:text-dark-body">
                       {guide.summary}
                     </span>
                     <span className="mt-3 inline-flex items-center gap-1.5 font-sfpro text-xs uppercase tracking-widest text-black/40 dark:text-white/40">
@@ -114,7 +114,7 @@ export default function GuidePage({ slug }: { slug?: string }) {
           >
             ← All guides
           </a>
-          <h1 className="mt-4 font-poppins text-4xl font-semibold leading-tight text-black/80 md:text-5xl dark:text-white">
+          <h1 className="mt-4 font-poppins text-4xl font-semibold leading-tight text-black/80 md:text-[74px] dark:text-white">
             {guide.title}
           </h1>
           <p className="mt-4 inline-flex items-center gap-1.5 font-sfpro text-sm uppercase tracking-widest text-text-body dark:text-dark-body">
@@ -124,7 +124,7 @@ export default function GuidePage({ slug }: { slug?: string }) {
 
           <div className="mt-8 flex flex-col gap-4">
             {guide.intro.map((paragraph, i) => (
-              <p key={i} className="font-sfpro text-[17px] leading-relaxed text-text-body dark:text-dark-body">
+              <p key={i} className="font-sfpro text-base leading-relaxed text-text-body dark:text-dark-body">
                 {paragraph}
               </p>
             ))}
@@ -153,7 +153,7 @@ export default function GuidePage({ slug }: { slug?: string }) {
               <div className="flex flex-col gap-6">
                 {guide.faq.map((item) => (
                   <div key={item.question}>
-                    <h3 className="mb-2 font-poppins text-base font-medium text-black/80 dark:text-white">
+                    <h3 className="mb-2 font-poppins text-3xl font-semibold text-black/80 dark:text-white">
                       {item.question}
                     </h3>
                     <p className="font-sfpro leading-relaxed text-text-body dark:text-dark-body">{item.answer}</p>
@@ -167,7 +167,7 @@ export default function GuidePage({ slug }: { slug?: string }) {
             <h2 className="font-poppins text-2xl font-semibold text-black/80 dark:text-white">
               Ready to start earning?
             </h2>
-            <p className="mx-auto mt-3 max-w-md font-sfpro text-[15px] leading-relaxed text-text-body dark:text-dark-body">
+            <p className="mx-auto mt-3 max-w-md font-sfpro text-base leading-relaxed text-text-body dark:text-dark-body">
               Browse live campaigns on Clapout, follow the brief, post your clips,
               and get paid for verified views.
             </p>
@@ -188,7 +188,7 @@ export default function GuidePage({ slug }: { slug?: string }) {
                 <li key={g.slug}>
                   <a
                     href={`/guides/${g.slug}`}
-                    className="font-sfpro text-[15px] text-text-body transition-colors hover:text-black dark:text-dark-body dark:hover:text-white"
+                    className="font-sfpro text-base text-text-body transition-colors hover:text-black dark:text-dark-body dark:hover:text-white"
                   >
                     {g.label}
                   </a>

@@ -94,13 +94,13 @@ export default function SocialProofSection() {
   return (
     <section className="bg-white py-20 transition-colors md:py-28 dark:bg-dark-bg">
       <div className="mx-auto max-w-4xl px-4 text-center">
-        <p className="font-sfpro text-lg uppercase tracking-wide text-[#A3A3A3] dark:text-dark-body">
+        <p className="font-sfpro text-sm uppercase tracking-wide text-[#A3A3A3] dark:text-dark-body">
           Used by industry leaders
         </p>
         <h2 className="mt-4 font-poppins text-4xl font-semibold text-black/80 md:text-5xl dark:text-white">
           The creators and brands behind the campaigns.
         </h2>
-        <p className="mx-auto mt-4 max-w-xl font-sfpro text-lg font-normal text-[#464646] dark:text-dark-body">
+        <p className="mx-auto mt-4 max-w-xl font-sfpro text-base font-normal text-[#464646] dark:text-dark-body">
           Streamers, labels, and brands run campaigns here. Their clips are the
           ones your network gets paid to post.
         </p>

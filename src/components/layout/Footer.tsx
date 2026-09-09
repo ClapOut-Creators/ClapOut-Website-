@@ -4,8 +4,8 @@ const COLUMNS = [
   {
     title: "Explore",
     links: [
-      // The home page has no "about" section; the hero is the about.
-      { label: "About", href: "/" },
+      // The home page's how-it-works section; scrollToHash routes home first
+      // when the visitor is on another page.
       { label: "How it works", href: "#how-it-works" },
       { label: "Campaigns", href: "/campaigns" },
       { label: "FAQ", href: "#faq" },

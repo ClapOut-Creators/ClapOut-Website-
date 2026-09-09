@@ -26,7 +26,7 @@ export default function ContactPage() {
       <section className="px-4 pb-20 pt-32 md:pb-28 md:pt-40">
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
-            <h1 className="font-poppins text-3xl font-semibold text-black/80 dark:text-white md:text-4xl">
+            <h1 className="font-poppins text-3xl font-semibold text-black/80 dark:text-white md:text-[74px]">
               Contact Clapout
             </h1>
             <p className="mx-auto mt-4 max-w-2xl font-sfpro text-text-body dark:text-dark-body">
