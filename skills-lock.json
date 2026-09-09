@@ -5,13 +5,13 @@
       "source": "tristanmanchester/agent-skills",
       "sourceType": "github",
       "skillPath": "designing-beautiful-websites/SKILL.md",
-      "computedHash": "c67a4b7ed14f77e4e65a3546acd8360e376b6f6f539c32157593085e58e1988b"
+      "computedHash": "8c5bd91e0a85c9dd07de4a2b42378020603ce878065ccb382b621004e1e15f62"
     },
     "seo": {
       "source": "addyosmani/web-quality-skills",
       "sourceType": "github",
       "skillPath": "skills/seo/SKILL.md",
-      "computedHash": "1f1551c898c17a88a976b4f4aa84e17886f115f3887b62d1c4f8a1c040e4d1ef"
+      "computedHash": "aa081d7ee9f44d1b09ac521051630adac2fca0e595e3d0d0ec881d0b2644676f"
     },
     "vercel-react-best-practices": {
       "source": "vercel-labs/agent-skills",
