@@ -9,9 +9,11 @@ const API_BASE_URL = (
   import.meta.env.VITE_API_BASE_URL ?? "http://localhost:4000/api/v1"
 ).replace(/\/+$/, "");
 
-const PLATFORM_BASE_URL = "https://app.clapoutcreators.com";
-
-/** Origin of the ClapOut Studio platform — campaign cards link into its public detail pages. */
+/**
+ * Origin of the ClapOut Studio platform. Every link into it — campaign detail
+ * pages, sign-in, registration — comes from here, so a local dev server points
+ * at a local platform and production (VITE_PLATFORM_URL on Vercel) at the live one.
+ */
 const PLATFORM_URL = (
   import.meta.env.VITE_PLATFORM_URL ?? "http://localhost:4200"
 ).replace(/\/+$/, "");
@@ -26,12 +28,12 @@ export function platformCampaignUrl(slug: string): string {
  * sent straight on to their dashboard by the platform itself.
  */
 export function platformSignInUrl(): string {
-  return `${PLATFORM_BASE_URL}/auth/sign-in`;
+  return `${PLATFORM_URL}/auth/sign-in`;
 }
 
 /** The platform's public registration page. */
 export function platformRegisterUrl(): string {
-  return `${PLATFORM_BASE_URL}/auth/sign-up`;
+  return `${PLATFORM_URL}/auth/sign-up`;
 }
 
 /** Wire shape returned by `GET /public/campaigns` — numeric money fields, ISO dates, nullable optionals. */
