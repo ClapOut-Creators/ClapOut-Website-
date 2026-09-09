@@ -39,7 +39,7 @@ function PageShell({ children }: { children: ReactNode }) {
 function PolicyIndex() {
   return (
     <PageShell>
-      <h1 className="font-poppins text-4xl font-semibold text-black/80 md:text-5xl dark:text-white">
+      <h1 className="font-poppins text-4xl font-semibold text-black/80 md:text-[74px] dark:text-white">
         Platform Policies
       </h1>
       <p className="mt-3 font-sfpro text-sm uppercase tracking-widest text-text-body dark:text-dark-body">
@@ -69,7 +69,7 @@ function PolicyIndex() {
                   <span className="block font-poppins text-lg font-medium text-black/80 dark:text-white">
                     {policy.title}
                   </span>
-                  <span className="mt-1.5 block font-sfpro text-[15px] leading-relaxed text-text-body dark:text-dark-body">
+                  <span className="mt-1.5 block font-sfpro text-base leading-relaxed text-text-body dark:text-dark-body">
                     {policy.summary}
                   </span>
                 </span>
@@ -101,7 +101,7 @@ export default function PolicyPage({ slug }: { slug?: string }) {
       >
         ← All policies
       </a>
-      <h1 className="mt-4 font-poppins text-4xl font-semibold text-black/80 md:text-5xl dark:text-white">
+      <h1 className="mt-4 font-poppins text-4xl font-semibold text-black/80 md:text-[74px] dark:text-white">
         {policy.title}
       </h1>
       <p className="mt-3 font-sfpro text-sm uppercase tracking-widest text-text-body dark:text-dark-body">
@@ -132,7 +132,7 @@ export default function PolicyPage({ slug }: { slug?: string }) {
             <li key={p.slug}>
               <a
                 href={`/policies/${p.slug}`}
-                className="font-sfpro text-[15px] text-text-body transition-colors hover:text-black dark:text-dark-body dark:hover:text-white"
+                className="font-sfpro text-base text-text-body transition-colors hover:text-black dark:text-dark-body dark:hover:text-white"
               >
                 {p.title}
               </a>

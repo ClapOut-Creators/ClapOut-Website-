@@ -137,7 +137,7 @@ export default function LegalPage({ kind }: { kind: 'terms' | 'privacy' }) {
           </Button>
         </div>
 
-        <h1 className="font-poppins text-4xl font-semibold text-black/80 md:text-5xl dark:text-white">{title}</h1>
+        <h1 className="font-poppins text-4xl font-semibold text-black/80 md:text-[74px] dark:text-white">{title}</h1>
         <p className="mt-3 font-sfpro text-sm uppercase tracking-widest text-text-body dark:text-dark-body">
           Last updated: August 21, 2026
         </p>
