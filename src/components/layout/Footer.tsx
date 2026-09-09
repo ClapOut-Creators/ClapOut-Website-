@@ -4,8 +4,9 @@ const COLUMNS = [
   {
     title: "Explore",
     links: [
-      { label: "About", href: "#about" },
-      { label: "How it works", href: "#how" },
+      // The home page has no "about" section; the hero is the about.
+      { label: "About", href: "/" },
+      { label: "How it works", href: "#how-it-works" },
       { label: "Campaigns", href: "/campaigns" },
       { label: "FAQ", href: "#faq" },
       { label: "Feedback", href: "#feedback" },
