@@ -1,11 +1,11 @@
 import type { BrandLogo, SocialProofPhoto } from '../types/content';
 
-// Names + real marks per doc/Clapout.pdf page 1's rendered hero strip.
+// Brands Clapout is actually working with.
 export const trustedByLogos: BrandLogo[] = [
   { name: 'Tekme', logo: '/clients/logo_tekme.svg' },
-  { name: 'Maple', logo: '/clients/maple.png' },
-  { name: 'Union', logo: '/clients/union.png' },
-  { name: 'Covoitly', logo: '/clients/covoitly.png' },
+  { name: 'e-wale' },
+  { name: 'Wishly', logo: '/clients/wishly-black.svg', heightClass: 'h-9 sm:h-10' },
+  { name: 'TripAdvert' },
 ];
 
 // Social-proof grid (§ 4): real creator/brand headshots, user-supplied in

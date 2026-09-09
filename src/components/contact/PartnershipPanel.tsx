@@ -167,7 +167,7 @@ export default function PartnershipPanel() {
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#2fae5c]">
           <Check size={28} className="text-white" strokeWidth={3} />
         </div>
-        <h3 className="mt-4 font-poppins text-lg font-semibold text-black/80 dark:text-white">
+        <h3 className="mt-4 font-poppins text-3xl font-semibold text-black/80 dark:text-white">
           Thanks — we&apos;ll be in touch
         </h3>
         <p className="mt-2 font-sfpro text-sm text-text-body dark:text-dark-body">
@@ -194,7 +194,7 @@ export default function PartnershipPanel() {
         className="absolute left-[-9999px] top-0 h-px w-px opacity-0"
       />
 
-      <h3 className="font-poppins text-lg font-semibold text-black/80 dark:text-white">
+      <h3 className="font-poppins text-3xl font-semibold text-black/80 dark:text-white">
         Partnership Inquiry
       </h3>
       <p className="mt-2 font-sfpro text-sm text-text-body dark:text-dark-body">

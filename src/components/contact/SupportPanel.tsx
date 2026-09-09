@@ -9,7 +9,7 @@ const SUPPORT_BULLETS = [
 export default function SupportPanel() {
   return (
     <div>
-      <h3 className="font-poppins text-lg font-semibold text-black/80 dark:text-white">
+      <h3 className="font-poppins text-3xl font-semibold text-black/80 dark:text-white">
         Get Support on WhatsApp
       </h3>
       <p className="mt-2 font-sfpro text-sm text-text-body dark:text-dark-body">

@@ -105,7 +105,10 @@ export interface Testimonial {
 
 export interface BrandLogo {
   name: string;
-  logo: string;
+  /** Omit to render `name` as styled text instead of an image. */
+  logo?: string;
+  /** Override the default image height for assets with baked-in padding. */
+  heightClass?: string;
 }
 
 export interface ContactInfoCard {
